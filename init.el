@@ -127,8 +127,6 @@
                                               load-file-name
                                               buffer-file-name))))
 
-(add-to-list 'package-archives
-                 '("melpa" . "http://melpa.milkbox.net/packages/"))
 
 (setq
  live-tmp-dir      (file-name-as-directory (concat live-root-dir "tmp"))
@@ -236,5 +234,12 @@
 (global-set-key (kbd "<C-right>") 'paredit-backward-slurp-sexp)
 (global-set-key (kbd "<C-left>") 'paredit-forward-slurp-sexp)
 
+;; Neo-tree
+(global-set-key [f8] 'neotree-toggle)
+
 ;; CIDER light table Mode
 (global-set-key (kbd "M-S-<return>") 'cider-load-current-buffer)
+
+;; Add melpa archives
+(add-to-list 'package-archives
+                 '("melpa" . "http://melpa.milkbox.net/packages/"))
