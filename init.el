@@ -234,6 +234,9 @@
 (global-set-key (kbd "<C-right>") 'paredit-backward-slurp-sexp)
 (global-set-key (kbd "<C-left>") 'paredit-forward-slurp-sexp)
 
+;; Undo an undo
+(global-set-key (kbd "C-S-/") 'undo-tree-redo)
+
 ;; Neo-tree
 (global-set-key [f8] 'neotree-toggle)
 
