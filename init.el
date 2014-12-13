@@ -245,4 +245,8 @@
 
 ;; Add melpa archives
 (add-to-list 'package-archives
-                 '("melpa" . "http://melpa.milkbox.net/packages/"))
+             '("melpa" . "http://melpa.milkbox.net/packages/"))
+
+;; Add handlebars mode
+(add-to-list 'load-path "~/.emacs.d/vendor/")
+(require 'handlebars-mode)
