@@ -1,0 +1,54 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/Users/callum/projects/blog/content/themes/crisp/" . "partials/")
+ ("/Users/callum/projects/blog/content/themes/" . "crisp/")
+ ("/Users/callum/projects/blog/content/" . "themes/")
+ ("/Users/callum/projects/blog/" . "content/")
+ ("/Users/callum/projects/" . "blog/")
+ ("/Users/callum/" . ".emacs.d/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/Users/callum/"
+ "/Users/callum/.emacs.d/"
+ "/Users/callum/projects/blog/"
+ "/Users/callum/projects/blog/content/themes/crisp/partials/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ ".emacs-live.el"
+ "init.el"
+ ".gitignore"
+ ".travis.yml"
+ "deploy-ghpages.sh"
+ "package.json"
+ "postlist.hbs"
+ "pagination.hbs"
+ "navigation.hbs"
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/Users/callum/.emacs.d/" (21643 62694 0 0) "vendor/" "tmp/" "README.md" "packs/" "manifest.el" "LICENSE.txt" "lib/" "installer/" "init.el" "ido.last" "etc/" "elpa/" "CHANGELOG.md" ".gitmodules" ".gitignore" ".git/" ".#init.el" "../" "./")
+
+ ("/Users/callum/" (21643 62594 0 0) "vpworkspace/" "visualparadigm/" "UMLet/" "Public/" "projects/" "pl.ini" "Pictures/" "Music/" "Movies/" "Library/" "Google Drive/" "git/" "fit1010_lab9/" "emacs-live-old-config/" "Dropbox/" "Downloads/" "Documents/" "Desktop/" "AT.postflight.1874" "Applications/" "15.clj" ".zshrc~" ".zshrc.pre-oh-my-zsh" ".zshrc-e" ".zshrc" ".zsh_history" ".zsh-update" ".zlogin" ".zcompdump-Callum’s MacBook Air-5.0.5" ".Xauthority" ".viminfo" ".Trash/" ".subversion/" ".ssh/" ".sqldeveloper/" ".smex-items" ".rvm/" ".rnd" ".profile" ".pip/" ".oh-my-zsh/" ".npm/" ".m2/" ".lldb-history" ".live-packs/" ".lesshst" ".lein/" ".irb_history" ".irb-history" ".inkscape-etc/" ".idlerc/" ".gtk-bookmarks" ".gnome2/" ".gitconfig" ".gem/" ".fontconfig/" ".emacs.d/" ".emacs-live.el" ".eclipse_keyring" ".DS_Store" ".dropbox/" ".config/" ".CFUserTextEncoding" ".CF89AA64" ".cache/" ".bzr.log" ".bundler/" ".bashrc" ".bash_profile.macports-saved_2013-08-26_at_15:30:51" ".bash_profile" ".bash_history" ".atom/" ".anyconnect" "../" "./")
+
+ ("/Users/callum/projects/" (21643 57164 0 0) "uni-projects/" "static/" "resume/" "projecteuler-clj/" "personal-web/" "modern-cljs/" "koans-clj/" "extra-useful/" "dotfiles/" "cwhitey.github.io/" "crisp-ghost-theme/" "closso/" "buster/" "blog/" ".DS_Store" "../" "./")
+
+ ("/Users/callum/projects/blog/" (21643 59629 0 0) "README.md" "PRIVACY.md" "package.json" "node_modules/" "local-deploy.sh" "LICENSE" "index.js" "Gruntfile.js" "deploy-ghpages.sh" "core/" "content/" "config.js" "config.example.js" "buster.py" "bower.json" ".travis.yml" ".gitignore" ".git/" ".DS_Store" "../" "./")
+
+ ("/Users/callum/projects/blog/content/themes/" (21643 61317 0 0) "crisp/" "casper/" "../" "./")
+
+ ("/Users/callum/projects/blog/content/themes/crisp/" (21636 47867 0 0) "tag.hbs" "post.hbs" "partials/" "page.hbs" "package.json" "index.hbs" "error.hbs" "default.hbs" "assets/" "../" "./")
+
+ ("/Users/callum/projects/blog/content/themes/crisp/partials/" (21643 62645 0 0) "share.hbs" "postlist.hbs" "pagination.hbs" "navigation.hbs" "follow.hbs" "../" "./")
+
+ ("/Users/callum/projects/blog/content/" (21632 48598 0 0) "themes/" "images/" "data/" "apps/" ".DS_Store" "../" "./")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t
