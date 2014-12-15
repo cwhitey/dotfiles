@@ -148,6 +148,14 @@
 (make-directory live-custom-dir t)
 (make-directory live-pscratch-dir t)
 
+;; Set path to dependencies
+(setq site-lisp-dir
+      (expand-file-name "site-lisp" user-emacs-directory))
+
+;; Set up load path
+;;(add-to-list 'load-path user-emacs-directory)
+(add-to-list 'load-path site-lisp-dir)
+
 ;; Load manifest
 (load-file (concat live-root-dir "manifest.el"))
 
@@ -241,6 +249,6 @@
 (require 'handlebars-mode)
 
 ;; Require other packages
-(add-to-list 'load-path "~/.emacs.d/common/")
-(require 'setup-rgrep)
+(add-to-list 'load-path "~/.emacs.d/custom/")
+(eval-after-load 'grep '(require 'setup-rgrep))
 (require 'key-bindings)
