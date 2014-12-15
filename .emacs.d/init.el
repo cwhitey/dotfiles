@@ -227,12 +227,27 @@
 
 (message "\n\n Pack loading completed. Your Emacs is Live...\n\n")
 (set-variable 'shift-select-mode t)
+
+;;; Emacs live stuff ends here.
+
 ;; Total Mac noob mode
 (global-set-key (kbd "M-c") 'copy-region-as-kill)
 (global-set-key (kbd "M-v") 'yank)
 (global-set-key (kbd "M-z") 'undo)
 (global-set-key (kbd "<C-right>") 'paredit-backward-slurp-sexp)
 (global-set-key (kbd "<C-left>") 'paredit-forward-slurp-sexp)
+
+;; Add windmove keybindings
+(when (fboundp 'windmove-default-keybindings)
+  (windmove-default-keybindings 'alt))
+;; these clashed with 'winner' (window undo) package
+;;(global-set-key (kbd "C-c <left>")  'windmove-left)
+;;(global-set-key (kbd "C-c <right>") 'windmove-right)
+;;(global-set-key (kbd "C-c <up>")    'windmove-up)
+;;(global-set-key (kbd "C-c <down>")  'windmove-down)
+
+;; Fullscreen frame
+(global-set-key (kbd "C-c m") 'toggle-frame-maximized)
 
 ;; Undo an undo
 (global-set-key (kbd "C-S-/") 'undo-tree-redo)
