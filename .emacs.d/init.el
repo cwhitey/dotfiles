@@ -241,5 +241,6 @@
 (require 'handlebars-mode)
 
 ;; Require other packages
-(require 'key-bindings)
+(add-to-list 'load-path "~/.emacs.d/")
 (require 'setup-rgrep)
+(require 'key-bindings)
