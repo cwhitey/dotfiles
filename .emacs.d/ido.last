@@ -2,6 +2,17 @@
 
 ;; ----- ido-last-directory-list -----
 (
+ ("/Users/callum/projects/closso/test-luminus-mongo-site/resources/public/" . "js/")
+ ("/Users/callum/projects/closso/test-luminus-mongo-site/resources/" . "public/")
+ ("/Users/callum/projects/closso/test-luminus-mongo-site/src/test_luminus_mongo_site/" . "routes/")
+ ("/Users/callum/projects/closso/test-luminus-mongo-site/test/test_luminus_mongo_site/" . "test/")
+ ("/Users/callum/projects/closso/test-luminus-mongo-site/test/" . "test_luminus_mongo_site/")
+ ("/Users/callum/projects/closso/test-luminus-mongo-site/src/" . "test_luminus_mongo_site/")
+ ("/Users/callum/projects/closso/test-luminus-mongo-site/src-cljs/" . "test_luminus_mongo_site/")
+ ("/Users/callum/projects/closso/test-luminus-mongo-site/" . "src-cljs/")
+ ("/Users/callum/projects/closso/" . "test-luminus-mongo-site/")
+ ("/Users/callum/projects/" . "closso/")
+ ("/Users/callum/" . "projects/")
  ("/Users/whitec/other/dotfiles/" . ".emacs.d/")
  ("/Users/whitec/other/closso/test-luminus-mongo-site/src/" . "test_luminus_mongo_site/")
  ("/Users/whitec/other/closso/test-luminus-mongo-site/" . "src/")
@@ -23,6 +34,13 @@
 
 ;; ----- ido-work-directory-list -----
 (
+ "/Users/callum/projects/closso/test-luminus-mongo-site/src-cljs/test_luminus_mongo_site/"
+ "/Users/callum/projects/closso/test-luminus-mongo-site/resources/public/js/"
+ "/Users/callum/projects/closso/test-luminus-mongo-site/src/test_luminus_mongo_site/routes/"
+ "/Users/callum/projects/closso/test-luminus-mongo-site/"
+ "/Users/callum/projects/closso/test-luminus-mongo-site/src/test_luminus_mongo_site/"
+ "/Users/callum/projects/closso/test-luminus-mongo-site/src/test_luminus_mongo_site/db/"
+ "/Users/callum/projects/closso/test-luminus-mongo-site/test/test_luminus_mongo_site/test/"
  "/Users/whitec/.emacs.d/"
  "/Users/whitec/other/dotfiles/.emacs.d/"
  "/Users/whitec/other/closso/test-luminus-mongo-site/src/test_luminus_mongo_site/"
@@ -40,20 +58,54 @@
 
 ;; ----- ido-work-file-list -----
 (
- "init.el"
- "handler.clj"
- "core.clj"
- ".emacs-live.el"
- "rrssb.min.js"
- "local-deploy.sh"
- "deploy-ghpages.sh"
- ".travis.yml"
- "page.hbs"
+ "core.cljs"
+ "app.js"
+ "home.clj"
  "README.md"
+ "middleware.clj"
+ "project.clj"
+ "core.clj"
+ "handler.clj"
+ "auth.clj"
+ "util.clj"
 )
 
 ;; ----- ido-dir-file-cache -----
 (
+ ("/Users/callum/projects/closso/test-luminus-mongo-site/src-cljs/test_luminus_mongo_site/" (21650 39298 0 0) "core.cljs" "../" "./")
+
+ ("/Users/callum/projects/closso/test-luminus-mongo-site/resources/templates/" (21650 39128 0 0) "registration.html" "profile.html" "menu.html" "base.html" "app.html" ".#app.html" "../" "./")
+
+ ("/Users/callum/projects/closso/test-luminus-mongo-site/resources/public/js/" (21650 11259 0 0) "out/" "app.js" "../" "./")
+
+ ("/Users/callum/projects/closso/test-luminus-mongo-site/resources/public/" (21650 11235 0 0) "md/" "js/" "fonts/" "css/" "../" "./")
+
+ ("/Users/callum/projects/closso/test-luminus-mongo-site/" (21650 18648 0 0) "test_luminus_mongo_site.log" "test/" "target/" "src-cljs/" "src/" "resources/" "README.md" "project.clj" "Procfile" "env/" ".lein-env" ".gitignore" "../" "./")
+
+ ("/Users/callum/projects/closso/test-luminus-mongo-site/src/test_luminus_mongo_site/routes/" (21649 31490 0 0) "home.clj" "auth.clj" "../" "./")
+
+ ("/Users/callum/projects/closso/test-luminus-mongo-site/src/test_luminus_mongo_site/" (21650 18188 0 0) "util.clj" "session_manager.clj" "routes/" "repl.clj" "middleware.clj" "layout.clj" "handler.clj" "db/" ".#handler.clj" "../" "./")
+
+ ("/Users/callum/projects/closso/test-luminus-mongo-site/src/test_luminus_mongo_site/db/" (21650 15239 0 0) "core.clj" ".#core.clj" "../" "./")
+
+ ("/Users/callum/projects/closso/test-luminus-mongo-site/resources/" (21645 8001 0 0) "templates/" "public/" "../" "./")
+
+ ("/Users/callum/projects/closso/test-luminus-mongo-site/test/test_luminus_mongo_site/test/" (21645 8001 0 0) "handler.clj" "../" "./")
+
+ ("/Users/callum/projects/closso/test-luminus-mongo-site/test/test_luminus_mongo_site/" (21645 8001 0 0) "test/" "../" "./")
+
+ ("/Users/callum/projects/closso/test-luminus-mongo-site/test/" (21645 8001 0 0) "test_luminus_mongo_site/" "../" "./")
+
+ ("/Users/callum/projects/closso/test-luminus-mongo-site/src/" (21645 8001 0 0) "test_luminus_mongo_site/" "../" "./")
+
+ ("/Users/callum/projects/closso/test-luminus-mongo-site/src-cljs/" (21645 8001 0 0) "test_luminus_mongo_site/" "../" "./")
+
+ ("/Users/callum/projects/closso/" (21648 55339 0 0) "test-luminus-mongo-site/" ".git/" "../" "./")
+
+ ("/Users/callum/projects/" (21645 32471 0 0) "uni-projects/" "static/" "resume/" "projecteuler-clj/" "personal-web/" "modern-cljs/" "koans-clj/" "extra-useful/" "dotfiles/" "cwhitey.github.io/" "crisp-ghost-theme/" "closso/" "buster/" "blog/" ".DS_Store" "../" "./")
+
+ ("/Users/callum/" (21649 14313 0 0) "vpworkspace/" "visualparadigm/" "UMLet/" "Public/" "projects/" "prelude-emacs.d/" "prelude-compile-log-emacs.txt" "pl.ini" "Pictures/" "Music/" "Movies/" "Library/" "Google Drive/" "git/" "fit1010_lab9/" "emacs-live-old-config/" "Dropbox/" "Downloads/" "Documents/" "Desktop/" "AT.postflight.1874" "Applications/" "15.clj" ".zshrc~" ".zshrc.pre-oh-my-zsh" ".zshrc-e" ".zshrc" ".zsh_history" ".zsh-update" ".zlogin" ".zcompdump-Callum’s MacBook Air-5.0.5" ".Xauthority" ".viminfo" ".Trash/" ".subversion/" ".ssh/" ".sqldeveloper/" ".smex-items" ".rvm/" ".rnd" ".profile" ".pip/" ".oh-my-zsh/" ".npm/" ".mongorc.js" ".m2/" ".lldb-history" ".live-packs/" ".lesshst" ".lein/" ".irb_history" ".irb-history" ".inkscape-etc/" ".idlerc/" ".gtk-bookmarks" ".gnome2/" ".gitconfig" ".gem/" ".fontconfig/" ".emacs.d.pre-prelude.tar" ".emacs.d/" ".emacs-live.el" ".eclipse_keyring" ".DS_Store" ".dropbox/" ".dbshell" ".config/" ".CFUserTextEncoding" ".CF89AA64" ".cache/" ".bzr.log" ".bundler/" ".bashrc" ".bash_profile.macports-saved_2013-08-26_at_15:30:51" ".bash_profile" ".bash_history" ".atom/" ".anyconnect" "../" "./")
+
  ("/Users/whitec/.emacs.d/" (21646 19949 0 0) "vendor/" "tmp/" "README.md" "places" "packs/" "manifest.el" "LICENSE.txt" "lib/" "installer/" "init.el" "ido.last" "etc/" "elpa/" "CHANGELOG.md" "auto-save-list/" ".smex-items" ".gitmodules" ".gitignore" ".git/" "../" "./")
 
  ("/Users/whitec/" (21646 21975 0 0) "~/" "VirtualBox VMs/" "temp.orig" "temp" "SoapUI-Tutorials/" "soapui-settings.xml" "react_practice/" "Public/" "projects/" "Pictures/" "other/" "Music/" "Movies/" "Library/" "golfscript/" "emacs-live-old-config/" "Downloads/" "Documents/" "docker/" "Desktop/" "default-soapui-workspace.xml" "clojure_practice/" "cassandra/" "bin" "Applications/" ".zshrc~" ".zshrc-e" ".zshrc" ".zsh_history" ".zsh-update" ".zcompdump-apdmmac-33-5.0.5" ".zcompdump-apdmmac-33-5.0.2" ".viminfo" ".travis/" ".Trash/" ".subversion/" ".ssh/" ".smex-items" ".rnd" ".oh-my-zsh/" ".npm/" ".node-gyp/" ".m2/" ".lesshst" ".lein/" ".ido.last" ".idlerc/" ".gradle/" ".gitconfig" ".ghc/" ".gem/" ".erlang.cookie" ".emacs~" ".emacs.d.old/" ".emacs.d/" ".emacs-live.el" ".DS_Store" ".cups/" ".config/" ".CFUserTextEncoding" ".cassandra/" ".burst/" ".boot2docker/" ".bashrc" ".bash_history" ".android/" ".account" "../" "./")
