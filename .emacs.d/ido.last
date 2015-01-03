@@ -2,7 +2,27 @@
 
 ;; ----- ido-last-directory-list -----
 (
- ("/Users/callum/projects/closso/test-luminus-mongo-site/resources/public/" . "js/")
+ ("/Users/callum/projects/closso/broken/test-luminus-mongo-site/src-cljs/" . "test_luminus_mongo_site/")
+ ("/Users/callum/projects/closso/broken/test-luminus-mongo-site/" . "src-cljs/")
+ ("/Users/callum/projects/closso/broken/" . "test-luminus-mongo-site/")
+ ("/Users/callum/projects/closso/test-luminus-mongo-site/src-cljs/test_luminus_mongo_site/views/" . "tools/")
+ ("/Users/callum/projects/closso/reagent-app/src/cljs/" . "reagent_app/")
+ ("/Users/callum/projects/closso/reagent-app/src/" . "cljs/")
+ ("/Users/callum/projects/closso/reagent-app/" . "src/")
+ ("/Users/callum/.emacs.d/" . "custom/")
+ ("/Users/callum/projects/luminus-cljs/src-cljs/" . "luminus_cljs/")
+ ("/Users/callum/projects/luminus-cljs/" . "src-cljs/")
+ ("/Users/" . "callum/")
+ ("/Users/callum/projects/closso/test-luminus-mongo-site/src-cljs/test_luminus_mongo_site/" . "views/")
+ ("/Users/callum/projects/reagent-cookbook/recipes/adding-a-page/src/adding_a_page/" . "views/")
+ ("/Users/callum/projects/reagent-cookbook/recipes/adding-a-page/src/" . "adding_a_page/")
+ ("/Users/callum/projects/reagent-cookbook/recipes/adding-a-page/" . "src/")
+ ("/Users/callum/projects/reagent-cookbook/recipes/" . "adding-a-page/")
+ ("/Users/callum/projects/reagent-cookbook/" . "recipes/")
+ ("/Users/callum/projects/closso/test-luminus-mongo-site/env/dev/cljs/" . "test_luminus_mongo_site/")
+ ("/Users/callum/projects/closso/test-luminus-mongo-site/env/dev/" . "cljs/")
+ ("/Users/callum/projects/closso/test-luminus-mongo-site/env/" . "dev/")
+ ("/Users/callum/projects/closso/test-luminus-mongo-site/resources/public/" . "css/")
  ("/Users/callum/projects/closso/test-luminus-mongo-site/resources/" . "public/")
  ("/Users/callum/projects/closso/test-luminus-mongo-site/src/test_luminus_mongo_site/" . "routes/")
  ("/Users/callum/projects/closso/test-luminus-mongo-site/test/test_luminus_mongo_site/" . "test/")
@@ -10,9 +30,9 @@
  ("/Users/callum/projects/closso/test-luminus-mongo-site/src/" . "test_luminus_mongo_site/")
  ("/Users/callum/projects/closso/test-luminus-mongo-site/src-cljs/" . "test_luminus_mongo_site/")
  ("/Users/callum/projects/closso/test-luminus-mongo-site/" . "src-cljs/")
- ("/Users/callum/projects/closso/" . "test-luminus-mongo-site/")
+ ("/Users/callum/projects/closso/" . "broken/")
  ("/Users/callum/projects/" . "closso/")
- ("/Users/callum/" . "projects/")
+ ("/Users/callum/" . ".emacs.d/")
  ("/Users/whitec/other/dotfiles/" . ".emacs.d/")
  ("/Users/whitec/other/closso/test-luminus-mongo-site/src/" . "test_luminus_mongo_site/")
  ("/Users/whitec/other/closso/test-luminus-mongo-site/" . "src/")
@@ -34,11 +54,34 @@
 
 ;; ----- ido-work-directory-list -----
 (
+ "/Users/callum/.emacs.d/"
+ "/Users/callum/"
  "/Users/callum/projects/closso/test-luminus-mongo-site/src-cljs/test_luminus_mongo_site/"
- "/Users/callum/projects/closso/test-luminus-mongo-site/resources/public/js/"
- "/Users/callum/projects/closso/test-luminus-mongo-site/src/test_luminus_mongo_site/routes/"
- "/Users/callum/projects/closso/test-luminus-mongo-site/"
+ "/Users/callum/projects/closso/broken/test-luminus-mongo-site/src-cljs/test_luminus_mongo_site/"
  "/Users/callum/projects/closso/test-luminus-mongo-site/src/test_luminus_mongo_site/"
+ "/Users/callum/projects/closso/test-luminus-mongo-site/src-cljs/test_luminus_mongo_site/views/tools/"
+ "/Users/callum/projects/closso/test-luminus-mongo-site/src/test_luminus_mongo_site/routes/"
+ "/Users/callum/projects/closso/test-luminus-mongo-site/src-cljs/test_luminus_mongo_site/views/"
+ "/Users/callum/projects/closso/test-luminus-mongo-site/src/test_luminus_mongo_site/templates/"
+ "/Users/callum/projects/closso/test-luminus-mongo-site/"
+ "/Users/callum/projects/closso/test-luminus-mongo-site/resources/public/css/"
+ "/Users/callum/projects/closso/test-luminus-mongo-site/resources/templates/"
+ "/Users/callum/projects/luminus-cljs/"
+ "/Users/callum/projects/luminus-cljs/src-cljs/luminus_cljs/"
+ "/Users/callum/projects/closso/reagent-app/src/cljs/reagent_app/"
+ "/Users/callum/.emacs.d/custom/"
+ "/Users/callum/.lein/"
+ "/Users/callum/projects/reagent-cookbook/recipes/adding-a-page/src/adding_a_page/views/"
+ "/Users/callum/projects/reagent-cookbook/recipes/adding-a-page/src/adding_a_page/"
+ "/Users/callum/projects/reagent-cookbook/recipes/adding-a-page/dev/"
+ "/Users/callum/projects/reagent-cookbook/recipes/adding-a-page/"
+ "/Users/callum/projects/reagent-cookbook/"
+ "/Users/callum/projects/closso/test-luminus-mongo-site/resources/public/js/"
+ "/Users/callum/projects/closso/test-luminus-mongo-site/env/dev/cljs/test_luminus_mongo_site/"
+ "/Users/callum/projects/closso/"
+ "/Users/callum/projects/closso/test-luminus-mongo-site/src/test_luminus_mongo_site/layout/"
+ "/Users/callum/projects/closso/test-luminus-mongo-site/src/test_luminus_mongo_site/layout.clj/"
+ "/Users/callum/projects/closso/test-luminus-mongo-site/hicv/"
  "/Users/callum/projects/closso/test-luminus-mongo-site/src/test_luminus_mongo_site/db/"
  "/Users/callum/projects/closso/test-luminus-mongo-site/test/test_luminus_mongo_site/test/"
  "/Users/whitec/.emacs.d/"
@@ -58,53 +101,125 @@
 
 ;; ----- ido-work-file-list -----
 (
+ "key-bindings.el"
+ "init.el"
+ ".emacs.d.pre-prelude.tar"
+ "session.cljs"
  "core.cljs"
- "app.js"
- "home.clj"
- "README.md"
+ "routes.cljs"
  "middleware.clj"
- "project.clj"
- "core.clj"
- "handler.clj"
- "auth.clj"
- "util.clj"
+ "rep_calculator.cljs"
+ "rep-calulator.clj"
+ "home.clj"
 )
 
 ;; ----- ido-dir-file-cache -----
 (
- ("/Users/callum/projects/closso/test-luminus-mongo-site/src-cljs/test_luminus_mongo_site/" (21650 39298 0 0) "core.cljs" "../" "./")
+ ("/Users/callum/.emacs.d/" (21671 30762 0 0) "vendor/" "tmp/" "setup-rgrep.el" "README.md" "packs/" "manifest.el" "LICENSE.txt" "lib/" "key-bindings.el" "installer/" "init.el" "ido.last" "etc/" "elpa/" "custom/" "CHANGELOG.md" ".gitmodules" ".gitignore" ".git/" ".DS_Store" "../" "./")
 
- ("/Users/callum/projects/closso/test-luminus-mongo-site/resources/templates/" (21650 39128 0 0) "registration.html" "profile.html" "menu.html" "base.html" "app.html" ".#app.html" "../" "./")
+ ("/Users/callum/projects/closso/test-luminus-mongo-site/src-cljs/test_luminus_mongo_site/views/tools/" (21671 28572 0 0) "rep_calculator.cljs" "bmi.cljs" "../" "./")
 
- ("/Users/callum/projects/closso/test-luminus-mongo-site/resources/public/js/" (21650 11259 0 0) "out/" "app.js" "../" "./")
+ ("/Users/callum/" (21671 28660 0 0) "vpworkspace/" "visualparadigm/" "UMLet/" "Public/" "projects/" "prelude-emacs.d/" "prelude-compile-log-emacs.txt" "pl.ini" "Pictures/" "Music/" "Movies/" "Library/" "Google Drive/" "git/" "fit1010_lab9/" "exercism/" "emacs-live-old-config/" "Dropbox/" "Downloads/" "Documents/" "Desktop/" "AT.postflight.1874" "Applications/" "15.clj" ".zshrc~" ".zshrc.pre-oh-my-zsh" ".zshrc-e" ".zshrc" ".zsh_history" ".zsh-update" ".zlogin" ".zcompdump-Callum’s MacBook Air-5.0.5" ".Xauthority" ".viminfo" ".Trash/" ".subversion/" ".ssh/" ".sqldeveloper/" ".smex-items" ".rvm/" ".rnd" ".profile" ".pip/" ".oh-my-zsh/" ".npm/" ".mongorc.js" ".m2/" ".lldb-history" ".live-packs/" ".lesshst" ".lein/" ".irb_history" ".irb-history" ".inkscape-etc/" ".idlerc/" ".gtk-bookmarks" ".gnome2/" ".gitconfig" ".gem/" ".fontconfig/" ".exercism.json" ".emacs.d.pre-prelude.tar" ".emacs.d/" ".emacs-live.el" ".eclipse_keyring" ".DS_Store" ".dropbox/" ".dbshell" ".config/" ".CFUserTextEncoding" ".CF89AA64" ".cache/" ".bzr.log" ".bundler/" ".bashrc" ".bash_profile.macports-saved_2013-08-26_at_15:30:51" ".bash_profile" ".bash_history" ".atom/" ".anyconnect" "../" "./")
+
+ ("/Users/callum/projects/closso/test-luminus-mongo-site/src-cljs/test_luminus_mongo_site/" (21671 28819 0 0) "views/" "session.cljs" "routes.cljs" "core.cljs" "../" "./")
+
+ ("/Users/callum/projects/closso/broken/test-luminus-mongo-site/src-cljs/test_luminus_mongo_site/" (21667 48478 0 0) "views/" "session.cljs" "routes.cljs" "core.cljs" "../" "./")
+
+ ("/Users/callum/projects/closso/broken/test-luminus-mongo-site/src-cljs/" (21645 8001 0 0) "test_luminus_mongo_site/" "../" "./")
+
+ ("/Users/callum/projects/closso/broken/test-luminus-mongo-site/" (21664 143 0 0) "test_luminus_mongo_site.log" "test/" "target/" "src-cljs/" "src/" "resources/" "README.md" "project.clj" "Procfile" "hicv/" "env/" ".lein-env" ".gitignore" "../" "./")
+
+ ("/Users/callum/projects/closso/broken/" (21670 25527 0 0) "test-luminus-mongo-site/" "../" "./")
+
+ ("/Users/callum/projects/closso/test-luminus-mongo-site/src/test_luminus_mongo_site/" (21670 45569 0 0) "util.clj" "templates/" "session_manager.clj" "routes/" "repl.clj" "middleware.clj" "logging.clj" "layout.clj" "handler.clj" "db/" "../" "./")
+
+ ("/Users/callum/projects/closso/test-luminus-mongo-site/src/test_luminus_mongo_site/routes/" (21670 46535 0 0) "home.clj" "auth.clj" "../" "./")
+
+ ("/Users/callum/projects/closso/test-luminus-mongo-site/test/test_luminus_mongo_site/test/" (21670 35138 0 0) "handler.clj" "../" "./")
+
+ ("/Users/callum/projects/closso/test-luminus-mongo-site/src/test_luminus_mongo_site/db/" (21670 35138 0 0) "core.clj" "../" "./")
+
+ ("/Users/callum/projects/closso/test-luminus-mongo-site/hicv/" (21670 35138 0 0) "registration.clj" "profile.clj" "menu.clj" "base.clj" "app.clj" "../" "./")
+
+ ("/Users/callum/projects/closso/test-luminus-mongo-site/env/dev/cljs/test_luminus_mongo_site/" (21670 35138 0 0) "dev.cljs" "../" "./")
+
+ ("/Users/callum/projects/closso/test-luminus-mongo-site/resources/public/js/" (21670 36148 0 0) "out/" "app.js" "../" "./")
+
+ ("/Users/callum/projects/closso/test-luminus-mongo-site/resources/templates/" (21670 35138 0 0) "registration.html" "profile.html" "menu.html" "base.html" "app.html" "../" "./")
+
+ ("/Users/callum/projects/closso/test-luminus-mongo-site/resources/public/css/" (21670 35138 0 0) "screen.css" "../" "./")
+
+ ("/Users/callum/projects/closso/test-luminus-mongo-site/src/test_luminus_mongo_site/templates/" (21670 38877 0 0) "notfound.clj" "base.clj" "../" "./")
+
+ ("/Users/callum/projects/closso/test-luminus-mongo-site/src-cljs/test_luminus_mongo_site/views/" (21670 35163 0 0) "util.cljs" "tools/" "pages.cljs" "not_found.cljs" "home.cljs" "contact.cljs" "common.cljs" "about.cljs" "../" "./")
+
+ ("/Users/callum/projects/closso/test-luminus-mongo-site/" (21670 38607 0 0) "test_luminus_mongo_site.log" "test/" "target/" "src-cljs/" "src/" "resources/" "README.md" "project.clj" "Procfile" "hicv/" "env/" ".lein-env" ".gitignore" "../" "./")
+
+ ("/Users/callum/projects/closso/test-luminus-mongo-site/src/" (21670 35138 0 0) "test_luminus_mongo_site/" "../" "./")
+
+ ("/Users/callum/projects/closso/test-luminus-mongo-site/src-cljs/" (21670 35138 0 0) "test_luminus_mongo_site/" "../" "./")
+
+ ("/Users/callum/projects/closso/" (21670 35288 0 0) "test-luminus-mongo-site/" "reagent-app/" "pedestal-test-app/" "broken/" ".git/" "../" "./")
+
+ ("/Users/callum/projects/" (21670 35332 0 0) "uni-projects/" "static/" "resume/" "reagent-cookbook/" "projecteuler-clj/" "personal-web/" "omelette/" "modern-cljs/" "luminus-cljs/" "koans-clj/" "extra-useful/" "dotfiles/" "cwhitey.github.io/" "crisp-ghost-theme/" "closso/" "buster/" "blog/" ".DS_Store" "../" "./")
+
+ ("/Users/callum/.lein/" (21663 42473 0 0) "self-installs/" "repl-history" "profiles.clj" "../" "./")
+
+ ("/Users/callum/.emacs.d/custom/" (21663 53505 0 0) "setup-rgrep.el" "key-bindings.el" "../" "./")
+
+ ("/Users/callum/projects/luminus-cljs/src-cljs/luminus_cljs/" (21663 64063 0 0) "core.cljs" "../" "./")
+
+ ("/Users/callum/projects/closso/reagent-app/src/cljs/reagent_app/" (21652 56340 0 0) "core.cljs" "../" "./")
+
+ ("/Users/callum/projects/closso/reagent-app/src/cljs/" (21652 56340 0 0) "reagent_app/" "../" "./")
+
+ ("/Users/callum/projects/closso/reagent-app/src/" (21652 56340 0 0) "cljs/" "clj/" "../" "./")
+
+ ("/Users/callum/projects/closso/reagent-app/" (21652 56340 0 0) "system.properties" "src/" "resources/" "README.md" "project.clj" "Procfile" "LICENSE" "env/" ".gitignore" "../" "./")
+
+ ("/Users/callum/projects/luminus-cljs/src-cljs/" (21663 50797 0 0) "luminus_cljs/" "../" "./")
+
+ ("/Users/callum/projects/luminus-cljs/" (21663 51029 0 0) "test/" "target/" "src-cljs/" "src/" "resources/" "README.md" "project.clj" "Procfile" "luminus_cljs.log" "env/" ".lein-env" ".gitignore" "../" "./")
+
+ ("/Users/callum/projects/reagent-cookbook/recipes/adding-a-page/" (21662 45746 0 0) "target/" "src/" "resources/" "README.md" "project.clj" "out/" "dev/" ".repl/" ".lein-repl-history" ".gitignore" "../" "./")
+
+ ("/Users/callum/projects/reagent-cookbook/recipes/adding-a-page/dev/" (21658 10111 0 0) "user.cljs" "user.clj" "../" "./")
+
+ ("/Users/callum/projects/reagent-cookbook/recipes/adding-a-page/src/adding_a_page/" (21658 10081 0 0) "views/" "session.cljs" "routes.cljs" "css/" "core.cljs" "../" "./")
+
+ ("/Users/callum/projects/reagent-cookbook/recipes/adding-a-page/src/adding_a_page/views/" (21657 29832 0 0) "pages.cljs" "new_page.cljs" "home_page.cljs" "common.cljs" "about_page.cljs" "../" "./")
+
+ ("/Users/callum/projects/reagent-cookbook/recipes/adding-a-page/src/adding_a_page/css/" (21654 34859 0 0) "screen.clj" "../" "./")
+
+ ("/Users/" (21569 9823 0 0) "Shared/" "Guest/" "callum/" ".localized" "../" "./")
+
+ ("/Users/callum/projects/reagent-cookbook/recipes/adding-a-page/resources/" (21654 34859 0 0) "public/" "../" "./")
+
+ ("/Users/callum/projects/reagent-cookbook/recipes/adding-a-page/resources/public/" (21656 45703 0 0) "index.html" "../" "./")
+
+ ("/Users/callum/projects/reagent-cookbook/recipes/adding-a-page/src/" (21654 34859 0 0) "adding_a_page/" "../" "./")
+
+ ("/Users/callum/projects/reagent-cookbook/recipes/" (21654 34859 0 0) "toggle-class/" "sticky-footer/" "sortable-portlets/" "page-from-markdown/" "morris/" "modals/" "leaflet/" "google-maps/" "firebase/" "droppable/" "draggable/" "data-tables/" "data-from-ajax/" "d3/" "bootstrap-datepicker/" "autocomplete/" "adding-a-page/" "../" "./")
+
+ ("/Users/callum/projects/reagent-cookbook/" (21654 34859 0 0) "recipes/" "README.md" "logo-rounded.jpg" ".git/" "../" "./")
+
+ ("/Users/callum/projects/closso/test-luminus-mongo-site/env/dev/cljs/" (21645 8001 0 0) "test_luminus_mongo_site/" "../" "./")
+
+ ("/Users/callum/projects/closso/test-luminus-mongo-site/env/dev/" (21645 8001 0 0) "cljs/" "../" "./")
+
+ ("/Users/callum/projects/closso/test-luminus-mongo-site/env/" (21645 8001 0 0) "prod/" "dev/" "../" "./")
+
+ ("/Users/callum/projects/closso/test-luminus-mongo-site/src/test_luminus_mongo_site/layout/" (21655 60669 0 0) "app.clj" ".#app.clj" "../" "./")
+
+ ("/Users/callum/projects/closso/pedestal-test-app/" (21654 41086 0 0) "tools/" "test/" "README.md" "project.clj" "out/" "logs/" "config/" "app/" ".gitignore" "../" "./")
+
+ ("/Users/callum/projects/closso/test-luminus-mongo-site/resources/" (21652 56340 0 0) "templates/" "public/" "config.edn" "../" "./")
 
  ("/Users/callum/projects/closso/test-luminus-mongo-site/resources/public/" (21650 11235 0 0) "md/" "js/" "fonts/" "css/" "../" "./")
-
- ("/Users/callum/projects/closso/test-luminus-mongo-site/" (21650 18648 0 0) "test_luminus_mongo_site.log" "test/" "target/" "src-cljs/" "src/" "resources/" "README.md" "project.clj" "Procfile" "env/" ".lein-env" ".gitignore" "../" "./")
-
- ("/Users/callum/projects/closso/test-luminus-mongo-site/src/test_luminus_mongo_site/routes/" (21649 31490 0 0) "home.clj" "auth.clj" "../" "./")
-
- ("/Users/callum/projects/closso/test-luminus-mongo-site/src/test_luminus_mongo_site/" (21650 18188 0 0) "util.clj" "session_manager.clj" "routes/" "repl.clj" "middleware.clj" "layout.clj" "handler.clj" "db/" ".#handler.clj" "../" "./")
-
- ("/Users/callum/projects/closso/test-luminus-mongo-site/src/test_luminus_mongo_site/db/" (21650 15239 0 0) "core.clj" ".#core.clj" "../" "./")
-
- ("/Users/callum/projects/closso/test-luminus-mongo-site/resources/" (21645 8001 0 0) "templates/" "public/" "../" "./")
-
- ("/Users/callum/projects/closso/test-luminus-mongo-site/test/test_luminus_mongo_site/test/" (21645 8001 0 0) "handler.clj" "../" "./")
 
  ("/Users/callum/projects/closso/test-luminus-mongo-site/test/test_luminus_mongo_site/" (21645 8001 0 0) "test/" "../" "./")
 
  ("/Users/callum/projects/closso/test-luminus-mongo-site/test/" (21645 8001 0 0) "test_luminus_mongo_site/" "../" "./")
-
- ("/Users/callum/projects/closso/test-luminus-mongo-site/src/" (21645 8001 0 0) "test_luminus_mongo_site/" "../" "./")
-
- ("/Users/callum/projects/closso/test-luminus-mongo-site/src-cljs/" (21645 8001 0 0) "test_luminus_mongo_site/" "../" "./")
-
- ("/Users/callum/projects/closso/" (21648 55339 0 0) "test-luminus-mongo-site/" ".git/" "../" "./")
-
- ("/Users/callum/projects/" (21645 32471 0 0) "uni-projects/" "static/" "resume/" "projecteuler-clj/" "personal-web/" "modern-cljs/" "koans-clj/" "extra-useful/" "dotfiles/" "cwhitey.github.io/" "crisp-ghost-theme/" "closso/" "buster/" "blog/" ".DS_Store" "../" "./")
-
- ("/Users/callum/" (21649 14313 0 0) "vpworkspace/" "visualparadigm/" "UMLet/" "Public/" "projects/" "prelude-emacs.d/" "prelude-compile-log-emacs.txt" "pl.ini" "Pictures/" "Music/" "Movies/" "Library/" "Google Drive/" "git/" "fit1010_lab9/" "emacs-live-old-config/" "Dropbox/" "Downloads/" "Documents/" "Desktop/" "AT.postflight.1874" "Applications/" "15.clj" ".zshrc~" ".zshrc.pre-oh-my-zsh" ".zshrc-e" ".zshrc" ".zsh_history" ".zsh-update" ".zlogin" ".zcompdump-Callum’s MacBook Air-5.0.5" ".Xauthority" ".viminfo" ".Trash/" ".subversion/" ".ssh/" ".sqldeveloper/" ".smex-items" ".rvm/" ".rnd" ".profile" ".pip/" ".oh-my-zsh/" ".npm/" ".mongorc.js" ".m2/" ".lldb-history" ".live-packs/" ".lesshst" ".lein/" ".irb_history" ".irb-history" ".inkscape-etc/" ".idlerc/" ".gtk-bookmarks" ".gnome2/" ".gitconfig" ".gem/" ".fontconfig/" ".emacs.d.pre-prelude.tar" ".emacs.d/" ".emacs-live.el" ".eclipse_keyring" ".DS_Store" ".dropbox/" ".dbshell" ".config/" ".CFUserTextEncoding" ".CF89AA64" ".cache/" ".bzr.log" ".bundler/" ".bashrc" ".bash_profile.macports-saved_2013-08-26_at_15:30:51" ".bash_profile" ".bash_history" ".atom/" ".anyconnect" "../" "./")
 
  ("/Users/whitec/.emacs.d/" (21646 19949 0 0) "vendor/" "tmp/" "README.md" "places" "packs/" "manifest.el" "LICENSE.txt" "lib/" "installer/" "init.el" "ido.last" "etc/" "elpa/" "CHANGELOG.md" "auto-save-list/" ".smex-items" ".gitmodules" ".gitignore" ".git/" "../" "./")
 
@@ -161,8 +276,6 @@
  ("/Users/whitec/.lein/" (21620 5084 0 0) "self-installs/" "repl-history" "profiles.clj" "../" "./")
 
  ("/Users/whitec/projects/volly-smoke/test/" (21471 3966 0 0) "volly_smoke/" "test_link" "../" "./")
-
- ("/Users/" (21575 19829 0 0) "whitec/" "Shared/" "apdmadmin/" ".localized" "../" "./")
 
  ("/Users/whitec/projects/cassandra-utils/" (21601 34184 0 0) "test/" "target/" "src/" "resources/" "README.md" "project.clj" "LICENSE" "doc/" "cassandra_utils.iml" ".idea/" ".gitignore" ".git/" ".#project.clj" "../" "./")
 )

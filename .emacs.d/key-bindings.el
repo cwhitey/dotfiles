@@ -31,4 +31,9 @@
 (global-set-key (kbd "C-c f") 'git-grep-fullscreen)
 (global-set-key (kbd "C-c F") 'rgrep-fullscreen)
 
+;; Org-Mode
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cb" 'org-iswitchb)
+
 (provide 'key-bindings)

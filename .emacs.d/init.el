@@ -243,6 +243,8 @@
 ;; Add melpa archives
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/"))
+(add-to-list 'package-archives
+             '("org" . "http://orgmode.org/elpa/") t)
 
 ;; Add handlebars mode
 (add-to-list 'load-path "~/.emacs.d/vendor/")
@@ -252,3 +254,7 @@
 (add-to-list 'load-path "~/.emacs.d/custom/")
 (eval-after-load 'grep '(require 'setup-rgrep))
 (require 'key-bindings)
+
+;; Org-Mode
+(add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode)) ; not needed since Emacs 22.2
+(add-hook 'org-mode-hook 'turn-on-font-lock) ; not needed when global-font-lock-mode is on
