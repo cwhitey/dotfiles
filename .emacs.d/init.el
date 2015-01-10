@@ -20,7 +20,7 @@
 ;;         M         M M  M M     .dMMM MM        .M
 ;;         MMMMMMMMMMM MMMM MMMMMMMMMMM MMMMMMMMMMMM ")
 
-(message (concat "\n\n" live-ascii-art-logo "\n\n"))
+;(message (concat "\n\n" live-ascii-art-logo "\n\n"))
 
 (add-to-list 'command-switch-alist
              (cons "--live-safe-mode"
@@ -258,3 +258,13 @@
 ;; Org-Mode
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode)) ; not needed since Emacs 22.2
 (add-hook 'org-mode-hook 'turn-on-font-lock) ; not needed when global-font-lock-mode is on
+
+;; Stuff to run after this init.el
+(defun after-init-fn ()
+  ;; Themes
+  (load-theme 'gotham t)
+  ;(load-theme 'zenburn t)
+  ;(load-theme 'dakrone t)
+  )
+
+(add-hook 'after-init-hook 'after-init-fn)
