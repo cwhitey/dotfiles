@@ -1,0 +1,9 @@
+exit
+(def laz (repeat 3))
+(def ex (reduce * (take 4 laz)))
+ex
+(defn exp [n x] (reduce * (take x (repeat n))))
+(exp 2 2)
+(exp 2 3)
+(exp 3 2)
+exit
