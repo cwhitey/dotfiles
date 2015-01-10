@@ -1,274 +1,82 @@
-;; Emacs LIVE
+;;; init.el --- Where all the magic begins
 ;;
-;; This is where everything starts. Do you remember this place?
-;; It remembers you...
-
-(setq live-ascii-art-logo ";;
-;;     MM\"\"\"\"\"\"\"\"`M
-;;     MM  mmmmmmmM
-;;     M`      MMMM 88d8b.d8b. .d8888b. .d8888b. .d8888b.
-;;     MM  MMMMMMMM 88''88'`88 88'  `88 88'  `\"\" Y8ooooo.
-;;     MM  MMMMMMMM 88  88  88 88.  .88 88.  ...       88
-;;     MM        .M dP  dP  dP `88888P8 '88888P' '88888P'
-;;     MMMMMMMMMMMM
+;; Part of the oh-my-emacs
 ;;
-;;         M\"\"MMMMMMMM M\"\"M M\"\"MMMMM\"\"M MM\"\"\"\"\"\"\"\"`M
-;;         M  MMMMMMMM M  M M  MMMMM  M MM  mmmmmmmM
-;;         M  MMMMMMMM M  M M  MMMMP  M M`      MMMM
-;;         M  MMMMMMMM M  M M  MMMM' .M MM  MMMMMMMM
-;;         M  MMMMMMMM M  M M  MMP' .MM MM  MMMMMMMM
-;;         M         M M  M M     .dMMM MM        .M
-;;         MMMMMMMMMMM MMMM MMMMMMMMMMM MMMMMMMMMMMM ")
-
-;(message (concat "\n\n" live-ascii-art-logo "\n\n"))
-
-(add-to-list 'command-switch-alist
-             (cons "--live-safe-mode"
-                   (lambda (switch)
-                     nil)))
-
-(setq live-safe-modep
-      (if (member "--live-safe-mode" command-line-args)
-          "debug-mode-on"
-        nil))
-
-(setq initial-scratch-message "
-;; I'm sorry, Emacs Live failed to start correctly.
-;; Hopefully the issue will be simple to resolve.
+;; This is the first thing to get loaded.
 ;;
-;; First up, could you try running Emacs Live in safe mode:
+
+;; Enter debugger if an error is signaled during Emacs startup.
 ;;
-;;    emacs --live-safe-mode
-;;
-;; This will only load the default packs. If the error no longer occurs
-;; then the problem is probably in a pack that you are loading yourself.
-;; If the problem still exists, it may be a bug in Emacs Live itself.
-;;
-;; In either case, you should try starting Emacs in debug mode to get
-;; more information regarding the error:
-;;
-;;    emacs --debug-init
-;;
-;; Please feel free to raise an issue on the Gihub tracker:
-;;
-;;    https://github.com/overtone/emacs-live/issues
-;;
-;; Alternatively, let us know in the mailing list:
-;;
-;;    http://groups.google.com/group/emacs-live
-;;
-;; Good luck, and thanks for using Emacs Live!
-;;
-;;                _.-^^---....,,--
-;;            _--                  --_
-;;           <          SONIC         >)
-;;           |       BOOOOOOOOM!       |
-;;            \._                   _./
-;;               ```--. . , ; .--'''
-;;                     | |   |
-;;                  .-=||  | |=-.
-;;                  `-=#$%&%$#=-'
-;;                     | ;  :|
-;;            _____.,-#%&$@%#&#~,._____
-;;      May these instructions help you raise
-;;                  Emacs Live
-;;                from the ashes
-")
+;; This works the same as you boot emacs with "--debug-init" every time, except
+;; for errors in "init.el" itself, which means, if there's an error in
+;; "init.el", "emacs --debug-init" will entering the debugger, while "emacs"
+;; will not; however, if there's an error in other files loaded by init.el,
+;; both "emacs" and "emacs --debug-init" will entering the debugger. I don't
+;; know why.
+(setq debug-on-error t)
 
-(setq live-supported-emacsp t)
+;; believe me, you don't need menubar(execpt OSX), toolbar nor scrollbar
+(and (fboundp 'menu-bar-mode)
+     (not (eq system-type 'darwin))
+     (menu-bar-mode -1))
+(dolist (mode '(tool-bar-mode scroll-bar-mode))
+  (when (fboundp mode) (funcall mode -1)))
 
-(when (version< emacs-version "24.3")
-  (setq live-supported-emacsp nil)
-  (setq initial-scratch-message (concat "
-;;                _.-^^---....,,--
-;;            _--                  --_
-;;           <          SONIC         >)
-;;           |       BOOOOOOOOM!       |
-;;            \._                   _./
-;;               ```--. . , ; .--'''
-;;                     | |   |
-;;                  .-=||  | |=-.
-;;                  `-=#$%&%$#=-'
-;;                     | ;  :|
-;;            _____.,-#%&$@%#&#~,._____
-;;
-;; I'm sorry, Emacs Live is only supported on Emacs 24.3+.
-;;
-;; You are running: " emacs-version "
-;;
-;; Please upgrade your Emacs for full compatibility.
-;;
-;; Latest versions of Emacs can be found here:
-;;
-;; OS X GUI     - http://emacsformacosx.com/
-;; OS X Console - via homebrew (http://mxcl.github.com/homebrew/)
-;;                brew install emacs
-;; Windows      - http://alpha.gnu.org/gnu/emacs/windows/
-;; Linux        - Consult your package manager or compile from source
+;; Now install el-get at the very first
+(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
-"))
-  (let* ((old-file (concat (file-name-as-directory "~") ".emacs-old.el")))
-    (if (file-exists-p old-file)
-      (load-file old-file)
-      (error (concat "Oops - your emacs isn't supported. Emacs Live only works on Emacs 24.3+ and you're running version: " emacs-version ". Please upgrade your Emacs and try again, or define ~/.emacs-old.el for a fallback")))))
+(unless (require 'el-get nil 'noerror)
+  (with-current-buffer
+      (url-retrieve-synchronously
+       "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
+    (let (el-get-master-branch
+          ;; do not build recipes from emacswiki due to poor quality and
+          ;; documentation
+          el-get-install-skip-emacswiki-recipes)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  ;; build melpa packages for el-get
+  (el-get-install 'package)
+  (setq package-archives '(
+                           ("melpa" . "http://melpa.org/packages/")))
+  (el-get-elpa-build-local-recipes))
 
-(let ((emacs-live-directory (getenv "EMACS_LIVE_DIR")))
-  (when emacs-live-directory
-    (setq user-emacs-directory emacs-live-directory)))
+;; enable git shallow clone to save time and bandwidth
+(setq el-get-git-shallow-clone t)
 
-(when live-supported-emacsp
-;; Store live base dirs, but respect user's choice of `live-root-dir'
-;; when provided.
-(setq live-root-dir (if (boundp 'live-root-dir)
-                          (file-name-as-directory live-root-dir)
-                        (if (file-exists-p (expand-file-name "manifest.el" user-emacs-directory))
-                            user-emacs-directory)
-                        (file-name-directory (or
-                                              load-file-name
-                                              buffer-file-name))))
+;; Sometimes, we need to experiment with our own recipe, or override the
+;; default el-get recipe to get around bugs.
+(add-to-list 'el-get-recipe-path "~/.emacs.d/ome-el-get-recipes")
 
+;; tell el-get to look into local customizations for every package into
+;; `~/.emacs.d/init-<package>.el'
+(setq el-get-user-package-directory "~/.emacs.d")
 
-(setq
- live-tmp-dir      (file-name-as-directory (concat live-root-dir "tmp"))
- live-etc-dir      (file-name-as-directory (concat live-root-dir "etc"))
- live-pscratch-dir (file-name-as-directory (concat live-tmp-dir  "pscratch"))
- live-lib-dir      (file-name-as-directory (concat live-root-dir "lib"))
- live-packs-dir    (file-name-as-directory (concat live-root-dir "packs"))
- live-autosaves-dir(file-name-as-directory (concat live-tmp-dir  "autosaves"))
- live-backups-dir  (file-name-as-directory (concat live-tmp-dir  "backups"))
- live-custom-dir   (file-name-as-directory (concat live-etc-dir  "custom"))
- live-load-pack-dir nil
- live-disable-zone nil)
+;; Some workaround for emacs version < 24.0, thanks Silthanis@github.
+(if (< emacs-major-version 24)
+    (defun file-name-base (&optional filename)
+      "Return the base name of the FILENAME: no directory, no extension.
+FILENAME defaults to `buffer-file-name'."
+      (file-name-sans-extension
+       (file-name-nondirectory (or filename (buffer-file-name))))))
 
-;; create tmp dirs if necessary
-(make-directory live-etc-dir t)
-(make-directory live-tmp-dir t)
-(make-directory live-autosaves-dir t)
-(make-directory live-backups-dir t)
-(make-directory live-custom-dir t)
-(make-directory live-pscratch-dir t)
+;; Oh-my-emacs adopt org-mode 8.x from v0.3, so org-mode should be the first
+;; package to be installed via el-get
+(defun ome-org-mode-setup ()
+  ;; markdown export support
+  (require 'ox-md))
 
-;; Set path to dependencies
-(setq site-lisp-dir
-      (expand-file-name "site-lisp" user-emacs-directory))
+(add-to-list 'el-get-sources
+             '(:name org-mode
+                     :after (progn
+                              (ome-org-mode-setup))))
 
-;; Set up load path
-;;(add-to-list 'load-path user-emacs-directory)
-(add-to-list 'load-path site-lisp-dir)
+(el-get 'sync (mapcar 'el-get-source-name el-get-sources))
 
-;; Load manifest
-(load-file (concat live-root-dir "manifest.el"))
+(defvar ome-dir (file-name-directory (or load-file-name (buffer-file-name)))
+  "oh-my-emacs home directory.")
 
-;; load live-lib
-(load-file (concat live-lib-dir "live-core.el"))
+;; load up the ome
+(org-babel-load-file (expand-file-name "ome.org" ome-dir))
 
-;;default packs
-(let* ((pack-names '("foundation-pack"
-                     "colour-pack"
-                     "lang-pack"
-                     "power-pack"
-                     "git-pack"
-                     "org-pack"
-                     "clojure-pack"
-                     "bindings-pack"))
-       (live-dir (file-name-as-directory "stable"))
-       (dev-dir  (file-name-as-directory "dev")))
-  (setq live-packs (mapcar (lambda (p) (concat live-dir p)) pack-names) )
-  (setq live-dev-pack-list (mapcar (lambda (p) (concat dev-dir p)) pack-names) ))
-
-;; Helper fn for loading live packs
-
-(defun live-version ()
-  (interactive)
-  (if (called-interactively-p 'interactive)
-      (message "%s" (concat "This is Emacs Live " live-version))
-    live-version))
-
-;; Load `~/.emacs-live.el`. This allows you to override variables such
-;; as live-packs (allowing you to specify pack loading order)
-;; Does not load if running in safe mode
-(let* ((pack-file (concat (file-name-as-directory "~") ".emacs-live.el")))
-  (if (and (file-exists-p pack-file) (not live-safe-modep))
-      (load-file pack-file)))
-
-;; Load all packs - Power Extreme!
-(mapc (lambda (pack-dir)
-          (live-load-pack pack-dir))
-        (live-pack-dirs))
-
-(setq live-welcome-messages
-      (if (live-user-first-name-p)
-          (list (concat "Hello " (live-user-first-name) ", somewhere in the world the sun is shining for you right now.")
-                (concat "Hello " (live-user-first-name) ", it's lovely to see you again. I do hope that you're well.")
-                (concat (live-user-first-name) ", turn your head towards the sun and the shadows will fall behind you.")
-                )
-        (list  "Hello, somewhere in the world the sun is shining for you right now."
-               "Hello, it's lovely to see you again. I do hope that you're well."
-               "Turn your head towards the sun and the shadows will fall behind you.")))
-
-
-(defun live-welcome-message ()
-  (nth (random (length live-welcome-messages)) live-welcome-messages))
-
-(when live-supported-emacsp
-  (setq initial-scratch-message (concat live-ascii-art-logo " Version " live-version
-                                                                (if live-safe-modep
-                                                                    "
-;;                                                     --*SAFE MODE*--"
-                                                                  "
-;;"
-                                                                  ) "
-;;           http://github.com/overtone/emacs-live
-;;
-;; "                                                      (live-welcome-message) "
-
-")))
-)
-
-(if (not live-disable-zone)
-    (add-hook 'term-setup-hook 'zone))
-
-(if (not custom-file)
-    (setq custom-file (concat live-custom-dir "custom-configuration.el")))
-(when (file-exists-p custom-file)
-  (load custom-file))
-
-(message "\n\n Pack loading completed. Your Emacs is Live...\n\n")
-(set-variable 'shift-select-mode t)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Emacs live stuff ends here ;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; Add melpa archives
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/"))
-(add-to-list 'package-archives
-             '("org" . "http://orgmode.org/elpa/") t)
-
-;; Add line numbers
-(global-linum-mode 1)
-
-;; Add handlebars mode
-(add-to-list 'load-path "~/.emacs.d/vendor/")
-(require 'handlebars-mode)
-
-;; Require other packages
-(add-to-list 'load-path "~/.emacs.d/custom/")
-(eval-after-load 'grep '(require 'setup-rgrep))
-(require 'key-bindings)
-
-;; Org-Mode
-(add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode)) ; not needed since Emacs 22.2
-(add-hook 'org-mode-hook 'turn-on-font-lock) ; not needed when global-font-lock-mode is on
-
-;; Stuff to run after this init.el
-(defun after-init-fn ()
-  ;; Themes
-  ;(load-theme 'gotham t)
-  (load-theme 'zenburn t)
-  ;(load-theme 'dakrone t)
-  (set-background-color "grey5")
-  )
-
-(add-hook 'after-init-hook 'after-init-fn)
+;;; init.el ends here
