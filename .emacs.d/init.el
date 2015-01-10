@@ -246,6 +246,9 @@
 (add-to-list 'package-archives
              '("org" . "http://orgmode.org/elpa/") t)
 
+;; Add line numbers
+(global-linum-mode 1)
+
 ;; Add handlebars mode
 (add-to-list 'load-path "~/.emacs.d/vendor/")
 (require 'handlebars-mode)
@@ -262,8 +265,8 @@
 ;; Stuff to run after this init.el
 (defun after-init-fn ()
   ;; Themes
-  (load-theme 'gotham t)
-  ;(load-theme 'zenburn t)
+  ;(load-theme 'gotham t)
+  (load-theme 'zenburn t)
   ;(load-theme 'dakrone t)
   )
 
