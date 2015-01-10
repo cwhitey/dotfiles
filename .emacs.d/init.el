@@ -268,6 +268,7 @@
   ;(load-theme 'gotham t)
   (load-theme 'zenburn t)
   ;(load-theme 'dakrone t)
+  (set-background-color "grey5")
   )
 
 (add-hook 'after-init-hook 'after-init-fn)
