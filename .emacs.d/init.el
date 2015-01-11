@@ -80,3 +80,8 @@ FILENAME defaults to `buffer-file-name'."
 (org-babel-load-file (expand-file-name "ome.org" ome-dir))
 
 ;;; init.el ends here
+
+;(add-hook 'after-init-hook '(lambda () (when (require 'rainbow-delimiters nil
+;                                                    'noerror)
+;                                         (rainbow-delimiters-mode))))
+(rainbow-delimiters-mode)

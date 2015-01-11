@@ -1,15 +1,18 @@
 ;;; multi-autoloads.el --- automatically extracted autoloads
 ;;
 ;;; Code:
-(add-to-list 'load-path (or (file-name-directory #$) (car load-path)))
+
 
-;;;### (autoloads nil nil ("multi.el") (21649 18017 968051 0))
+;;;### (autoloads nil nil ("multi-pkg.el" "multi.el") (21682 365
+;;;;;;  397338 573000))
 
 ;;;***
 
+(provide 'multi-autoloads)
 ;; Local Variables:
 ;; version-control: never
 ;; no-byte-compile: t
 ;; no-update-autoloads: t
+;; coding: utf-8
 ;; End:
 ;;; multi-autoloads.el ends here
