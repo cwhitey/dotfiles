@@ -489,7 +489,7 @@ you really need it.
 (ome-load "modules/ome-python.org")
 (ome-load "modules/ome-ruby.org")
 (ome-load "modules/ome-ocaml.org")
-(ome-load "modules/ome-tex.org")
+;; (ome-load "modules/ome-tex.org") ; don't care about this one
 (ome-load "modules/ome-web.org")
 ;; (ome-load "modules/ome-experimental.org" "smooth-scrolling" "sublimity")
 (ome-load "modules/ome-haskell.org")
