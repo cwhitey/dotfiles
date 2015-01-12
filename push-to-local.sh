@@ -5,8 +5,9 @@ cd "$(dirname "${BASH_SOURCE}")";
 git pull origin master;
 
 function doIt() {
-	rsync --exclude ".git/" --exclude ".DS_Store" --exclude "bootstrap.sh" \
-		--exclude "README.md" --exclude "LICENSE-MIT.txt" --exclude "magnars-emacs-config" -avh --no-perms . ~;
+	rsync --exclude ".git/" --exclude ".DS_Store" --exclude "push-to-local.sh" \
+		--exclude "udpate-repo-using-local.sh" --exclude "README.md" \
+                --exclude "LICENSE-MIT.txt" --exclude "magnars-emacs-config" -avh --no-perms . ~;
 	reload;
 }
 
