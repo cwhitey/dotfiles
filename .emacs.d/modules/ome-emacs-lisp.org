@@ -84,6 +84,12 @@ way to solve this, so any help will be appreciated.
 (ome-install 'elisp-slime-nav)
 #+END_SRC
 
+We'll want to use rainbow delimiters
+
+#+BEGIN_SRC emacs-lisp
+(add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
+#+END_SRC
+
 ** IELM
    :PROPERTIES:
    :CUSTOM_ID: ielm

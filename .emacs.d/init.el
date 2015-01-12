@@ -37,7 +37,7 @@
       (eval-print-last-sexp)))
   ;; build melpa packages for el-get
   (el-get-install 'package)
-  (setq package-archives '(
+  (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                            ("melpa" . "http://melpa.org/packages/")))
   (el-get-elpa-build-local-recipes))
 
@@ -80,8 +80,3 @@ FILENAME defaults to `buffer-file-name'."
 (org-babel-load-file (expand-file-name "ome.org" ome-dir))
 
 ;;; init.el ends here
-
-;(add-hook 'after-init-hook '(lambda () (when (require 'rainbow-delimiters nil
-;                                                    'noerror)
-;                                         (rainbow-delimiters-mode))))
-(rainbow-delimiters-mode)

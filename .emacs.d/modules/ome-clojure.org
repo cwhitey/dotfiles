@@ -85,6 +85,12 @@ workflow.
 
 It's really really awesome, ah?
 
+We also want rainbow parens!
+
+#+BEGIN_SRC emacs-lisp
+(add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
+#+END_SRC
+
 #+NAME: clojure
 #+BEGIN_SRC emacs-lisp
 (ome-install 'clojure-mode)

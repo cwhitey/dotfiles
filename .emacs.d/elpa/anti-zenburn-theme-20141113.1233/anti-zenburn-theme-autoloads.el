@@ -4,15 +4,15 @@
 
 
 ;;;### (autoloads nil "anti-zenburn-theme" "anti-zenburn-theme.el"
-;;;;;;  (21681 12220 816816 827000))
+;;;;;;  (21682 19629 571280 453000))
 ;;; Generated autoloads from anti-zenburn-theme.el
 
 (and load-file-name (boundp 'custom-theme-load-path) (add-to-list 'custom-theme-load-path (file-name-as-directory (file-name-directory load-file-name))))
 
 ;;;***
 
-;;;### (autoloads nil nil ("anti-zenburn-theme-pkg.el") (21681 12220
-;;;;;;  858381 669000))
+;;;### (autoloads nil nil ("anti-zenburn-theme-pkg.el") (21682 19629
+;;;;;;  610541 17000))
 
 ;;;***
 

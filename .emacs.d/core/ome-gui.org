@@ -119,7 +119,10 @@ theme.
   ;; Remove boxes from Powerline arrows
   (set-face-attribute 'mode-line nil :box nil)
   (set-face-attribute 'mode-line-inactive nil :box nil))
+#+END_SRC
 
+#+NAME: color-theme-solarized
+#+BEGIN_SRC emacs-lisp
 (defun ome-solarized-emacs-setup ()
   ;; make the fringe stand out from the background
   (setq solarized-distinct-fringe-background t)
@@ -140,6 +143,17 @@ theme.
   (load-theme 'solarized-dark t))
 
 (ome-install 'solarized-emacs)
+#+END_SRC
+
+#+NAME: color-theme-dream
+#+BEGIN_SRC emacs-lisp :tangle no
+(defun dream-theme-setup ()
+  (ad-enable-advice 'load-theme 'around 'ome-load-theme)
+  (ad-activate 'load-theme)
+
+  (load-theme 'dream))
+
+(add-hook 'after-init-hook 'dream-theme-setup)
 #+END_SRC
 
 ** Q&A
@@ -199,7 +213,7 @@ I think the inspiration of [[https://github.com/coldnew/linum-relative][linum-re
 I made it a default for oh-my-emacs.
 
 #+NAME: linum-relative
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle no
 (defun ome-linum-relative-setup ()
   (require 'linum-relative))
 
