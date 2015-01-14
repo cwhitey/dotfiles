@@ -7,8 +7,7 @@ git pull origin master;
 function doIt() {
 	rsync --exclude ".git/" --exclude ".DS_Store" --exclude "push-to-local.sh" \
 		--exclude "udpate-repo-using-local.sh" --exclude "README.md" \
-                --exclude "LICENSE-MIT.txt" --exclude "magnars-emacs-config" -avh --no-perms . ~;
-	reload;
+                --exclude "LICENSE-MIT.txt" --exclude "magnars-emacs-config" --exclude ".lein/self-installs" -avh --no-perms . ~;
 }
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
