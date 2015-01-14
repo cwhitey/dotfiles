@@ -77,7 +77,7 @@ el-get, as the mode for editing wiki documents. If you have better choice,
 please tell me.
 
 #+NAME: wikipedia
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle no
 (defun ome-wikipedia-mode-setup ()
   (add-to-list 'auto-mode-alist
                '("\\.wiki\\'" . wikipedia-mode)))
