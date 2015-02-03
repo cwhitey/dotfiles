@@ -1,82 +1,74 @@
-# Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+# Mostly borrowed from sharat87's 'lawn' repo
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_THEME="gallois"
+# start_time="$(date +%s)"
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+# Antigen — A zsh plugin manager
+source ~/antigen.zsh
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+# Load the oh-my-zsh's library.
+antigen use oh-my-zsh
 
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+# Bundles from the default repo declared above.
+antigen bundles <<EOBUNDLES
 
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
+lein
+pip
 
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+# Guess what to install when running an unknown command.
+command-not-found
 
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+# The heroku tool helper plugin.
+heroku
 
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+# Helper for extracting different types of archives.
+extract
 
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+# Help working with version control systems.
+svn
+git
 
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
+# nicoulaj's moar completion files for zsh
+zsh-users/zsh-completions src
 
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
+# ZSH port of Fish shell's history search feature.
+zsh-users/zsh-history-substring-search
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+# Syntax highlighting bundle.
+zsh-users/zsh-syntax-highlighting
 
-source $ZSH/oh-my-zsh.sh
+EOBUNDLES
 
-# User configuration
+# Tracks your most used directories, based on 'frecency'. And its accompanying
+# setup code.
+antigen bundle rupa/z
+add-zsh-hook precmd _z_precmd
+function _z_precmd {
+    _z --add "$PWD"
+}
 
-export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
-# export MANPATH="/usr/local/man:$MANPATH"
+# Load the prompt theme.
+# antigen theme prose
+# antigen theme sindresorhus/pure pure
+antigen theme gallois
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+# Vim like bindings plugin. Need to run after theme, so mode indicator
+# can be set, if the theme didn't already set it.
+# antigen-bundle sharat87/zsh-vim-mode
+# ZSH_VIM_MODE_NORMAL_MAP=^k
+# antigen bundle ~/labs/zsh-vim-mode --no-local-clone
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+# Tell Antigen that we're done.
+antigen apply
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+# Automatically list directory contents on `cd`.
+auto-ls () { ls --classify; }
+chpwd_functions=( auto-ls $chpwd_functions )
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
+# wohwohwohowhohohoho!
+# fortune -s -n 300 | cowsay | lolcat
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-export EDITOR=/usr/local/bin/emacs
-export VISUAL=/usr/local/bin/emacs
+# end_time="$(date +%s)"
+# echo .zshrc: $((end_time - start_time)) seconds
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
