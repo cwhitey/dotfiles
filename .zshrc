@@ -11,6 +11,7 @@ antigen use oh-my-zsh
 # Bundles from the default repo declared above.
 antigen bundles <<EOBUNDLES
 
+# For programming
 lein
 pip
 
@@ -26,6 +27,10 @@ extract
 # Help working with version control systems.
 svn
 git
+git-extras
+
+# Press ESC twice to put sudo in front of current command, or previous
+sudo
 
 # nicoulaj's moar completion files for zsh
 zsh-users/zsh-completions src
@@ -35,6 +40,19 @@ zsh-users/zsh-history-substring-search
 
 # Syntax highlighting bundle.
 zsh-users/zsh-syntax-highlighting
+
+# Navigate 'cd' history using ALT-LEFT and ALT-RIGHT
+dirhistory
+
+# OSX: Keep directories when resuming OS session
+#terminalapp
+
+# OSX: Adds completion for 'brew' command
+brew
+
+# lolz
+#lol
+#nyan
 
 EOBUNDLES
 
