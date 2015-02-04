@@ -11,46 +11,68 @@ antigen use oh-my-zsh
 # Bundles from the default repo declared above.
 antigen bundles <<EOBUNDLES
 
-# For programming
+##
+# Clojure
+##
 lein
+
+
+##
+# Python
+##
 pip
+python
+virtualenv
 
-# Guess what to install when running an unknown command.
-command-not-found
 
-# The heroku tool helper plugin.
+##
+# Node
+##
+npm
+node
+
+
+##
+# Heroku
+##
 heroku
 
-# Helper for extracting different types of archives.
-extract
-
-# Help working with version control systems.
+##
+# Version control
+##
 svn
 git
 git-extras
 
-# Press ESC twice to put sudo in front of current command, or previous
-sudo
 
-# nicoulaj's moar completion files for zsh
-zsh-users/zsh-completions src
-
+##
+# ZSH
+##
 # ZSH port of Fish shell's history search feature.
 zsh-users/zsh-history-substring-search
 
 # Syntax highlighting bundle.
 zsh-users/zsh-syntax-highlighting
 
+# nicoulaj's moar completion files for zsh
+zsh-users/zsh-completions src
+
 # Navigate 'cd' history using ALT-LEFT and ALT-RIGHT
 dirhistory
 
-# OSX: Keep directories when resuming OS session
-#terminalapp
+# Press ESC twice to put sudo in front of current command, or previous
+sudo
 
-# OSX: Adds completion for 'brew' command
-brew
+# Helper for extracting different types of archives.
+extract
 
-# lolz
+# Guess what to install when running an unknown command.
+command-not-found
+
+
+##
+# lulz
+##
 #lol
 #nyan
 
@@ -64,9 +86,52 @@ function _z_precmd {
     _z --add "$PWD"
 }
 
+##
+# OS Detection, stolen from jdavis
+##
+UNAME=`uname`
+
+# Fallback info
+CURRENT_OS='Linux'
+DISTRO=''
+
+if [[ $UNAME == 'Darwin' ]]; then
+    CURRENT_OS='OS X'
+else
+    # Must be Linux, determine distro
+    if [[ -f /etc/redhat-release ]]; then
+        # CentOS or Redhat?
+        if grep -q "CentOS" /etc/redhat-release; then
+            DISTRO='CentOS'
+        else
+            DISTRO='RHEL'
+        fi
+    fi
+fi
+
+##
+# OS specific plugins
+##
+if [[ $CURRENT_OS == 'OS X' ]]; then
+    # Keep directories when resuming OS session
+    #antigen bundle terminalapp
+
+    # Add completion for 'brew' command
+    antigen bundle brew
+    antigen bundle brew-cask
+elif [[ $CURRENT_OS == 'Linux' ]]; then
+    # None so far...
+
+    if [[ $DISTRO == 'CentOS' ]]; then
+    fi
+elif [[ $CURRENT_OS == 'Cygwin' ]]; then
+fi
+
+
 # Load the prompt theme.
 # antigen theme prose
 # antigen theme sindresorhus/pure pure
+# antigen theme jdavis/zsh-files themes/jdavis
 antigen theme gallois
 
 # Vim like bindings plugin. Need to run after theme, so mode indicator
