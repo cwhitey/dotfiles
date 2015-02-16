@@ -119,8 +119,11 @@ if [[ $CURRENT_OS == 'OS X' ]]; then
     # Add completion for 'brew' command
     antigen bundle brew
     antigen bundle brew-cask
+
+    auto-ls () { ls; }
+
 elif [[ $CURRENT_OS == 'Linux' ]]; then
-    # None so far...
+    auto-ls () { ls --classify; }
 
     if [[ $DISTRO == 'CentOS' ]]; then
     fi
@@ -144,7 +147,6 @@ antigen theme gallois
 antigen apply
 
 # Automatically list directory contents on `cd`.
-auto-ls () { ls --classify; }
 chpwd_functions=( auto-ls $chpwd_functions )
 
 # wohwohwohowhohohoho!
