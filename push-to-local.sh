@@ -10,8 +10,9 @@ function doIt() {
         --exclude "LICENSE-MIT.txt" --exclude "magnars-emacs-config" \
         --exclude ".lein/self-installs" -avh --no-perms . ~;
 
-    if [ ! -f ~/.emacs-backups ]; then
-        echo "Creating dir ~/.emacs-backups"
+    # emacs backup files will go here as per emacs configuration in custom.el
+    if [ ! -e ~/.emacs-backups ]; then
+                echo "Creating dir ~/.emacs-backups"
         mkdir ~/.emacs-backups
     fi;
 }
