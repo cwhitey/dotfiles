@@ -8,7 +8,7 @@
 (menu-bar-mode t)
 
 ;;; You email address
-(setq user-mail-address "xiaohanyu1988@gmail.com")
+(setq user-mail-address "callumw1991@gmail.com")
 
 ;;; Calendar settings
 ;; you can use M-x sunrise-sunset to get the sun time
@@ -25,6 +25,22 @@
 (setq display-time-interval 10)
 ;; show time
 (display-time-mode t)
+
+;;; File backup settings
+;; save backups to specified location
+(setq backup-directory-alist `(("." . "~/.emacs-backups")))
+;; backup by copying (can be slow)
+(setq backup-by-copying t)
+;; additional backup settings
+; (setq delete-old-versions t
+;   kept-new-versions 6
+;   kept-old-versions 2
+;   version-control t)
+
+;;; Packages
+;; enable winner mode
+(when (fboundp 'winner-mode)
+      (winner-mode 1))
 
 ;;; Some tiny tool functions
 (defun replace-all-chinese-quote ()
