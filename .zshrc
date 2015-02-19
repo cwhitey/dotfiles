@@ -26,6 +26,14 @@ virtualenv
 
 
 ##
+# Ruby
+##
+ruby
+gem
+rake
+
+
+##
 # Node
 ##
 npm
@@ -36,6 +44,7 @@ node
 # Heroku
 ##
 heroku
+
 
 ##
 # Version control
