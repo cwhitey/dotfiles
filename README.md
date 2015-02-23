@@ -1,3 +1,4 @@
-1. ln -s ~/path/.init.el ~
-2. rsync -av ~/.emacs.d/ .emacs.d   #remember the '/' after dir1!
-3. mv -r dir1 name
+These are my dotfiles (e.g. .emacs.d, .zshrc, etc.)
+Use ````./push-to-local.sh```` to bootstrap the dotfiles to your local
+machine. ````./update-repo-using-local.sh```` will do the exact oposite, but I
+usually try to avoid using it.
