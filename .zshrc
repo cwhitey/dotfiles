@@ -139,6 +139,16 @@ elif [[ $CURRENT_OS == 'Linux' ]]; then
 elif [[ $CURRENT_OS == 'Cygwin' ]]; then
 fi
 
+##
+# User-specific stuff
+##
+USER=$(whoami)
+if [[ $USER == "whitec" ]]; then
+    # Must be on work computer
+    # I want to use java 1.7
+    export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)
+fi
+
 
 # Load the prompt theme.
 # antigen theme prose
