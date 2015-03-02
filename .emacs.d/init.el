@@ -14,6 +14,7 @@
 ;; both "emacs" and "emacs --debug-init" will entering the debugger. I don't
 ;; know why.
 (setq debug-on-error t)
+;(setq debug-on-error nil)
 
 ;; believe me, you don't need menubar(execpt OSX), toolbar nor scrollbar
 (and (fboundp 'menu-bar-mode)

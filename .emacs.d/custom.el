@@ -7,7 +7,7 @@
 ;; back, just put following code here.
 (menu-bar-mode t)
 
-;;; You email address
+;;; Your email address
 (setq user-mail-address "callumw1991@gmail.com")
 
 ;;; Calendar settings
@@ -36,6 +36,10 @@
 ;   kept-new-versions 6
 ;   kept-old-versions 2
 ;   version-control t)
+
+;;; Debugging settings
+;; Suppress debug stack traces for errors
+(setq debug-on-error nil)
 
 ;;; Packages
 ;; enable winner mode
