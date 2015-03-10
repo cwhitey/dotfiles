@@ -31,6 +31,7 @@ virtualenv
 ruby
 gem
 rake
+bundler
 
 
 ##
