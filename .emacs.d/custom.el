@@ -46,6 +46,12 @@
 (when (fboundp 'winner-mode)
       (winner-mode 1))
 
+;;; Themes
+;; apply Zenburn on top of Solarized
+(defun zenburn-init ()
+  (load-theme 'hc-zenburn t))
+(add-hook 'after-init-hook 'zenburn-init)
+
 ;;; Some tiny tool functions
 (defun replace-all-chinese-quote ()
   (interactive)

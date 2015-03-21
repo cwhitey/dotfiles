@@ -96,6 +96,7 @@ starting point.
 #+END_SRC
 
 * Solarized Color Theme
+
   :PROPERTIES:
   :CUSTOM_ID: color-theme
   :END:
@@ -112,7 +113,7 @@ use =M-x load-theme= instead of =color-theme-xxxx= to change current color
 theme.
 
 #+NAME: color-theme
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle no
 (defadvice load-theme (around ome-load-theme disable)
   ad-do-it
 
@@ -122,7 +123,7 @@ theme.
 #+END_SRC
 
 #+NAME: color-theme-solarized
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle no
 (defun ome-solarized-emacs-setup ()
   ;; make the fringe stand out from the background
   (setq solarized-distinct-fringe-background t)
@@ -145,15 +146,15 @@ theme.
 (ome-install 'solarized-emacs)
 #+END_SRC
 
-#+NAME: color-theme-dream
+#+NAME: color-theme-zenburn
 #+BEGIN_SRC emacs-lisp :tangle no
-(defun dream-theme-setup ()
+(defun ome-zenburn-theme-setup ()
   (ad-enable-advice 'load-theme 'around 'ome-load-theme)
   (ad-activate 'load-theme)
 
-  (load-theme 'dream))
+  (load-theme 'zenburn t))
 
-(add-hook 'after-init-hook 'dream-theme-setup)
+(ome-install 'zenburn-theme)
 #+END_SRC
 
 ** Q&A
