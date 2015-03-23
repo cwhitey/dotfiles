@@ -1,3 +1,6 @@
+(require 'dash)
+(require 's)
+
 ;;; This file contains some temporary code snippets, it will be loaded after
 ;;; various oh-my-emacs modules. When you just want to test some code snippets
 ;;; and don't want to bother with the huge ome.*org files, you can put things
@@ -46,16 +49,6 @@
 (when (fboundp 'winner-mode)
       (winner-mode 1))
 
-;;; Themes
-;; apply Zenburn
-(defun zenburn-init ()
-  (load-theme 'zenburn t))
-(add-hook 'after-init-hook 'zenburn-init)
-
-;(defun dream-theme-init ()
-;  (load-theme 'dream t))
-;(add-hook 'after-init-hook 'dream-theme-init)
-
 
 ;;; Tools
 ;;
@@ -94,6 +87,7 @@ inversion of gas-comment-region"
           (delete-char 1))
       (next-line))
     (goto-char end)))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -106,3 +100,31 @@ inversion of gas-comment-region"
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+
+;; pull all themes in elpa/ into the load path
+(-each
+   (-map
+      (lambda (item)
+      (format "~/.emacs.d/elpa/%s" item))
+   (-filter
+      (lambda (item) (s-contains? "theme" item))
+      (directory-files "~/.emacs.d/elpa/")))
+   (lambda (item)
+      (add-to-list 'custom-theme-load-path item)))
+
+;;; Themes
+(defun new-theme-init ()
+;; apply Zenburn
+;  (load-theme 'zenburn t)
+
+;; apply hc-zenburn
+  (load-theme 'hc-zenburn t)
+
+;; apply Dream (colours kind of broken)
+;  (load-theme 'dream t)
+
+
+)
+(add-hook 'after-init-hook 'new-theme-init)
+
