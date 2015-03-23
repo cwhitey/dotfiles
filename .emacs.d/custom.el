@@ -44,10 +44,17 @@
 ;; Suppress debug stack traces for errors
 (setq debug-on-error nil)
 
+
+;;; Other settings
+;; Disable auto-fill-mode for text-mode (e.g. Markdown!)
+(remove-hook 'text-mode-hook #'turn-on-auto-fill)
+
+
 ;;; Packages
 ;; enable winner mode
 (when (fboundp 'winner-mode)
       (winner-mode 1))
+
 
 
 ;;; Tools
@@ -127,4 +134,3 @@ inversion of gas-comment-region"
 
 )
 (add-hook 'after-init-hook 'new-theme-init)
-
