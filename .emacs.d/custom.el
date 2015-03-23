@@ -47,12 +47,18 @@
       (winner-mode 1))
 
 ;;; Themes
-;; apply Zenburn on top of Solarized
+;; apply Zenburn
 (defun zenburn-init ()
-  (load-theme 'hc-zenburn t))
+  (load-theme 'zenburn t))
 (add-hook 'after-init-hook 'zenburn-init)
 
-;;; Some tiny tool functions
+;(defun dream-theme-init ()
+;  (load-theme 'dream t))
+;(add-hook 'after-init-hook 'dream-theme-init)
+
+
+;;; Tools
+;;
 (defun replace-all-chinese-quote ()
   (interactive)
   (save-excursion

@@ -113,7 +113,7 @@ use =M-x load-theme= instead of =color-theme-xxxx= to change current color
 theme.
 
 #+NAME: color-theme
-#+BEGIN_SRC emacs-lisp :tangle no
+#+BEGIN_SRC emacs-lisp
 (defadvice load-theme (around ome-load-theme disable)
   ad-do-it
 
@@ -146,15 +146,15 @@ theme.
 (ome-install 'solarized-emacs)
 #+END_SRC
 
-#+NAME: color-theme-zenburn
+#+NAME: anti-zenburn-theme
 #+BEGIN_SRC emacs-lisp :tangle no
-(defun ome-zenburn-theme-setup ()
+(defun ome-anti-zenburn-theme-setup ()
   (ad-enable-advice 'load-theme 'around 'ome-load-theme)
   (ad-activate 'load-theme)
 
-  (load-theme 'zenburn t))
+  (load-theme 'anti-zenburn t))
 
-(ome-install 'zenburn-theme)
+(ome-install 'anti-zenburn-theme)
 #+END_SRC
 
 ** Q&A
