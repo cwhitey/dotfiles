@@ -73,6 +73,28 @@ hook to enable =linum-mode= in =css-mode=.
             (linum-mode 1)))
 #+END_SRC
 
+
+* Haml-mode
+
+
+  :PROPERTIES:
+  :CUSTOM_ID: haml-mode
+  :END:
+
+Let's add HAML-mode!
+
+#+NAME: haml-mode
+#+BEGIN_SRC emacs-lisp
+(defun ome-haml-mode-setup ()
+    (add-hook 'haml-mode-hook
+              (lambda ()
+                (setq indent-tabs-mode nil)
+                (define-key haml-mode-map "\C-m" 'newline-and-indent))))
+
+(ome-install 'haml-mode)
+#+END_SRC
+
+
 * Web-mode
   :PROPERTIES:
   :CUSTOM_ID: web-mode
