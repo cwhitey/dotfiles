@@ -166,7 +166,7 @@ this is done by putting the following code snippet in =$HOME/.emacs.d/init.el=.
     (let (el-get-master-branch
           ;; do not build recipes from emacswiki due to poor quality and
           ;; documentation
-          el-get-install-skip-emacswiki-recipes)
+          ;el-get-install-skip-emacswiki-recipes)
       (goto-char (point-max))
       (eval-print-last-sexp)))
   ;; build melpa packages for el-get
