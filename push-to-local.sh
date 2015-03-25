@@ -2,7 +2,8 @@
 
 cd "$(dirname "${BASH_SOURCE}")";
 
-git pull origin master;
+# commented out because this takes a few seconds and it's annoying
+#git pull origin master;
 
 function doIt() {
 	rsync --exclude ".git/" --exclude ".DS_Store" --exclude "push-to-local.sh" \

@@ -13,8 +13,9 @@
 ;; will not; however, if there's an error in other files loaded by init.el,
 ;; both "emacs" and "emacs --debug-init" will entering the debugger. I don't
 ;; know why.
-(setq debug-on-error t)
 ;(setq debug-on-error nil)
+
+(setq debug-on-error t)
 
 ;; believe me, you don't need menubar(execpt OSX), toolbar nor scrollbar
 (and (fboundp 'menu-bar-mode)
@@ -33,7 +34,8 @@
     (let (el-get-master-branch
           ;; do not build recipes from emacswiki due to poor quality and
           ;; documentation
-          el-get-install-skip-emacswiki-recipes)
+          ;el-get-install-skip-emacswiki-recipes
+          )
       (goto-char (point-max))
       (eval-print-last-sexp)))
   ;; build melpa packages for el-get
