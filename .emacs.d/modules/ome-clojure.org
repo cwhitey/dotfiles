@@ -127,6 +127,8 @@ We also want rainbow parens!
 (when (executable-find "lein")
   (ome-install 'cider)
   (ome-install 'ac-cider))
+
+(ome-install 'align-cljlet)
 #+END_SRC
 
 * Todos
