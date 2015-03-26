@@ -155,11 +155,11 @@ initialization, which is just a plain python file.
 Add support for kivy-mode. Kivy uses .kv files.
 NOTE: must enable emacswiki packages with el-get for this to work... (work in progress)
 
-#+BEGIN_SRC emacs-lisp :tangle no
+#+BEGIN_SRC emacs-lisp
 (defun ome-kivy-mode-setup ()
   (add-to-list 'auto-mode-alist '("\\.kv\\'" . kivy-mode)))
 
-(ome-install 'ome-kivy-mode-setup)
+(ome-install 'kivy-mode)
 #+END_SRC
 
 * Todo
