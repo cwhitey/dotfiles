@@ -437,6 +437,7 @@ auto-fill."
 
 
 
+
 Files in oh-my-emacs =core= will be loaded by default:
 - [[file:core/ome-auto-mode.org][ome-auto-mode.org]]: small and convenient settings for some minor mode package.
 - [[file:core/ome-basic.org][ome-basic.org]]: basic settings, such as tab, space, auto-fill-mode, flyspell,
@@ -494,6 +495,8 @@ you really need it.
 ;; (ome-load "modules/ome-experimental.org" "sr-speedbar")
 ;; (ome-load "modules/ome-haskell.org")
 ;; (ome-load "modules/ome-sml.org")
+(ome-load "modules/ome-other.org")
+
 #+END_SRC
 
 ** Load User/System Specific Files
