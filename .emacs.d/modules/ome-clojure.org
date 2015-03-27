@@ -128,6 +128,15 @@ We also want rainbow parens!
   (ome-install 'cider)
   (ome-install 'ac-cider))
 
+;; clojure refactoring
+; see ome-keybinding for clj-refactor keybindings
+(defun ome-clj-refactor-setup ()
+  (add-hook 'clojure-mode-hook (lambda ()
+                                 (clj-refactor-mode 1))))
+
+(ome-install 'clj-refactor)
+
+;; for aligning 'let' binding pair forms
 (ome-install 'align-cljlet)
 #+END_SRC
 

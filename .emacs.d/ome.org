@@ -438,6 +438,7 @@ auto-fill."
 
 
 
+
 Files in oh-my-emacs =core= will be loaded by default:
 - [[file:core/ome-auto-mode.org][ome-auto-mode.org]]: small and convenient settings for some minor mode package.
 - [[file:core/ome-basic.org][ome-basic.org]]: basic settings, such as tab, space, auto-fill-mode, flyspell,
