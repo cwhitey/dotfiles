@@ -103,7 +103,7 @@ YAML. Currently, as I know, there's no =raml-mode=.
   (add-hook 'yaml-mode-hook
             (lambda ()
               (linum-mode 1)
-              (evil-local-mode 1)
+              (evil-local-mode -1)
               (indent-guide-mode 1)))
   (add-to-list 'auto-mode-alist '("\\.raml\\'" . yaml-mode))
   (add-to-list 'ac-modes 'yaml-mode))
