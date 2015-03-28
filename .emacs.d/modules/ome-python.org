@@ -126,6 +126,7 @@ elpy.
   (ome-install 'python24))
 
 (defun ome-elpy-setup ()
+  (setenv "KIVY_NO_CONSOLELOG" "1")
   (elpy-enable t)
   (setq elpy-rpc-backend "jedi")
   (when (executable-find "ipython")
