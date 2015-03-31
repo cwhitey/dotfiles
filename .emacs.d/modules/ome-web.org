@@ -73,6 +73,31 @@ hook to enable =linum-mode= in =css-mode=.
             (linum-mode 1)))
 #+END_SRC
 
+* Sass-mode and scss-mode
+
+
+  :PROPERTIES:
+  :CUSTOM_ID: sass-mode
+  :END:
+
+Let's add support for sass!
+SASS stands for Super Awesome Style Sheets.
+A =sass-mode= exists, but =scss-mode= supports but .sass and .scss files.
+
+#+NAME: sass-mode
+#+BEGIN_SRC emacs-lisp
+(defun ome-sass-mode-setup ()
+  (add-to-list 'auto-mode-alist '("\\.sass\\'" . sass-mode)))
+
+(defun ome-scss-mode-setup ()
+  (add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
+
+  ;; To disable compile-at-save:
+  (add-hook 'scss-mode-hook (lambda () (setq scss-compile-at-save nil))))
+
+(ome-install 'sass-mode)
+(ome-install 'scss-mode)
+#+END_SRC
 
 * Haml-mode
 
@@ -82,6 +107,7 @@ hook to enable =linum-mode= in =css-mode=.
   :END:
 
 Let's add HAML-mode!
+Haml provides us with a simplified way of expressing HTML, and templating using ruby code.
 
 #+NAME: haml-mode
 #+BEGIN_SRC emacs-lisp
@@ -93,7 +119,6 @@ Let's add HAML-mode!
 
 (ome-install 'haml-mode)
 #+END_SRC
-
 
 * Web-mode
   :PROPERTIES:
