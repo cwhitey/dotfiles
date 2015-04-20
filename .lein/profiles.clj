@@ -6,7 +6,8 @@
                   [joodie/clojure-refactoring "0.6.4" :exclusions [org.clojure/clojure]]
                   ;; [venantius/ultra "0.1.9"]
                   [lein-bikeshed "0.2.0"]
-                  [lein-marginalia "0.8.0"]]
+                  [lein-marginalia "0.8.0"]
+                  [lein-try "0.4.3"]]
         :ultra {:repl false
                 :stacktraces false
                 :tests false
