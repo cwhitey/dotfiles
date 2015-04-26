@@ -155,7 +155,8 @@ fi
 # antigen theme prose
 # antigen theme sindresorhus/pure pure
 # antigen theme jdavis/zsh-files themes/jdavis
-antigen theme gallois
+# antigen theme gallois
+antigen theme gianu
 
 # Vim like bindings plugin. Need to run after theme, so mode indicator
 # can be set, if the theme didn't already set it.
