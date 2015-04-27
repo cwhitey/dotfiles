@@ -150,6 +150,14 @@ if [[ $USER == "whitec" ]]; then
     export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)
 fi
 
+##
+# Hostname-specific stuff
+##
+HOSTNAME=$(hostname)
+if [[ $HOSTNAME == "apdmmac-33.dpost.local" ]]; then
+
+fi
+
 
 # Load the prompt theme.
 # antigen theme prose
