@@ -1,0 +1,8 @@
+(:name clojure-quick-repls
+       :website "https://github.com/symfrog/clojure-quick-repls"
+       :description "Emacs functions for quickly creating Clojure and ClojureScript repls for a project"
+       :type github
+       :pkgname "symfrog/clojure-quick-repls"
+       :checkout "v0.1.0"
+       :shallow nil
+       :depends (cider))

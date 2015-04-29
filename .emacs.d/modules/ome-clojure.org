@@ -138,7 +138,13 @@ We also want rainbow parens!
 
 ;; for aligning 'let' binding pair forms
 (ome-install 'align-cljlet)
+
+;; for cider: magically create both clj and cljs repls
+; use 'clojure-quick-repls-connect'
+(ome-install 'clojure-quick-repls)
 #+END_SRC
+
+
 
 * Todos
 - The boot up speed of JVM is too slow, so we may need to refer to
