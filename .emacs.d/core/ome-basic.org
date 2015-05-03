@@ -240,7 +240,7 @@ emacs provides a quick way to restore your workspace.
 The following code comes from [[http://www.masteringemacs.org/articles/2011/01/27/find-files-faster-recent-files-package/][masteringemacs]], which combined =ido= and
 =recentf=.
 
-EDIT (Callum): Now using helm-recentf
+EDIT (Callum 3/5/15): Now using helm-recentf
 
 #+NAME: recentf
 #+BEGIN_SRC emacs-lisp
@@ -325,6 +325,21 @@ extension for GNU Emacs 24.
   (add-hook 'prog-mode-hook 'flycheck-mode))
 
 (ome-install 'flycheck)
+#+END_SRC
+
+* fic-ext-mode
+  :PROPERTIES:
+  :CUSTOM_ID: fic-ext-mode
+  :END:
+
+Highlight TODO/FIXME etc.
+
+#+NAME: fic-ext-mode
+#+BEGIN_SRC emacs-lisp
+(defun ome-fic-ext-mode-setup ()
+  (add-hook 'prog-mode-hook 'fic-ext-mode))
+
+(ome-install 'fic-ext-mode)
 #+END_SRC
 
 * Todo

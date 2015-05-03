@@ -30,8 +30,7 @@
 ;; show time
 (display-time-mode t)
 
-;;; File b
-ackup settings
+;;; File backup settings
 ;; save backups to local specified location
 (setq backup-by-copying t      ; don't clobber symlinks
       backup-directory-alist
