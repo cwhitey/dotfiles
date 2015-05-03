@@ -19,6 +19,7 @@
 (setq calendar-longitude 116.3)
 (setq calendar-location-name "Beijing, China")
 
+
 ;;; Time related settings
 ;; show time in 24hours format
 (setq display-time-24hr-format t)
@@ -29,16 +30,17 @@
 ;; show time
 (display-time-mode t)
 
-;;; File backup settings
-;; save backups to specified location
-(setq backup-directory-alist `(("." . "~/.emacs-backups")))
-;; backup by copying (can be slow)
-(setq backup-by-copying t)
-;; additional backup settings
-; (setq delete-old-versions t
-;   kept-new-versions 6
-;   kept-old-versions 2
-;   version-control t)
+;;; File b
+ackup settings
+;; save backups to local specified location
+(setq backup-by-copying t      ; don't clobber symlinks
+      backup-directory-alist
+      '(("." . "~/.emacs.d/backup-saves"))    ; don't litter my fs tree
+      delete-old-versions t
+      kept-new-versions 6
+      kept-old-versions 2
+      version-control t)       ; use versioned backups
+
 
 ;;; Debugging settings
 ;; Suppress debug stack traces for errors
@@ -54,7 +56,6 @@
 ;; enable winner mode
 (when (fboundp 'winner-mode)
       (winner-mode 1))
-
 
 
 ;;; Tools
