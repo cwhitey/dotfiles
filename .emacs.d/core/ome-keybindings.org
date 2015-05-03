@@ -46,6 +46,7 @@ Key bindings for oh-my-emacs, mainly imported from [[https://github.com/eschulte
 (global-set-key (kbd "C-c y") 'bury-buffer)
 (global-set-key (kbd "C-c r") 'revert-buffer)
 (global-set-key (kbd "M-`") 'file-cache-minibuffer-complete)
+(global-set-key (kbd "C-x b") 'helm-buffers-list)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 #+END_SRC
 
