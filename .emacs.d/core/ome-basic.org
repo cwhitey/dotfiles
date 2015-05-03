@@ -240,13 +240,15 @@ emacs provides a quick way to restore your workspace.
 The following code comes from [[http://www.masteringemacs.org/articles/2011/01/27/find-files-faster-recent-files-package/][masteringemacs]], which combined =ido= and
 =recentf=.
 
+EDIT (Callum): Now using helm-recentf
+
 #+NAME: recentf
 #+BEGIN_SRC emacs-lisp
 (require 'recentf)
 
 ;; get rid of `find-file-read-only' and replace it with something
 ;; more useful.
-(global-set-key (kbd "C-x C-r") 'ido-recentf-open)
+(global-set-key (kbd "C-x C-r") 'helm-recentf)
 
 ;; save the .recentf file to .emacs.d/
 (setq recentf-save-file (concat user-emacs-directory ".recentf"))
