@@ -210,7 +210,8 @@ little [[http://blog.gabrielsaldana.org/easy-css-editing-with-emacs/][easier]] b
 #+NAME: rainbow-mode
 #+BEGIN_SRC emacs-lisp
 (defun ome-rainbow-mode-setup ()
-  (add-hook 'css-mode-hook 'rainbow-mode))
+  (add-hook 'css-mode-hook 'rainbow-mode)
+  (add-hook 'sass-mode-hook 'rainbow-mode))
 
 (ome-install 'rainbow-mode)
 #+END_SRC
