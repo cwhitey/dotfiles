@@ -48,13 +48,20 @@
 
 ;;; Other settings
 ;; Disable auto-fill-mode for text-mode (e.g. Markdown!)
-(remove-hook 'text-mode-hook #'turn-on-auto-fill)
+;(remove-hook 'text-mode-hook #'turn-on-auto-fill)
+
+;; enable fci-mode
+(add-hook 'prog-mode-hook (lambda () (global-fci-mode 1)))
 
 
 ;;; Packages
 ;; enable winner mode
 (when (fboundp 'winner-mode)
       (winner-mode 1))
+
+;; various magit configs
+(setq magit-auto-revert-mode nil)
+(setq magit-last-seen-setup-instructions "1.4.0")
 
 
 ;;; Tools

@@ -206,10 +206,30 @@ from them[1]. For how to quickly fill a paragraph or region, see [[http://www.gn
 Commands]].
 
 #+NAME: auto-fill
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle no
 (setq-default fill-column 79)
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
-(add-hook 'prog-mode-hook 'turn-on-auto-fill)
+;(add-hook 'prog-mode-hook 'turn-on-auto-fill)
+#+END_SRC
+
+* fci-mode
+  :PROPERTIES:
+  :CUSTOM_ID: fci-mode
+  :END:
+
+EDIT (Callum White 4/5/15): I prefer fci-mode...
+#+NAME: fci-mode
+#+BEGIN_SRC emacs-lisp
+
+(defun ome-fill-column-indicator-mode-setup ()
+  (require 'fill-column-indicator)
+  (setq fci-rule-width 1)
+  (setq fci-rule-color "white")
+  (define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
+  ;(add-hook 'prog-mode-hook 'fci-mode)
+)
+
+(ome-install 'fill-column-indicator)
 #+END_SRC
 
 * Save Place in Opened Files
@@ -337,6 +357,7 @@ Highlight TODO/FIXME etc.
 #+NAME: fic-ext-mode
 #+BEGIN_SRC emacs-lisp
 (defun ome-fic-ext-mode-setup ()
+
   (add-hook 'prog-mode-hook 'fic-ext-mode))
 
 (ome-install 'fic-ext-mode)
