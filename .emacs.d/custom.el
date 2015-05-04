@@ -51,7 +51,7 @@
 ;(remove-hook 'text-mode-hook #'turn-on-auto-fill)
 
 ;; enable fci-mode
-(add-hook 'prog-mode-hook (lambda () (global-fci-mode 1)))
+(add-hook 'prog-mode-hook 'fci-mode)
 
 
 ;;; Packages
