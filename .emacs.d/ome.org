@@ -596,6 +596,8 @@ After we've loaded all the oh-my-emacs defaults, lets load the user's stuff.
          (match-string 1 name)))
   (let ((elisp-dir (expand-file-name "src" ome-dir))
         (user-dir (expand-file-name user-login-name ome-dir)))
+    (print (concat "elisp-dir: " elisp-dir))
+    (print (concat "user-dir: " user-dir))
     ;; add the src directory to the load path
     (add-to-list 'load-path elisp-dir)
     ;; load specific files

@@ -63,13 +63,6 @@
 (setq magit-auto-revert-mode nil)
 (setq magit-last-seen-setup-instructions "1.4.0")
 
-;; Expectations is a testing framework for clojure.
-;; Support expectations-mode. The source for this is in the src/ folder.
-;; https://github.com/gar3thjon3s/expectations-mode
-;; http://jayfields.com/expectations/index.html
-;; (this code would live in the Clojure module, but the elisp code for the mode
-;;  is loaded afterwards..)
-(require 'expectations-mode)
 
 
 ;;; Tools
