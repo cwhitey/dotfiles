@@ -145,14 +145,6 @@ We also want rainbow parens!
 (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
 #+END_SRC
 
-Support [[https://github.com/gar3thjon3s/expectations-mode][expectations-mode]]. The source for this is in the src/ folder.
-[[http://jayfields.com/expectations/index.html][Expectations]] is a testing framework for clojure.
-
-#+Name: expectations-mode
-#+BEGIN_SRC emacs-lisp
-(require 'expectations-mode)
-#+END_SRC
-
 * Todos
 - The boot up speed of JVM is too slow, so we may need to refer to
   http://icylisper.github.io/jark/.
