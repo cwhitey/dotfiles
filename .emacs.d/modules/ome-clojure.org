@@ -85,13 +85,7 @@ workflow.
 
 It's really really awesome, ah?
 
-We also want rainbow parens!
-
-#+BEGIN_SRC emacs-lisp
-(add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
-#+END_SRC
-
-#+NAME: clojure
+#+Name: clojure
 #+BEGIN_SRC emacs-lisp
 (ome-install 'clojure-mode)
 
@@ -144,7 +138,20 @@ We also want rainbow parens!
 (ome-install 'clojure-quick-repls)
 #+END_SRC
 
+We also want rainbow parens!
 
+#+Name: rainbow-parens
+#+BEGIN_SRC emacs-lisp
+(add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
+#+END_SRC
+
+Support [[https://github.com/gar3thjon3s/expectations-mode][expectations-mode]]. The source for this is in the src/ folder.
+[[http://jayfields.com/expectations/index.html][Expectations]] is a testing framework for clojure.
+
+#+Name: expectations-mode
+#+BEGIN_SRC emacs-lisp
+(require 'expectations-mode)
+#+END_SRC
 
 * Todos
 - The boot up speed of JVM is too slow, so we may need to refer to
