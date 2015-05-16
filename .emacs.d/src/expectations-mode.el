@@ -248,7 +248,8 @@ it."
                 (search "-expectations" ns))
         (save-window-excursion
           (expectations-mode t)
-          (clojure-test-mode 0)))))
+          ;(clojure-test-mode 0)
+          ))))
   (add-hook 'clojure-mode-hook 'expectations-maybe-enable))
 
 ;; Compilation mode spike
