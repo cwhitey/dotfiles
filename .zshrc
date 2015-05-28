@@ -158,6 +158,12 @@ if [[ $HOSTNAME == "apdmmac-33.dpost.local" ]]; then
 
 fi
 
+##
+# Clojure
+##
+export LEIN_FAST_TRAMPOLINE=y
+alias cljsbuild="lein trampoline cljsbuild $@"
+
 
 # Load the prompt theme.
 # antigen theme prose
@@ -165,12 +171,6 @@ fi
 # antigen theme jdavis/zsh-files themes/jdavis
 # antigen theme gallois
 antigen theme gianu
-
-# Vim like bindings plugin. Need to run after theme, so mode indicator
-# can be set, if the theme didn't already set it.
-# antigen-bundle sharat87/zsh-vim-mode
-# ZSH_VIM_MODE_NORMAL_MAP=^k
-# antigen bundle ~/labs/zsh-vim-mode --no-local-clone
 
 # Tell Antigen that we're done.
 antigen apply
