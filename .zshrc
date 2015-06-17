@@ -184,5 +184,8 @@ chpwd_functions=( auto-ls $chpwd_functions )
 # end_time="$(date +%s)"
 # echo .zshrc: $((end_time - start_time)) seconds
 
+# phantomjs
+#export PATH="/opt/phantomjs/bin:$PATH"
+
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"

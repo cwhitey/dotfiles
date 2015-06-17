@@ -7,10 +7,9 @@
 
 
                   ;; Cider (Emacs):
-                  ;; [cider/cider-nrepl "0.8.2"]
-                  [cider/cider-nrepl "0.9.0-SNAPSHOT"] ; This snapshot contains middleware for cider-debug
-                  ;; [refactor-nrepl "1.0.3"]
-                  [joodie/clojure-refactoring "0.6.4" :exclusions [org.clojure/clojure]]
+                  [cider/cider-nrepl "0.9.0"]
+                  ;; [refactor-nrepl "1.0.5"]
+                  ;; [joodie/clojure-refactoring "0.6.4" :exclusions [org.clojure/clojure]]
 
                   ;; Other
                   ;; [venantius/ultra "0.3.3"]
@@ -19,12 +18,17 @@
                   ;; [lein-droid "0.4.0-alpha1"] ;;Clojure android project builder
                   ;; [com.cemerick/piggieback "0.2.0"]
                   ]
-        :dependencies [[slamhound "1.5.5"]]
+
+        :dependencies [[org.clojure/tools.nrepl "0.2.10"]
+                       [slamhound "1.5.5"]]
+
         :aliases {"slamhound" ["run" "-m" "slam.hound"]
-                  "qa-me" ["do" ["clean"] ["with-profile" "production" "deps" ":tree"] ["ancient"] ["kibit"] ["bikeshed"]]}
+                  "qa" ["do" ["clean"] ["with-profile" "production" "deps" ":tree"] ["ancient"] ["kibit"] ["bikeshed"]]}
+
         :ultra {:repl true
                 :stacktraces false
                 :tests false
                 :java false
                 :color-scheme :solarized_dark}}
+
  :cuttle {:plugins [[lein-pprint "1.1.1"]]}}
