@@ -8,7 +8,7 @@
 
                   ;; Cider (Emacs):
                   [cider/cider-nrepl "0.9.0"]
-                  ;; [refactor-nrepl "1.0.5"]
+                  [refactor-nrepl "1.1.0-SNAPSHOT"]
                   ;; [joodie/clojure-refactoring "0.6.4" :exclusions [org.clojure/clojure]]
 
                   ;; Other
@@ -16,11 +16,12 @@
                   ;; [lein-marginalia "0.8.0"]
                   [lein-try "0.4.3"]
                   ;; [lein-droid "0.4.0-alpha1"] ;;Clojure android project builder
-                  ;; [com.cemerick/piggieback "0.2.0"]
                   ]
 
-        :dependencies [[org.clojure/tools.nrepl "0.2.10"]
+        :dependencies [[com.cemerick/piggieback "0.2.1"]
+                       [org.clojure/tools.nrepl "0.2.10"]
                        [slamhound "1.5.5"]]
+        :repl-options {:nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}
 
         :aliases {"slamhound" ["run" "-m" "slam.hound"]
                   "qa" ["do" ["clean"] ["with-profile" "production" "deps" ":tree"] ["ancient"] ["kibit"] ["bikeshed"]]}
