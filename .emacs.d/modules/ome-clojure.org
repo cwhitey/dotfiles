@@ -111,16 +111,22 @@ It's really really awesome, ah?
   ;; repl history
   (setq cider-repl-wrap-history t))
 
-(defun ome-ac-cider-setup ()
-  (add-hook 'cider-mode-hook 'ac-flyspell-workaround)
-  (add-hook 'cider-mode-hook 'ac-cider-setup)
-  (add-hook 'cider-repl-mode-hook 'ac-cider-setup)
-  (eval-after-load "auto-complete"
-    '(add-to-list 'ac-modes 'cider-repl-mode)))
+;; (defun ome-ac-cider-setup ()
+;;   (add-hook 'cider-mode-hook 'ac-flyspell-workaround)
+;;   (add-hook 'cider-mode-hook 'ac-cider-setup)
+;;   (add-hook 'cider-repl-mode-hook 'ac-cider-setup)
+;;   (eval-after-load "auto-complete"
+;;     '(add-to-list 'ac-modes 'cider-repl-mode)))
+
+(defun ome-company-mode-setup ()
+  (add-hook 'cider-repl-mode-hook #'company-mode)
+  (add-hook 'cider-mode-hook #'company-mode))
 
 (when (executable-find "lein")
   (ome-install 'cider)
-  (ome-install 'ac-cider))
+  (ome-install 'company-mode)
+;;   (ome-install 'ac-cider)
+)
 
 ;; clojure refactoring
 ; see ome-keybinding for clj-refactor keybindings
