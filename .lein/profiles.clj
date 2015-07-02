@@ -4,7 +4,7 @@
                   [lein-bikeshed "0.2.0"]
                   [lein-kibit "0.1.2"]
                   [jonase/eastwood "0.2.1"]
-
+                  [lein-cljfmt "0.1.10"]
 
                   ;; Cider (Emacs):
                   [cider/cider-nrepl "0.9.0"]
@@ -24,7 +24,7 @@
         :repl-options {:nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}
 
         :aliases {"slamhound" ["run" "-m" "slam.hound"]
-                  "qa" ["do" ["clean"] ["with-profile" "production" "deps" ":tree"] ["ancient"] ["kibit"] ["bikeshed"]]}
+                  "qa" ["do" ["clean"] ["with-profile" "production" "deps" ":tree"] ["ancient"] ["kibit"] ["bikeshed"] ["cljfmt check"]]}
 
         :ultra {:repl true
                 :stacktraces false
