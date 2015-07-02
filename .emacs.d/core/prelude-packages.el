@@ -70,10 +70,13 @@
     smartrep
     undo-tree
     volatile-highlights
+    zop-to-char
+    
+    ;; Good themes which work with Prelude
     zenburn-theme
     solarized-theme
-    birds-of-paradise-plus-theme
-    zop-to-char)
+    color-theme-sanityinc-tomorrow
+    base16-theme)
   "A list of packages to ensure are installed at launch.")
 
 (defun prelude-packages-installed-p ()
@@ -128,6 +131,7 @@ PACKAGE is installed only if not already present.  The file is opened in MODE."
 
 (defvar prelude-auto-install-alist
   '(("\\.clj\\'" clojure-mode clojure-mode)
+    ("\\.boot\\'" clojure-mode clojure-mode)
     ("\\.cmake\\'" cmake-mode cmake-mode)
     ("CMakeLists\\.txt\\'" cmake-mode cmake-mode)
     ("\\.coffee\\'" coffee-mode coffee-mode)
@@ -159,8 +163,8 @@ PACKAGE is installed only if not already present.  The file is opened in MODE."
     ("\\.pyx\\'" cython-mode cython-mode)
     ("PKGBUILD\\'" pkgbuild-mode pkgbuild-mode)
     ("\\.rs\\'" rust-mode rust-mode)
-    ("\\.sass\\'" sass-mode sass-mode)
     ("\\.scala\\'" scala-mode2 scala-mode)
+    ("\\.sass\\'" sass-mode sass-mode)
     ("\\.scss\\'" scss-mode scss-mode)
     ("\\.slim\\'" slim-mode slim-mode)
     ("\\.swift\\'" swift-mode swift-mode)
