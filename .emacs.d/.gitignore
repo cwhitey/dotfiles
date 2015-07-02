@@ -1,47 +1,23 @@
 *~
-\#*\#
-/.emacs.desktop
-/.emacs.desktop.lock
-.elc
+*.elc
 auto-save-list
-tramp
-.\#*
-
-# Org-mode
-.org-id-locations
-*_archive
-
-# elpa
-elpa
-
-# el-get
-el-get
-
-# the generated el files by org-babel
-ome*el
-*ome*part*el
-*ome*part*org
-
-# auto-complete data file
-ac*dat
-
-# saved-places
-*saved-places*
-
-# recentf
-.recentf
-
-# projectile
-projectile*
-
-# url
-url
-
-# oh-my-emacs doc
-doc
-
-# abbrev
-abbrev_defs
-
-# eshell
+recentf
+savehist
+saveplace
 eshell
+elpa
+el-get
+semanticdb
+url
+ede-projects.el
+.DS_Store
+custom.el
+places
+.smex-items
+savefile/
+/prelude-modules.el
+projectile-bookmarks.eld
+session*
+.cask
+tramp
+/var/pcache

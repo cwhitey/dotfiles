@@ -1,85 +1,135 @@
-;;; init.el --- Where all the magic begins
+;;; init.el --- Prelude's configuration entry point.
 ;;
-;; Part of the oh-my-emacs
+;; Copyright (c) 2011 Bozhidar Batsov
 ;;
-;; This is the first thing to get loaded.
+;; Author: Bozhidar Batsov <bozhidar@batsov.com>
+;; URL: http://batsov.com/prelude
+;; Version: 1.0.0
+;; Keywords: convenience
+
+;; This file is not part of GNU Emacs.
+
+;;; Commentary:
+
+;; This file simply sets up the default load path and requires
+;; the various modules defined within Emacs Prelude.
+
+;;; License:
+
+;; This program is free software; you can redistribute it and/or
+;; modify it under the terms of the GNU General Public License
+;; as published by the Free Software Foundation; either version 3
+;; of the License, or (at your option) any later version.
 ;;
-
-;; Enter debugger if an error is signaled during Emacs startup.
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
 ;;
-;; This works the same as you boot emacs with "--debug-init" every time, except
-;; for errors in "init.el" itself, which means, if there's an error in
-;; "init.el", "emacs --debug-init" will entering the debugger, while "emacs"
-;; will not; however, if there's an error in other files loaded by init.el,
-;; both "emacs" and "emacs --debug-init" will entering the debugger. I don't
-;; know why.
-;(setq debug-on-error nil)
+;; You should have received a copy of the GNU General Public License
+;; along with GNU Emacs; see the file COPYING.  If not, write to the
+;; Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+;; Boston, MA 02110-1301, USA.
 
-(setq debug-on-error t)
+;;; Code:
+(defvar current-user
+      (getenv
+       (if (equal system-type 'windows-nt) "USERNAME" "USER")))
 
-;; believe me, you don't need menubar(execpt OSX), toolbar nor scrollbar
-(and (fboundp 'menu-bar-mode)
-     (not (eq system-type 'darwin))
-     (menu-bar-mode -1))
-(dolist (mode '(tool-bar-mode scroll-bar-mode))
-  (when (fboundp mode) (funcall mode -1)))
+(message "Prelude is powering up... Be patient, Master %s!" current-user)
 
-;; Now install el-get at the very first
-(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+(when (version< emacs-version "24.1")
+  (error "Prelude requires at least GNU Emacs 24.1, but you're running %s" emacs-version))
 
-(unless (require 'el-get nil 'noerror)
-  (with-current-buffer
-      (url-retrieve-synchronously
-       "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
-    (let (el-get-master-branch
-          ;; do not build recipes from emacswiki due to poor quality and
-          ;; documentation
-          ;el-get-install-skip-emacswiki-recipes
-          )
-      (goto-char (point-max))
-      (eval-print-last-sexp)))
-  ;; build melpa packages for el-get
-  (el-get-install 'package)
-  (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                           ("melpa" . "http://melpa.org/packages/")))
-  (el-get-elpa-build-local-recipes))
+;; Always load newest byte code
+(setq load-prefer-newer t)
 
-;; enable git shallow clone to save time and bandwidth
-(setq el-get-git-shallow-clone t)
+(defvar prelude-dir (file-name-directory load-file-name)
+  "The root dir of the Emacs Prelude distribution.")
+(defvar prelude-core-dir (expand-file-name "core" prelude-dir)
+  "The home of Prelude's core functionality.")
+(defvar prelude-modules-dir (expand-file-name  "modules" prelude-dir)
+  "This directory houses all of the built-in Prelude modules.")
+(defvar prelude-personal-dir (expand-file-name "personal" prelude-dir)
+  "This directory is for your personal configuration.
 
-;; Sometimes, we need to experiment with our own recipe, or override the
-;; default el-get recipe to get around bugs.
-(add-to-list 'el-get-recipe-path "~/.emacs.d/ome-el-get-recipes")
+Users of Emacs Prelude are encouraged to keep their personal configuration
+changes in this directory.  All Emacs Lisp files there are loaded automatically
+by Prelude.")
+(defvar prelude-personal-preload-dir (expand-file-name "preload" prelude-personal-dir)
+  "This directory is for your personal configuration, that you want loaded before Prelude.")
+(defvar prelude-vendor-dir (expand-file-name "vendor" prelude-dir)
+  "This directory houses packages that are not yet available in ELPA (or MELPA).")
+(defvar prelude-savefile-dir (expand-file-name "savefile" prelude-dir)
+  "This folder stores all the automatically generated save/history-files.")
+(defvar prelude-modules-file (expand-file-name "prelude-modules.el" prelude-dir)
+  "This files contains a list of modules that will be loaded by Prelude.")
 
-;; tell el-get to look into local customizations for every package into
-;; `~/.emacs.d/init-<package>.el'
-(setq el-get-user-package-directory "~/.emacs.d")
+(unless (file-exists-p prelude-savefile-dir)
+  (make-directory prelude-savefile-dir))
 
-;; Some workaround for emacs version < 24.0, thanks Silthanis@github.
-(if (< emacs-major-version 24)
-    (defun file-name-base (&optional filename)
-      "Return the base name of the FILENAME: no directory, no extension.
-FILENAME defaults to `buffer-file-name'."
-      (file-name-sans-extension
-       (file-name-nondirectory (or filename (buffer-file-name))))))
+(defun prelude-add-subfolders-to-load-path (parent-dir)
+ "Add all level PARENT-DIR subdirs to the `load-path'."
+ (dolist (f (directory-files parent-dir))
+   (let ((name (expand-file-name f parent-dir)))
+     (when (and (file-directory-p name)
+                (not (string-prefix-p "." f)))
+       (add-to-list 'load-path name)
+       (prelude-add-subfolders-to-load-path name)))))
 
-;; Oh-my-emacs adopt org-mode 8.x from v0.3, so org-mode should be the first
-;; package to be installed via el-get
-(defun ome-org-mode-setup ()
-  ;; markdown export support
-  (require 'ox-md))
+;; add Prelude's directories to Emacs's `load-path'
+(add-to-list 'load-path prelude-core-dir)
+(add-to-list 'load-path prelude-modules-dir)
+(add-to-list 'load-path prelude-vendor-dir)
+(prelude-add-subfolders-to-load-path prelude-vendor-dir)
 
-(add-to-list 'el-get-sources
-             '(:name org-mode
-                     :after (progn
-                              (ome-org-mode-setup))))
+;; reduce the frequency of garbage collection by making it happen on
+;; each 50MB of allocated data (the default is on every 0.76MB)
+(setq gc-cons-threshold 50000000)
 
-(el-get 'sync (mapcar 'el-get-source-name el-get-sources))
+;; warn when opening files bigger than 100MB
+(setq large-file-warning-threshold 100000000)
 
-(defvar ome-dir (file-name-directory (or load-file-name (buffer-file-name)))
-  "oh-my-emacs home directory.")
+;; preload the personal settings from `prelude-personal-preload-dir'
+(when (file-exists-p prelude-personal-preload-dir)
+  (message "Loading personal configuration files in %s..." prelude-personal-preload-dir)
+  (mapc 'load (directory-files prelude-personal-preload-dir 't "^[^#].*el$")))
 
-;; load up the ome
-(org-babel-load-file (expand-file-name "ome.org" ome-dir))
+(message "Loading Prelude's core...")
+
+;; the core stuff
+(require 'prelude-packages)
+(require 'prelude-custom)  ;; Needs to be loaded before core, editor and ui
+(require 'prelude-ui)
+(require 'prelude-core)
+(require 'prelude-mode)
+(require 'prelude-editor)
+(require 'prelude-global-keybindings)
+
+;; OSX specific settings
+(when (eq system-type 'darwin)
+  (require 'prelude-osx))
+
+(message "Loading Prelude's modules...")
+
+;; the modules
+(if (file-exists-p prelude-modules-file)
+    (load prelude-modules-file)
+  (message "Missing modules file %s" prelude-modules-file)
+  (message "You can get started by copying the bundled example file"))
+
+;; config changes made through the customize UI will be store here
+(setq custom-file (expand-file-name "custom.el" prelude-personal-dir))
+
+;; load the personal settings (this includes `custom-file')
+(when (file-exists-p prelude-personal-dir)
+  (message "Loading personal configuration files in %s..." prelude-personal-dir)
+  (mapc 'load (directory-files prelude-personal-dir 't "^[^#].*el$")))
+
+(message "Prelude is ready to do thy bidding, Master %s!" current-user)
+
+(prelude-eval-after-init
+ ;; greet the use with some useful tip
+ (run-at-time 5 nil 'prelude-tip-of-the-day))
 
 ;;; init.el ends here
