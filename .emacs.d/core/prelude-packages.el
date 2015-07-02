@@ -72,11 +72,15 @@
     volatile-highlights
     zop-to-char
     
-    ;; Good themes which work with Prelude
+    ;; Good themes which (mostly) work with Prelude
     zenburn-theme
     solarized-theme
     color-theme-sanityinc-tomorrow
-    base16-theme)
+    base16-theme
+    twilight-anti-bright-theme
+    ujelly-theme
+    hipster-theme
+    darktooth-theme)
   "A list of packages to ensure are installed at launch.")
 
 (defun prelude-packages-installed-p ()
