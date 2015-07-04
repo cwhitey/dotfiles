@@ -164,6 +164,13 @@ fi
 export LEIN_FAST_TRAMPOLINE=y
 alias cljsbuild="lein trampoline cljsbuild $@"
 
+##
+# Emacs
+##
+alias es='emacs --daemon'
+alias ec='emacsclient -c'
+alias et='emacsclient -t'
+export TERM=xterm-256color #To fix color issues
 
 # Load the prompt theme.
 # antigen theme prose
