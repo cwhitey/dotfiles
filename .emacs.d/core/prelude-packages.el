@@ -80,7 +80,8 @@
     twilight-anti-bright-theme
     ujelly-theme
     hipster-theme
-    darktooth-theme)
+    darktooth-theme
+    ample-theme)
   "A list of packages to ensure are installed at launch.")
 
 (defun prelude-packages-installed-p ()
