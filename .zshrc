@@ -167,6 +167,7 @@ alias cljsbuild="lein trampoline cljsbuild $@"
 ##
 # Emacs
 ##
+export PATH="/usr/local/Cellar/emacs/24.5/bin:$PATH"
 alias es='emacs --daemon'
 alias ec='emacsclient -c'
 alias et='emacsclient -t'
