@@ -7,7 +7,7 @@
                   [lein-cljfmt "0.1.10"]
 
                   ;; Cider (Emacs):
-                  [cider/cider-nrepl "0.10.0-SNAPSHOT"]
+                  [cider/cider-nrepl "0.9.1"]
                   [refactor-nrepl "1.1.0-SNAPSHOT"]
                   ;; [joodie/clojure-refactoring "0.6.4" :exclusions [org.clojure/clojure]]
 
