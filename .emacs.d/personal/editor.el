@@ -1,3 +1,18 @@
+
+(require 'prelude-packages)
+
+(prelude-require-packages '(;; Good themes which (mostly) work with Prelude
+                            zenburn-theme
+                            solarized-theme
+                            color-theme-sanityinc-tomorrow
+                            base16-theme
+                            twilight-anti-bright-theme
+                            ujelly-theme
+                            hipster-theme
+                            darktooth-theme
+                            ample-theme))
+
+
 ;; The highlighting of long lines with whitespace mode is a bit too intrusive
 (setq prelude-whitespace nil)
 
