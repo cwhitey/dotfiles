@@ -26,7 +26,7 @@
 
         :aliases {"slamhound" ["run" "-m" "slam.hound"]
                   "analyze"   ["yagni"]
-                  "qa"        ["do" ["clean"] ["with-profile" "production" "deps" ":tree"] ["ancient"] ["kibit"] ["bikeshed"] ["cljfmt check"] [yagni]]}
+                  "qa"        ["do" ["clean"] ["with-profile" "production" "deps" ":tree"] ["ancient"] ["kibit"] ["bikeshed"] ["cljfmt check"] ["yagni"]]}
 
         :ultra {:repl true
                 :stacktraces false
