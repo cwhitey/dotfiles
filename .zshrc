@@ -165,13 +165,20 @@ export LEIN_FAST_TRAMPOLINE=y
 alias cljsbuild="lein trampoline cljsbuild $@"
 
 ##
+# Editor
+##
+export EDITOR="emacs -nw"
+
+##
 # Emacs
 ##
 export PATH="/usr/local/Cellar/emacs/24.5/bin:$PATH"
 alias es='emacs --daemon'
+alias ek="emacsclient -e '(kill-emacs)'"
 alias ec='emacsclient -c'
 alias et='emacsclient -t'
 export TERM=xterm-256color #To fix color issues
+
 
 # Load the prompt theme.
 # antigen theme prose
