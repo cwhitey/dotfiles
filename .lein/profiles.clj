@@ -5,6 +5,7 @@
                   [lein-kibit "0.1.2"]
                   [jonase/eastwood "0.2.1"]
                   [lein-cljfmt "0.1.10"]
+                  [venantius/yagni "0.1.1"]
 
                   ;; Cider (Emacs):
                   [cider/cider-nrepl "0.9.1"]
@@ -24,7 +25,8 @@
         :repl-options {:nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}
 
         :aliases {"slamhound" ["run" "-m" "slam.hound"]
-                  "qa" ["do" ["clean"] ["with-profile" "production" "deps" ":tree"] ["ancient"] ["kibit"] ["bikeshed"] ["cljfmt check"]]}
+                  "analyze"   ["yagni"]
+                  "qa"        ["do" ["clean"] ["with-profile" "production" "deps" ":tree"] ["ancient"] ["kibit"] ["bikeshed"] ["cljfmt check"] [yagni]]}
 
         :ultra {:repl true
                 :stacktraces false
