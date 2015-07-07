@@ -1,22 +1,25 @@
 {:user {:plugins [
                   ;; Code quality:
-                  [lein-ancient "0.6.2"]
+                  [lein-ancient "0.6.7"]
                   [lein-bikeshed "0.2.0"]
                   [lein-kibit "0.1.2"]
                   [jonase/eastwood "0.2.1"]
                   [lein-cljfmt "0.1.10"]
-                  [venantius/yagni "0.1.1"]
+                  [venantius/yagni "0.1.1" :exclusions [org.clojure/core.cache]]
 
                   ;; Cider (Emacs):
                   [cider/cider-nrepl "0.9.1"]
-                  [refactor-nrepl "1.1.0-SNAPSHOT"]
+                  [refactor-nrepl "1.1.0"]
                   ;; [joodie/clojure-refactoring "0.6.4" :exclusions [org.clojure/clojure]]
 
+                  ;; Android
+                  ;; [lein-droid "0.4.0-alpha4"] ;;Clojure android project builder
+                  
                   ;; Other
-                  ;; [venantius/ultra "0.3.3"]
+                  [venantius/ultra "0.3.4"]
                   ;; [lein-marginalia "0.8.0"]
                   [lein-try "0.4.3"]
-                  ;; [lein-droid "0.4.0-alpha1"] ;;Clojure android project builder
+                  
                   ]
 
         :dependencies [[com.cemerick/piggieback "0.2.1"]
@@ -29,9 +32,9 @@
                   "qa"        ["do" ["clean"] ["with-profile" "production" "deps" ":tree"] ["ancient"] ["kibit"] ["bikeshed"] ["cljfmt check"] ["yagni"]]}
 
         :ultra {:repl true
-                :stacktraces false
+                :stacktraces true
                 :tests false
-                :java false
+                :java true
                 :color-scheme :solarized_dark}}
 
  :cuttle {:plugins [[lein-pprint "1.1.1"]]}}
