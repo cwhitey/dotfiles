@@ -9,7 +9,7 @@
 
                   ;; Cider (Emacs):
                   [cider/cider-nrepl "0.9.1"]
-                  [refactor-nrepl "1.1.0"]
+                  ;; [refactor-nrepl "1.1.0"]
                   ;; [joodie/clojure-refactoring "0.6.4" :exclusions [org.clojure/clojure]]
 
                   ;; Android
