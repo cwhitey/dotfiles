@@ -78,6 +78,14 @@
 
 ;; replace zap-to-char functionaity with the more powerful zop-to-char
 (global-set-key (kbd "M-z") 'zop-up-to-char)
+
+;; Activate occur easily inside isearch
+(define-key isearch-mode-map (kbd "C-o") 'isearch-occur)
+
+;; use hippie-expand instead of dabbrev
+(global-set-key (kbd "M-/") 'hippie-expand)
+
+;; replace buffer-menu with ibuffer
 (global-set-key (kbd "M-Z") 'zop-to-char)
 
 ;; kill lines backward
@@ -87,14 +95,6 @@
                                         (indent-according-to-mode)))
 
 (global-set-key [remap kill-whole-line] 'prelude-kill-whole-line)
-
-;; Activate occur easily inside isearch
-(define-key isearch-mode-map (kbd "C-o") 'isearch-occur)
-
-;; use hippie-expand instead of dabbrev
-(global-set-key (kbd "M-/") 'hippie-expand)
-
-;; replace buffer-menu with ibuffer
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
 (unless (fboundp 'toggle-frame-fullscreen)

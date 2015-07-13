@@ -167,7 +167,7 @@ alias cljsbuild="lein trampoline cljsbuild $@"
 ##
 # Editor
 ##
-export EDITOR="emacs -nw"
+export EDITOR="emacsclient -t"
 
 ##
 # Emacs
