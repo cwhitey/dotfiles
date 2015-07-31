@@ -25,7 +25,7 @@
         :dependencies [[com.cemerick/piggieback "0.2.1"]
                        [org.clojure/tools.nrepl "0.2.10"]
                        [slamhound "1.5.5"]]
-        :repl-options {:nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}
+        ; :repl-options {:nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}
 
         :aliases {"slamhound" ["run" "-m" "slam.hound"]
                   "analyze"   ["yagni"]
