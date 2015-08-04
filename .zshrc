@@ -174,20 +174,24 @@ alias cljsbuild="lein trampoline cljsbuild $@"
 # Emacs
 ##
 export PATH="/usr/local/Cellar/emacs/24.5/bin:$PATH"
+# start emacs server
 alias es='emacs --daemon'
-
 # if alternate-editor is an empty string, Emacs is started in daemon mode and emacsclient will try to connect to it
-alias emacsclient="emacsclient --alternate-editor=''"
+function myEmacsclient { emacsclient --alternate-editor='' $@; }
+# kill emacs server
 alias ek="emacsclient -e '(kill-emacs)'"
-alias ec='emacsclient -c'
-alias et='emacsclient -t'
-export TERM=xterm-256color #To fix color issues
+# start emacs with a gui frame
+function ec { myEmacsclient -c $@ &; }
+# start emacs in a terminal
+function et { myEmacsclient -t $@; }
+# fix color issues
+export TERM=xterm-256color
 
 
 ##
 # Editor
 ##
-export EDITOR="emacsclient -t"
+export EDITOR='et'
 
 
 # Load the prompt theme.
