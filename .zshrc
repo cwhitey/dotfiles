@@ -96,6 +96,7 @@ function _z_precmd {
     _z --add "$PWD"
 }
 
+
 ##
 # OS Detection, stolen from jdavis
 ##
@@ -119,6 +120,7 @@ else
     fi
 fi
 
+
 ##
 # OS specific plugins
 ##
@@ -140,6 +142,7 @@ elif [[ $CURRENT_OS == 'Linux' ]]; then
 elif [[ $CURRENT_OS == 'Cygwin' ]]; then
 fi
 
+
 ##
 # User-specific stuff
 ##
@@ -150,6 +153,7 @@ if [[ $USER == "whitec" ]]; then
     export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)
 fi
 
+
 ##
 # Hostname-specific stuff
 ##
@@ -158,26 +162,32 @@ if [[ $HOSTNAME == "apdmmac-33.dpost.local" ]]; then
 
 fi
 
+
 ##
 # Clojure
 ##
 export LEIN_FAST_TRAMPOLINE=y
 alias cljsbuild="lein trampoline cljsbuild $@"
 
-##
-# Editor
-##
-export EDITOR="emacsclient -t"
 
 ##
 # Emacs
 ##
 export PATH="/usr/local/Cellar/emacs/24.5/bin:$PATH"
 alias es='emacs --daemon'
+
+# if alternate-editor is an empty string, Emacs is started in daemon mode and emacsclient will try to connect to it
+alias emacsclient="emacsclient --alternate-editor=''"
 alias ek="emacsclient -e '(kill-emacs)'"
 alias ec='emacsclient -c'
 alias et='emacsclient -t'
 export TERM=xterm-256color #To fix color issues
+
+
+##
+# Editor
+##
+export EDITOR="emacsclient -t"
 
 
 # Load the prompt theme.
