@@ -184,6 +184,8 @@ alias ek="emacsclient -e '(kill-emacs)'"
 function ec { checker-ec -c $@ &; }
 # start emacs in a terminal
 function et { checker-ec -t $@; }
+# restart emacs server
+alias er='ek; es;'
 # fix color issues
 export TERM=xterm-256color
 
