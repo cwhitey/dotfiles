@@ -177,7 +177,7 @@ export PATH="/usr/local/Cellar/emacs/24.5/bin:$PATH"
 # start emacs server
 alias es='emacs --daemon'
 # if alternate-editor is an empty string, Emacs is started in daemon mode and emacsclient will try to connect to it
-function checker-ec { emacsclient --alternate-editor='' $@; }
+function checker-ec { emacsclient --alternate-editor='' $@ }
 # kill emacs server
 alias ek="emacsclient -e '(kill-emacs)'"
 # start emacs with a gui frame
