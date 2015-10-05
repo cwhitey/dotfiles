@@ -29,10 +29,11 @@ virtualenv
 # Ruby
 ##
 ruby
+rbenv
 gem
 rake
 bundler
-
+rails
 
 ##
 # Node
