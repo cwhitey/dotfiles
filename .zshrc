@@ -172,6 +172,12 @@ alias cljsbuild="lein trampoline cljsbuild $@"
 
 
 ##
+# Ruby
+##
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+
+##
 # Emacs
 ##
 export PATH="/usr/local/Cellar/emacs/24.5/bin:$PATH"
