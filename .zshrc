@@ -200,7 +200,7 @@ export TERM=xterm-256color
 ##
 # Editor
 ##
-export EDITOR='et'
+export EDITOR=pico
 
 
 # Load the prompt theme.
