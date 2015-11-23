@@ -1,4 +1,4 @@
-# Mostly borrowed from sharat87's 'lawn' repo
+# Partially borrowed from sharat87's 'lawn' repo
 
 # start_time="$(date +%s)"
 
@@ -175,6 +175,7 @@ alias cljsbuild="lein trampoline cljsbuild $@"
 # Ruby
 ##
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+source ~/.rvm/scripts/rvm 
 
 
 ##
