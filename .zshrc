@@ -174,8 +174,10 @@ alias cljsbuild="lein trampoline cljsbuild $@"
 ##
 # Ruby
 ##
+#RBENV
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-source ~/.rvm/scripts/rvm 
+#RVM
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" && export "$HOME/.rvm/scripts" # Load RVM into a shell session *as a function*
 
 
 ##
