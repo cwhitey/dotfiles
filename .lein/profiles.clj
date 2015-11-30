@@ -22,7 +22,7 @@
 
         :dependencies [;; [com.cemerick/piggieback "0.2.1"]
                        ;; [slamhound "1.5.5"]
-                       [org.clojure/tools.nrepl "0.2.10"]
+                       [org.clojure/tools.nrepl "0.2.12"]
                        ]
         
         ;; :repl-options {:nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}
