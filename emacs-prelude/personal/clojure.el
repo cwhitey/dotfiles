@@ -1,9 +1,5 @@
-
 (prelude-require-packages '(align-cljlet
                             clj-refactor))
-
-(require 'align-cljlet)
-(require 'clj-refactor)
 
 (defun clj-refactor-hook ()
   (clj-refactor-mode 1)

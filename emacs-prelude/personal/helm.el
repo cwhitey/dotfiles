@@ -1,6 +1,5 @@
+;;; Code:
 (prelude-require-packages '(cljr-helm))
-
-(require 'cljr-helm)
 
 (eval-after-load 'clojure-mode
   '(progn
