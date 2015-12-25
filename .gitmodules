@@ -1,0 +1,3 @@
+[submodule "my-prezto"]
+	path = my-prezto
+	url = ./my-prezto
