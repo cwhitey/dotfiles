@@ -4,5 +4,5 @@
     ~/.emacs.d:
       relink: true
       path: emacs/prelude/
-    ~/.gitconfig: gitconfig
+    ~/.gitconfig: git/gitconfig
     ~/.lein: leiningen/
