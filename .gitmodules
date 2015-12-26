@@ -1,5 +1,5 @@
 [submodule "prezto"]
-	path = prezto
+	path = zsh/prezto
 	url = https://github.com/cwhitey/prezto.git
 [submodule "dotbot"]
 	path = dotbot
