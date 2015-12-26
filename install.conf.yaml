@@ -1,0 +1,6 @@
+- clean: ['~']
+- link:
+    ~/.agignore: agignore
+    ~/.emacs.d: emacs-prelude/
+    ~/.gitconfig: gitconfig
+    ~/.lein: leiningen/
