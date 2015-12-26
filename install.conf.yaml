@@ -1,6 +1,8 @@
 - clean: ['~']
 - link:
     ~/.agignore: agignore
-    ~/.emacs.d: emacs-prelude/
+    ~/.emacs.d:
+      relink: true
+      path: emacs/prelude/
     ~/.gitconfig: gitconfig
     ~/.lein: leiningen/
