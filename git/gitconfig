@@ -86,7 +86,7 @@
 	keepBackup = false
 
 [push]
-	default = upstream
+	default = simple
 
 [credential]
 	helper = cache --timeout=3600
