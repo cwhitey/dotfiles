@@ -1,3 +1,7 @@
+[user]
+	# User configuration
+	name = Callum White
+	email = callumw1991@gmail.com
 [alias]
 	exec = ! "exec"
 	st = status -sb
