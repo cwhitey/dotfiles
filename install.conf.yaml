@@ -1,8 +1,26 @@
 - clean: ['~']
+
 - link:
-    ~/.agignore: agignore
+    ~/.agignore:
+      relink: true
+      path: ag/agignore
     ~/.emacs.d:
       relink: true
       path: emacs/prelude/
     ~/.gitconfig: git/gitconfig
-    ~/.lein: leiningen/
+    ~/.lein:
+      path: leiningen/
+
+    #ZSH - Prezto
+    ~/.zprezto: zsh/prezto/
+    ~/.zlogout: zsh/prezto/runcoms/zlogout
+    ~/.zlogin: zsh/prezto/runcoms/zlogin
+    ~/.zprofile: zsh/prezto/runcoms/zprofile
+    ~/.zshenv: zsh/prezto/runcoms/zshenv
+    ~/.zpreztorc: zsh/prezto/runcoms/zpreztorc
+    ~/.zshrc:
+      force: true
+      path: zsh/prezto/runcoms/zshrc
+
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]
