@@ -13,14 +13,17 @@
 
     #ZSH - Prezto
     ~/.zprezto: zsh/prezto/
-    ~/.zlogout: zsh/prezto/runcoms/zlogout
-    ~/.zlogin: zsh/prezto/runcoms/zlogin
+    ~/.zshenv: zsh/prezto/rauncoms/zshenv
+    #Use zprofile and not zlogin
     ~/.zprofile: zsh/prezto/runcoms/zprofile
-    ~/.zshenv: zsh/prezto/runcoms/zshenv
     ~/.zpreztorc: zsh/prezto/runcoms/zpreztorc
     ~/.zshrc:
       force: true
       path: zsh/prezto/runcoms/zshrc
+    ~/.zlogout: zsh/prezto/runcoms/zlogout
+
+    #Terminal Markdown Viewer
+    ~/usr/local/bin/mdv: mdv/mdv.py
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
