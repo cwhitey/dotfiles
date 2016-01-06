@@ -12,7 +12,7 @@
       path: leiningen/
     ~/.vimrc:
       force: true
-      path: vim/lucasoman/vimrc
+      path: vim/simple-vimrc
 
     #ZSH - Prezto
     ~/.zprezto: zsh/prezto/
