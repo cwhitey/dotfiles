@@ -10,10 +10,13 @@
     ~/.gitconfig: git/gitconfig
     ~/.lein:
       path: leiningen/
+    ~/.vimrc:
+      force: true
+      path: vim/lucasoman/vimrc
 
     #ZSH - Prezto
     ~/.zprezto: zsh/prezto/
-    ~/.zshenv: zsh/prezto/rauncoms/zshenv
+    ~/.zshenv: zsh/prezto/runcoms/zshenv
     #Use zprofile and not zlogin
     ~/.zprofile: zsh/prezto/runcoms/zprofile
     ~/.zpreztorc: zsh/prezto/runcoms/zpreztorc
@@ -23,7 +26,8 @@
     ~/.zlogout: zsh/prezto/runcoms/zlogout
 
     #Terminal Markdown Viewer
-    ~/usr/local/bin/mdv: mdv/mdv.py
+    /usr/local/bin/mdv: mdv/mdv.py
+    /usr/local/bin/ansi_tables.json: mdv/ansi_tables.json
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
