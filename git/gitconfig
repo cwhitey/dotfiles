@@ -2,6 +2,9 @@
 	# User configuration
 	name = Callum White
 	email = callumw1991@gmail.com
+
+[github]
+	user = cwhitey
 [alias]
 	exec = ! "exec"
 	st = status -sb
