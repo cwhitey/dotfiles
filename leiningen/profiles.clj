@@ -7,11 +7,6 @@
                   ;; [lein-cljfmt "0.1.10"]
                   ;; [venantius/yagni "0.1.1" :exclusions [org.clojure/core.cache]]
 
-                  ;; Cider (Emacs):
-                  [cider/cider-nrepl "0.9.1"]
-                  [refactor-nrepl "1.0.5"]
-                  ;; [joodie/clojure-refactoring "0.6.4" :exclusions [org.clojure/clojure]]
-
                   ;; Android
                   ;; [lein-droid "0.4.0-alpha4"] ;;Clojure android project builder
                   
@@ -31,13 +26,18 @@
         ;;           "analyze"   ["yagni"]
         ;;           "qa"        ["do" ["clean"] ["with-profile" "production" "deps" ":tree"] ["ancient"] ["kibit"] ["bikeshed"] ["cljfmt check"] ["yagni"]]}
 
-        :jvm-opts ["-XX:MaxPermSize=128M"]
+        ;; :jvm-opts ["-XX:MaxPermSize=128M"]
         
         :ultra {:repl true
                 :stacktraces true
                 :tests false
                 :java true
                 :color-scheme :solarized_dark}}
-
+ :repl {:plugins [
+                  ;; Cider (Emacs):
+                  [cider/cider-nrepl "0.9.1"]
+                  [refactor-nrepl "1.0.5"]
+                  ;; [joodie/clojure-refactoring "0.6.4" :exclusions [org.clojure/clojure]]
+                  ]}
  ;; :cuttle {:plugins [[lein-pprint "1.1.1"]]}
  }
