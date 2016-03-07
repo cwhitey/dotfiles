@@ -8,3 +8,4 @@ These dotfiles use dotbot for linkage.
 - source-highlight (see `zprofile`)
 - chruby (see `zshrc`)
 - fasd (install with `brew install fasd`) (see `zprofile`)
+- fzf (install using git from https://github.com/junegunn/fzf)
