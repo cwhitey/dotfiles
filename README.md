@@ -9,3 +9,4 @@ These dotfiles use dotbot for linkage.
 - chruby (see `zshrc`)
 - fasd (`brew install fasd`) (see `zprofile`)
 - fzf (install using git from https://github.com/junegunn/fzf)
+- the_platinum_surfer (`brew install pt`)
