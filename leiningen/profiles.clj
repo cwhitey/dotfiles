@@ -11,7 +11,7 @@
                   ;; [lein-droid "0.4.0-alpha4"] ;;Clojure android project builder
                   
                   ;; Other
-                  [venantius/ultra "0.4.1"]
+                  ;; [venantius/ultra "0.4.1"]
                   ;; [lein-marginalia "0.9.0"]
                   [lein-try "0.4.3"]]
 
