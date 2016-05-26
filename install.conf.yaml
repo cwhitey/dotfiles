@@ -6,7 +6,8 @@
       path: ag/agignore
     ~/.emacs.d:
       relink: true
-      path: emacs/prelude/
+      force: true
+      path: emacs/flat/
     ~/.gitconfig: git/gitconfig
     ~/.lein:
       path: leiningen/
