@@ -1,0 +1,83 @@
+###
+# Run `brew bundle` in this directory to install all of this stuff
+###
+
+cask_args appdir: '/Applications'
+
+tap 'homebrew/bundle'
+
+brew 'coreutils'
+brew 'grc' # colourize log commands (e.g. ``grc tail /var/log/syslog`)
+brew 'imagemagick'
+brew 'libcaca', args: ['with-imlib2']
+brew 'libgit2'
+brew 'openssl'
+brew 'tree'
+brew 'fasd'
+brew 'source-highlight' # for `less` highlighting (see zsh config)
+brew 'lesspipe'
+brew 'readline'
+brew 'unrar'
+brew 'wget'
+brew 'youtube-dl' # download Youtube (and other) videos
+
+
+###
+# Development
+###
+
+# searching
+brew 'the_silver_searcher' # ag
+brew 'the_platinum_searcher' # pt
+brew 'sift'
+
+# programming languages
+brew 'go'
+brew 'node'
+brew 'leiningen' # clojure
+brew 'boot-clj' # clojure
+brew 'haskell-stack'
+brew 'erlang'
+brew 'elixir'
+brew 'sbt' # scala
+# brew 'ruby-build'
+# brew 'rbenv'
+brew 'chruby'
+brew 'ruby-install'
+
+# DBs
+brew 'postgresql'
+brew 'mysql'
+
+# editors
+brew 'emacs'
+brew 'neovim'
+
+# tools
+brew 'heroku'
+brew 'heroku-toolbelt'
+brew 'ctags'
+brew 'jq'
+# brew 'tig' # git visualization
+# brew 'httpie' # smart curl replacement?
+
+###
+# OSX applications
+###
+cask '1password'
+cask 'atom'
+cask 'google-chrome'
+cask 'slack'
+cask 'transmission' # torrenting
+cask 'vlc'
+cask 'lacona' # spotlight replacement
+cask 'iterm2'
+cask 'karabiner' # keyboard mapping
+cask 'seil' # rebind capslock
+cask 'spotify'
+cask 'spectacle' # window management
+cask 'contexts' # command-tab replacement
+cask 'goofy' # facebook messenger
+cask 'flux' # blue light removal
+cask 'smcfancontrol'
+cask 'scroll-reverser'
