@@ -19,6 +19,7 @@ brew 'lesspipe'
 brew 'readline'
 brew 'unrar'
 brew 'wget'
+brew 'ffmpeg' # for youtube-dl post-processing
 brew 'youtube-dl' # download Youtube (and other) videos
 
 
