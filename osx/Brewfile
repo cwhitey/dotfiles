@@ -9,11 +9,11 @@ tap 'homebrew/bundle'
 brew 'coreutils'
 brew 'grc' # colourize log commands (e.g. ``grc tail /var/log/syslog`)
 brew 'imagemagick'
-brew 'xquartz'
 brew 'libcaca', args: ['with-imlib2']
 brew 'libgit2'
 brew 'openssl'
 brew 'tree'
+brew 'fzf
 brew 'fasd'
 brew 'source-highlight' # for `less` highlighting (see zsh config)
 brew 'lesspipe'
@@ -34,6 +34,7 @@ brew 'the_platinum_searcher' # pt
 brew 'sift'
 
 # programming languages
+cask 'java'
 brew 'go'
 brew 'node'
 brew 'leiningen' # clojure
@@ -42,8 +43,6 @@ brew 'haskell-stack'
 brew 'erlang'
 brew 'elixir'
 brew 'sbt' # scala
-# brew 'ruby-build'
-# brew 'rbenv'
 brew 'chruby'
 brew 'ruby-install'
 
@@ -53,7 +52,7 @@ brew 'mysql'
 
 # editors
 brew 'emacs'
-brew 'neovim'
+#brew 'neovim'
 
 # tools
 brew 'heroku'
