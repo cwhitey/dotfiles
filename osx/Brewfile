@@ -13,7 +13,7 @@ brew 'libcaca', args: ['with-imlib2']
 brew 'libgit2'
 brew 'openssl'
 brew 'tree'
-brew 'fzf
+brew 'fzf'
 brew 'fasd'
 brew 'source-highlight' # for `less` highlighting (see zsh config)
 brew 'lesspipe'
