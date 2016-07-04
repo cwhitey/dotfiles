@@ -9,6 +9,7 @@ tap 'homebrew/bundle'
 brew 'coreutils'
 brew 'grc' # colourize log commands (e.g. ``grc tail /var/log/syslog`)
 brew 'imagemagick'
+brew 'xquartz'
 brew 'libcaca', args: ['with-imlib2']
 brew 'libgit2'
 brew 'openssl'
