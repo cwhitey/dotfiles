@@ -52,20 +52,25 @@ brew 'mysql'
 
 # editors
 brew 'emacs'
-#brew 'neovim'
+tap 'neovim/neovim'
+brew 'neovim'
 
 # tools
 brew 'heroku'
 brew 'heroku-toolbelt'
+brew 'docker'
+brew 'docker-machine'
+brew 'docker-compose'
 brew 'ctags'
 brew 'jq'
-# brew 'tig' # git visualization
-# brew 'httpie' # smart curl replacement?
+brew 'tig' # git visualization
+brew 'httpie' # smart curl replacement?
+
 
 ###
 # OSX applications
 ###
-cask '1password'
+cask 'lastpass'
 cask 'atom'
 cask 'google-chrome'
 cask 'slack'
@@ -82,3 +87,4 @@ cask 'goofy' # facebook messenger
 cask 'flux' # blue light removal
 cask 'smcfancontrol'
 cask 'scroll-reverser'
+cask 'caffeine' # control over screen locking
