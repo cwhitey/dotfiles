@@ -42,7 +42,8 @@ brew 'boot-clj' # clojure
 brew 'haskell-stack'
 brew 'erlang'
 brew 'elixir'
-brew 'sbt' # scala
+brew 'scala'
+brew 'sbt' # scala build tool
 brew 'chruby'
 brew 'ruby-install'
 
