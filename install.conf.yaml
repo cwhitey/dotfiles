@@ -35,6 +35,9 @@
     ~/.zlogout: 
       relink: true
       path: zsh/prezto/runcoms/zlogout
+    ~/.local_env.zsh:
+      relink: true
+      path: zsh/prezto/local/local_env.zsh
 
     #Terminal Markdown Viewer
     /usr/local/bin/mdv: mdv/mdv.py
