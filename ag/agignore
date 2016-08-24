@@ -1,2 +1,4 @@
 /.git/
 /.hg/
+/.ensime
+/.ensime-cache/
