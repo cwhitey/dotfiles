@@ -36,8 +36,8 @@
  :repl {:plugins [
                   ;; Cider (Emacs):
                   [refactor-nrepl "2.2.0"]
-                  [cider/cider-nrepl "0.11.0"]
+                  [cider/cider-nrepl "0.13.0"]
                   ;; [joodie/clojure-refactoring "0.6.4" :exclusions [org.clojure/clojure]]
                   ]}
  ;; :cuttle {:plugins [[lein-pprint "1.1.1"]]}
-}
+ }
