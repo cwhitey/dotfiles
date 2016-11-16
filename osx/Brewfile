@@ -67,6 +67,14 @@ brew 'jq'
 brew 'tig' # git visualization
 brew 'httpie' # smart curl replacement?
 
+# fonts
+tap 'caskroom/fonts'
+# `mensch` font is great for programming, but it's not in caskroom/fonts :(
+cask 'font-source-code-pro'
+cask 'font-fira-code'
+cask 'font-font-anonymous-pro'
+cask 'font-terminus'
+cask 'font-dejavu-sans'
 
 ###
 # OSX applications
