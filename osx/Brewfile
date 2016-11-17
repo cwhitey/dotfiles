@@ -60,7 +60,7 @@ brew 'neovim'
 brew 'heroku'
 brew 'heroku-toolbelt'
 brew 'docker'
-brew 'docker-machine'
+cask 'docker' # docker-for-mac
 brew 'docker-compose'
 brew 'ctags'
 brew 'jq'
@@ -69,10 +69,10 @@ brew 'httpie' # smart curl replacement?
 
 # fonts
 tap 'caskroom/fonts'
-# `mensch` font is great for programming, but it's not in caskroom/fonts :(
+# `mensch` font is great for programming, but it's not in caskroom/fonts :( http://robey.lag.net/2010/06/21/mensch-font.html
 cask 'font-source-code-pro'
 cask 'font-fira-code'
-cask 'font-font-anonymous-pro'
+cask 'font-anonymous-pro'
 cask 'font-terminus'
 cask 'font-dejavu-sans'
 
@@ -85,7 +85,7 @@ cask 'google-chrome'
 cask 'slack'
 cask 'transmission' # torrenting
 cask 'vlc'
-cask 'lacona' # spotlight replacement
+cask 'alfred' # spotlight replacement
 cask 'iterm2'
 cask 'karabiner' # keyboard mapping
 cask 'seil' # rebind capslock
