@@ -61,6 +61,7 @@ brew 'heroku'
 brew 'heroku-toolbelt'
 brew 'docker'
 cask 'docker' # docker-for-mac
+brew 'docker-machine' # for docker-compose to install
 brew 'docker-compose'
 brew 'ctags'
 brew 'jq'
