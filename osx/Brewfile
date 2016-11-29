@@ -37,6 +37,7 @@ brew 'sift'
 cask 'java'
 brew 'go'
 brew 'node'
+brew 'nvm' # node version manager
 brew 'leiningen' # clojure
 brew 'boot-clj' # clojure
 brew 'haskell-stack'
