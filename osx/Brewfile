@@ -76,6 +76,13 @@ cask 'font-fira-code'
 cask 'font-anonymous-pro'
 cask 'font-terminus'
 cask 'font-dejavu-sans'
+# for icons (mostly used within emacs)
+cask 'font-devicons'
+cask 'font-icomoon'
+cask 'font-fontawesome'
+cask 'font-mfizz'
+cask 'font-octicons'
+
 
 ###
 # OSX applications
