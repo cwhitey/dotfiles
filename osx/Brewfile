@@ -29,9 +29,8 @@ brew 'youtube-dl' # download Youtube (and other) videos
 ###
 
 # searching
+brew 'ripgrep' # rg
 brew 'the_silver_searcher' # ag
-brew 'the_platinum_searcher' # pt
-brew 'sift'
 
 # programming languages
 cask 'java'
