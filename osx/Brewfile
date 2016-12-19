@@ -76,6 +76,7 @@ cask 'font-fira-code'
 cask 'font-anonymous-pro'
 cask 'font-terminus'
 cask 'font-dejavu-sans'
+cask 'font-hack'
 # `mensch` font is also great for programming, but it's not in caskroom/fonts :(
 #    http://robey.lag.net/2010/06/21/mensch-font.html
 # for icons (mostly used within emacs)
