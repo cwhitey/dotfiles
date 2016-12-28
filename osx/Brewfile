@@ -44,7 +44,7 @@ brew 'erlang'
 brew 'elixir'
 brew 'scala'
 brew 'sbt' # scala build tool
-brew 'chruby'
+brew 'chruby' # lightweight ruby version manager
 brew 'ruby-install'
 
 # DBs
@@ -64,7 +64,7 @@ cask 'docker' # docker-for-mac
 brew 'docker-machine' # for docker-compose to install
 brew 'docker-compose'
 brew 'ctags'
-brew 'jq'
+brew 'jq' # json processor
 brew 'tig' # git visualization
 brew 'httpie' # smart curl replacement?
 
