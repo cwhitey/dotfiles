@@ -7,3 +7,6 @@
 [submodule "emacs/flat"]
 	path = emacs/flat
 	url = https://github.com/cwhitey/emacs.d.git
+[submodule "dotbot"]
+	path = dotbot
+	url = https://github.com/anishathalye/dotbot
