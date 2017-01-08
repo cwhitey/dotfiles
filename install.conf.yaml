@@ -16,28 +16,39 @@
       path: vim/simple-vimrc
 
     #ZSH - Prezto
-    ~/.zprezto: 
-      relink: true
-      path: zsh/prezto/
-    ~/.zshenv: 
-      relink: true
-      path: zsh/prezto/runcoms/zshenv
-    #Use zprofile and not zlogin
-    ~/.zprofile: 
-      relink: true
-      path: zsh/prezto/runcoms/zprofile
-    ~/.zpreztorc: 
-      relink: true
-      path: zsh/prezto/runcoms/zpreztorc
+    # ~/.zprezto: 
+    #   relink: true
+    #   path: zsh/prezto/
+    # ~/.zshenv: 
+    #   relink: true
+    #   path: zsh/prezto/runcoms/zshenv
+    # ~/.zprofile: #Use zprofile and not zlogin
+    #   relink: true
+    #   path: zsh/prezto/runcoms/zprofile
+    # ~/.zpreztorc: 
+    #   relink: true
+    #   path: zsh/prezto/runcoms/zpreztorc
+    # ~/.zshrc:
+    #   force: true
+    #   path: zsh/prezto/runcoms/zshrc
+    # ~/.zlogout: 
+    #   relink: true
+    #   path: zsh/prezto/runcoms/zlogout
+    # ~/.local_env.zsh:
+    #   force: true
+    #   relink: true
+    #   path: zsh/prezto/local/local_env.zsh
+    
+    #ZSH
     ~/.zshrc:
-      force: true
-      path: zsh/prezto/runcoms/zshrc
-    ~/.zlogout: 
       relink: true
-      path: zsh/prezto/runcoms/zlogout
-    ~/.local_env.zsh:
+      path: zsh/zplug/.zshrc
+    ~/.zshenv:
       relink: true
-      path: zsh/prezto/local/local_env.zsh
+      path: zsh/zplug/.zshenv
+    ~/.zshrc.d:
+      relink: true
+      path: zsh/zplug/.zshrc.d/
 
     #Terminal Markdown Viewer
     /usr/local/bin/mdv: mdv/mdv.py
