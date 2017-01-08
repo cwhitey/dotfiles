@@ -78,6 +78,7 @@ zplug "chrissicool/zsh-256color"
 
 zplug "supercrabtree/k"
 zplug "plugins/colored-man-pages", from:oh-my-zsh
+zplug "zsh-users/zaw"
 
 # theme
 zplug "mafredri/zsh-async", on:sindresorhus/pure

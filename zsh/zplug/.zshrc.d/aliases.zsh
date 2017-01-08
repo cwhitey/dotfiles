@@ -18,6 +18,7 @@ alias mv='mv -i'
 ############
 # git
 ############
+alias ga='git add'
 alias gst='git status'
 alias gstash='git stash'
 alias gpop='git pop'
