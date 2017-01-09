@@ -29,7 +29,7 @@ export HISTSIZE=100000
 export SAVEHIST=100000
 export HISTFILESIZE=$HISTSIZE
 export HISTCONTROL=ignoredups
-export HISTFILE="~/.zsh_history"
+export HISTFILE=~/.zsh_history
 export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help"
 
 zstyle ':completion:*:*:*:*:*' menu select

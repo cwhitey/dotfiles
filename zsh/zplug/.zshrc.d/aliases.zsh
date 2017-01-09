@@ -99,8 +99,16 @@ alias ek="emacsclient -e '(kill-emacs)'"
 alias er='ek; es;'
 
 ############
+# OSX
+############
+# Lock the screen
+if [[ $(uname) == *Darwin* ]]; then
+    alias lock='/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend'
+fi
+
+############
 # homebrew
 ############
-unalias cask  # for Emacs' Cask tool
-
-
+if [[ $(uname) == *Darwin* ]]; then
+    unalias cask  # for Emacs' Cask tool
+fi
