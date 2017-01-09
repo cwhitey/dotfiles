@@ -62,7 +62,8 @@ alias f='fasd -f'        # file
 alias d='fasd -d'        # directory
 alias sd='fasd -sid'     # interactive directory selection
 alias sf='fasd -sif'     # interactive file selection
-alias z='fasd_cd -d'     # cd, same functionality as j in autojump
+unalias j
+alias j='fasd_cd -d'     # mimic autojump behaviour
 alias o='a -e open'      # use fasd to select file/directory to open
 
 ############

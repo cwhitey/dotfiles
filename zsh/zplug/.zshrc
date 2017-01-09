@@ -43,6 +43,7 @@ zstyle ':completion::complete:*' use-cache 1
 zstyle ':completion::complete:*' cache-path $ZSH_CACHE_DIR
 
 # install/init zplug
+export ZPLUG_HOME=/usr/local/opt/zplug # for possible brew support
 if [[ ! -d "${ZPLUG_HOME}" ]]; then
     echo "Installing zplug"
     curl --progress-bar -sL zplug.sh/installer | zsh
@@ -61,10 +62,6 @@ zplug "zsh-users/zsh-autosuggestions"
 
 zplug "unixorn/git-extra-commands"
 zplug "tj/git-extras", defer:3
-zplug "zsh-users/zsh-history-substring-search"
-bindkey -M emacs '^P' history-substring-search-up
-bindkey -M emacs '^N' history-substring-search-down
-
 zplug "zsh-users/zsh-syntax-highlighting", defer:3
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(
     main                          # Basic highlighting
@@ -75,7 +72,10 @@ zplug "hlissner/zsh-autopair", defer:3
 # highlight URLs based on their validity
 zplug "ascii-soup/zsh-url-highlighter"
 zplug "chrissicool/zsh-256color"
-
+# load history-substring-search AFTER syntax-highlighting
+zplug "zsh-users/zsh-history-substring-search"
+bindkey -M emacs '^P' history-substring-search-up
+bindkey -M emacs '^N' history-substring-search-down
 zplug "supercrabtree/k"
 zplug "plugins/colored-man-pages", from:oh-my-zsh
 zplug "zsh-users/zaw"
@@ -103,6 +103,11 @@ if ! zplug check --verbose; then
 fi
 zplug load --verbose
 
+source /usr/local/share/chruby/chruby.sh
+source /usr/local/share/chruby/auto.sh
+chruby ruby-2.2.3 # Set default ruby version
+
+eval "$(fasd --init auto)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Dedicated completion key while retaining default TAB (^I) behaviour
@@ -112,3 +117,5 @@ bindkey '^I' $fzf_default_completion
 # Use the fast the_platinum_surfer instead of find. Also respects .gitignore etc.
 export FZF_DEFAULT_COMMAND='pt -l ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=250" # set right-side color for autosuggestions
