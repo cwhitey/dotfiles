@@ -1,2 +1,3 @@
 /.lein/repl-history
 *DS_Store
+/zsh/zplug/.zshrc.d/local.zsh
