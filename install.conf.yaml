@@ -54,5 +54,3 @@
     /usr/local/bin/mdv: mdv/mdv.py
     /usr/local/bin/ansi_tables.json: mdv/ansi_tables.json
 
-- shell:
-    - [git submodule update --init --recursive, Installing submodules]
