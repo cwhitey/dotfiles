@@ -8,6 +8,8 @@
       relink: true
       force: true
       path: emacs/flat/
+    ~/.ctags:
+      path: emacs/tags/.ctags
     ~/.gitconfig: git/gitconfig
     ~/.lein:
       path: leiningen/
