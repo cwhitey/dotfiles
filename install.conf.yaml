@@ -10,7 +10,6 @@
       path: emacs/flat/
     ~/.ctags:
       path: tags/.ctags
-    ~/.gitconfig: git/gitconfig
     ~/.lein:
       path: leiningen/
     ~/.vimrc:
