@@ -9,7 +9,7 @@
       force: true
       path: emacs/flat/
     ~/.ctags:
-      path: emacs/tags/.ctags
+      path: tags/.ctags
     ~/.gitconfig: git/gitconfig
     ~/.lein:
       path: leiningen/
