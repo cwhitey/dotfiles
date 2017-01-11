@@ -2,6 +2,9 @@ setopt glob_dots # glob for dotfiles as well (hidden)
 setopt no_beep # Disable sound
 unsetopt correct
 
+setopt appendhistory
+setopt sharehistory
+setopt incappendhistory
 setopt append_history
 setopt extended_history
 setopt hist_expire_dups_first
@@ -54,9 +57,10 @@ else
     source "${ZPLUG_HOME}/init.zsh"
 fi
 
-# Additional completions
+# Additional completions - consider using prezto modules/completion
 zplug "zsh-users/zsh-completions"
 zplug "felixr/docker-zsh-completion"
+zplug "plugins/lein", from:oh-my-zsh
 
 # Auto-suggestions for commands (KEEP BEFORE syntax-highlighting)
 zplug "zsh-users/zsh-autosuggestions"
@@ -80,6 +84,7 @@ bindkey -M emacs '^N' history-substring-search-down
 zplug "supercrabtree/k"
 zplug "plugins/colored-man-pages", from:oh-my-zsh
 zplug "zsh-users/zaw"
+zplug 'caarlos0/zsh-mkc'
 
 # theme
 zplug "mafredri/zsh-async", on:sindresorhus/pure
@@ -91,13 +96,12 @@ zplug "tcnksm/docker-alias"
 zplug "modules/git", from:prezto
 zplug "modules/fasd", from:prezto
 zplug "modules/homebrew", from:prezto, if:"[[ $(uname) == *Darwin* ]]"
-
 # load extra personal configs
 zplug "~/.zshrc.d", from:local, use:"*.zsh"
 
 # Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
+if ! zplug check; then
+    printf "Install new zplug packages? [y/N]: "
     if read -q; then
         echo; zplug install
     fi

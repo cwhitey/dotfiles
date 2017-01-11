@@ -6,9 +6,19 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 
 alias ln="${aliases[ln]:-ln} -v"  # verbose ln
-alias l='ls -1'
-alias ll='ls -l'
-alias la='ls -la'
+
+# ls shortcuts
+alias ls='ls -G'         # ls with colours
+alias l='ls -1A'         # One column, hidden files
+alias ll='ls -lh'        # Human readable
+alias lr='ll -R'         # Human readable, recursively
+alias la='ll -A'         # Human readablem hidden files
+alias lm='la | "$PAGER"' # Human readable, hidden files, in pager
+alias lx='ll -XB'        # By extension (GNU only).
+alias lk='ll -Sr'        # By size, largest last.
+alias lt='ll -tr'        # By date, most recent last.
+alias lc='lt -c'         # By date, most recent last, change time.
+alias lu='lt -u'         # By date, most recent last, access time.
 
 # notify me before clobbering files
 alias rm='rm -i'
@@ -20,6 +30,9 @@ alias keybindings='bindkey'
 ############
 # git
 ############
+unalias gc
+alias gc='git clone'
+alias gcv='git commit --verbose'
 alias ga='git add'
 alias gst='git status'
 alias gstash='git stash'
