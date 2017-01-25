@@ -51,8 +51,10 @@ alias doc_rm_exited='docker rm $(docker ps -aq --filter status=exited)'
 alias doc_rm_running='docker rm -f $(docker ps -aq --filter status=running)'
 # Kill all
 alias doc_rm_all='docker rm -f $(docker ps -aq)'
+# Delete all images
+alias doc_del_all_images='docker rmi $(docker images -aq)'
 # Delete dangling images
-alias doc_del_dangling='docker rmi $(docker images -aq --filter dangling=true)'
+alias doc_del_dangling_images='docker rmi $(docker images -aq --filter dangling=true)'
 
 ############
 # fasd
@@ -125,3 +127,4 @@ fi
 if [[ $(uname) == *Darwin* ]]; then
     unalias cask  # for Emacs' Cask tool
 fi
+alias brewin='brew info'

@@ -87,8 +87,9 @@ zplug "zsh-users/zaw"
 zplug 'caarlos0/zsh-mkc'
 
 # theme
-zplug "mafredri/zsh-async", on:sindresorhus/pure
-zplug "sindresorhus/pure", use:pure.zsh, defer:3
+#zplug "mafredri/zsh-async", on:sindresorhus/pure
+#zplug "sindresorhus/pure", use:pure.zsh, defer:3
+zplug "frmendes/geometry"
 
 # zplug alias packages
 zplug "djui/alias-tips"
