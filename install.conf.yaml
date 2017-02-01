@@ -41,15 +41,22 @@
     #   path: zsh/prezto/local/local_env.zsh
     
     #ZSH
+    # ~/.zshrc:
+    #   relink: true
+    #   path: zsh/zplug/.zshrc
+    # ~/.zshenv:
+    #   relink: true
+    #   path: zsh/zplug/.zshenv
+    # ~/.zshrc.d:
+    #   relink: true
+    #   path: zsh/zplug/.zshrc.d/
+
     ~/.zshrc:
       relink: true
-      path: zsh/zplug/.zshrc
-    ~/.zshenv:
+      path: zsh/antibody/.zshrc
+    ~/plugins.txt:
       relink: true
-      path: zsh/zplug/.zshenv
-    ~/.zshrc.d:
-      relink: true
-      path: zsh/zplug/.zshrc.d/
+      path: zsh/antibody/plugins.txt
 
     #Terminal Markdown Viewer
     /usr/local/bin/mdv: mdv/mdv.py
