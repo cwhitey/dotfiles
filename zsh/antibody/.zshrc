@@ -35,11 +35,11 @@ export HISTCONTROL=ignoredups
 export HISTFILE=~/.zsh_history
 export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help"
 
+bindkey -e  # emacs mode
 ###
 # Load packages
 ###
-source <(antibody init)
-antibody bundle < ~/plugins.txt
+source ~/.antibody-bundled-bundles.txt
 
 ###
 # App settings
@@ -58,6 +58,14 @@ bindkey '^I' $fzf_default_completion
 # Use the fast the_platinum_surfer instead of find. Also respects .gitignore etc.
 export FZF_DEFAULT_COMMAND='pt -l ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+###
+# Keybindings
+###
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+bindkey -M emacs '^P' history-substring-search-up
+bindkey -M emacs '^N' history-substring-search-down
 
 ###
 # Load other config files and compinit
