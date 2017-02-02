@@ -1,8 +1,10 @@
 djui/alias-tips
 caarlos0/zsh-mkc
 zsh-users/zsh-completions
-caarlos0/zsh-open-github-pr
 zsh-users/zsh-syntax-highlighting
 zsh-users/zsh-history-substring-search
+caarlos0/zsh-open-github-pr
+tcnksm/docker-alias
+hlissner/zsh-autopair
 mafredri/zsh-async
 sindresorhus/pure
