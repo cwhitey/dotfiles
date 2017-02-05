@@ -36,6 +36,12 @@ export HISTFILE=~/.zsh_history
 export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help"
 
 bindkey -e  # emacs mode
+
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
+typeset -A ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_STYLES[cursor-matchingbracket]=none
+ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=red,bold
+
 ###
 # Load packages
 ###
@@ -75,4 +81,5 @@ bindkey -M emacs '^N' history-substring-search-down
 autoload -U compinit && compinit
 
 [ -f ~/.zshrc.d/completion.zsh ] && source ~/.zshrc.d/completion.zsh
+[ -f ~/.zshrc.d/zaw-setup.zsh ] && source ~/.zshrc.d/zaw-setup.zsh 
 [ -f ~/.zshrc.d/local.zsh ] && source ~/.zshrc.d/local.zsh
