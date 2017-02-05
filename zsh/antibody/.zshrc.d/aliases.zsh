@@ -105,7 +105,7 @@ alias mdv='mdv -t "palette 99"'
 alias es='emacs --daemon'
 # NOTE: if alternate-editor is an empty string, Emacs is started in daemon mode and emacsclient will try to connect to it
 # open emacs in a gui frame
-ec() { emacsclient --alternate-editor='' -c $@ &; }
+ec() { emacsclient --alternate-editor='' $@ &; }
 # start emacs in a terminal
 alias et="emacsclient --alternate-editor='' -t"
 # kill emacs server
