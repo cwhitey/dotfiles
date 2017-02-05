@@ -2,7 +2,6 @@
 
 # Visual/Behavioral stuff
 zstyle ':filter-select' max-lines 10
-zstyle ':filter-select' max-lines -10
 zstyle ':filter-select' hist-find-no-dups yes
 zstyle ':filter-select' extended-search yes
 zstyle ':filter-select' case-insensitive yes
@@ -10,6 +9,7 @@ zstyle ':filter-select' rotate-list yes
 
 bindkey '^Z' zaw
 
+# The following zaw source needs fixing
 function zaw-src-fuzzy() {
     # Get the file list by find .
     OLDIFS=$IFS
@@ -26,8 +26,8 @@ function zaw-src-fuzzy() {
 }
 # Register our plugin
 zaw-register-src -n fuzzy zaw-src-fuzzy
-
 # Setup Ctrl-F shortcut to trigger
 function fuzzy-start { kill-line; zaw-fuzzy }
 zle -N fuzzy-start
-bindkey '^F' fuzzy-start
+
+bindkey '^F' zaw-git-files
