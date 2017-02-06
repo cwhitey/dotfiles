@@ -33,4 +33,4 @@ zaw-register-src -n fuzzy zaw-src-fuzzy
 function fuzzy-start { kill-line; zaw-fuzzy }
 zle -N fuzzy-start
 
-bindkey '^F' zaw-git-files
+#bindkey '^[f' zaw-git-files

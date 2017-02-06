@@ -61,6 +61,7 @@ eval "$(fasd --init auto)"
 export FZF_COMPLETION_TRIGGER=''
 bindkey '^T' fzf-completion
 bindkey '^I' $fzf_default_completion
+export FZF_DEFAULT_OPTS="--cycle --reverse --height 12 --inline-info --bind=ctrl-j:accept,ctrl-k:kill-line"
 # Use the fast the_platinum_surfer instead of find. Also respects .gitignore etc.
 export FZF_DEFAULT_COMMAND='pt -l ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
