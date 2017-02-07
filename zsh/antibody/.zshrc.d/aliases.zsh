@@ -116,16 +116,46 @@ alias er='ek; es;'
 ############
 # OSX
 ############
-# Lock the screen
-if [[ $(uname) == *Darwin* ]]; then
-    alias lock='/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend'
-fi
+# Acknowledgements
+# https://github.com/mwilliammyers/plugin-osx
+# https://github.com/unixorn/tumult.plugin.zsh
 
-############
-# homebrew
-############
-[ -f ~/.zshrc.d/aliases-homebrew.zsh ] && source ~/.zshrc.d/aliases-homebrew.zsh
-# if [[ $(uname) == *Darwin* ]]; then
-#     unalias cask  # for Emacs' Cask tool
-# fi
-alias brewin='brew info'
+if [[ $(uname) == *Darwin* ]]; then
+    # Lock the screen
+    if [[ $(uname) == *Darwin* ]]; then
+        alias lock='/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend'
+    fi
+
+    # Trim new lines and copy to clipboard
+    alias c="tr -d '\n' | pbcopy"
+
+    # Show/hide hidden files in Finder
+    alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
+    alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
+    
+    # Hide/show all desktop icons (useful when presenting)
+    alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
+    alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
+    
+    # turn ethernet on/off
+    alias ethoff="sudo networksetup setnetworkserviceenabled 'Ethernet 1' off"
+    alias ethon="sudo networksetup setnetworkserviceenabled 'Ethernet 1' on"
+
+    alias mute="osascript -e 'set volume output muted true'"
+
+    # MySQL
+    # Use homebrew versions if present
+    if [ -x /usr/local/bin/mysql/bin/mysql ]; then
+        alias mysql="/usr/local/mysql/bin/mysql"
+    fi
+
+    if [ -x /usr/local/bin/mysql/bin/mysqladmin ]; then
+        alias mysqladmin="/usr/local/mysql/bin/mysqladmin"
+    fi
+    
+    ############
+    # homebrew
+    ############
+    [ -f ~/.zshrc.d/aliases-homebrew.zsh ] && source ~/.zshrc.d/aliases-homebrew.zsh 
+    alias brewin='brew info'
+fi
