@@ -55,19 +55,9 @@ source /usr/local/share/chruby/chruby.sh
 #chruby ruby-2.2.3 # Set default ruby version
 
 eval "$(fasd --init auto)"
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Dedicated completion key while retaining default TAB (^I) behaviour
-export FZF_COMPLETION_TRIGGER=''
-bindkey '^T' fzf-completion
-bindkey '^I' $fzf_default_completion
-fzf_color_options="--color fg:-1,bg:-1,hl:230,fg+:3,bg+:233,hl+:229 --color info:150,prompt:110,spinner:150,pointer:167,marker:174"
-export FZF_DEFAULT_OPTS="--cycle --reverse --height 12 --inline-info --bind=ctrl-j:accept,ctrl-k:kill-line $fzf_color_options"
-# Use the fast the_platinum_surfer instead of find. Also respects .gitignore etc.
-#export FZF_DEFAULT_COMMAND='ag -g ""'
-#export FZF_DEFAULT_COMMAND='pt -l ""'
-export FZF_DEFAULT_COMMAND='rg --files'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.zshrc.d/fzf-setup.zsh ] && source ~/.zshrc.d/fzf-setup.zsh 
 
 ###
 # Keybindings
@@ -85,5 +75,5 @@ bindkey -M emacs '^N' history-substring-search-down
 autoload -U compinit && compinit
 
 [ -f ~/.zshrc.d/completion.zsh ] && source ~/.zshrc.d/completion.zsh
-[ -f ~/.zshrc.d/zaw-setup.zsh ] && source ~/.zshrc.d/zaw-setup.zsh 
+#[ -f ~/.zshrc.d/zaw-setup.zsh ] && source ~/.zshrc.d/zaw-setup.zsh 
 [ -f ~/.zshrc.d/local.zsh ] && source ~/.zshrc.d/local.zsh
