@@ -179,3 +179,6 @@ alias gwc='git clean -n'
 alias gwC='git clean -f'
 alias gwx='git rm -r'
 alias gwX='git rm -rf'
+
+# Misc.
+alias in_git_repo='[ -d .git ] || git rev-parse --git-dir > /dev/null 2>&1'
