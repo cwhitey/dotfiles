@@ -37,8 +37,8 @@ export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help"
 
 bindkey -e  # emacs mode
 
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 typeset -A ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 ZSH_HIGHLIGHT_STYLES[cursor-matchingbracket]=none
 ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=red,bold
 
@@ -68,7 +68,7 @@ bindkey -M emacs '^P' history-substring-search-up
 bindkey -M emacs '^N' history-substring-search-down
 
 ###
-# Load other config files and compinit
+# Load other config files and compinit (for completion)
 ###
 [ -f ~/.zshrc.d/aliases.zsh ] && source ~/.zshrc.d/aliases.zsh
 
