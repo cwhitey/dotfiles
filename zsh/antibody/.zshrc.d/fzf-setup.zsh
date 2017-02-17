@@ -7,4 +7,4 @@ export FZF_DEFAULT_OPTS="--exact --cycle --reverse --height 12 --inline-info --b
 # Use the fast the_platinum_surfer instead of find. Also respects .gitignore etc.
 export FZF_DEFAULT_COMMAND='ag -g ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-bindkey '^[f' fzf-file-widget
+bindkey '^Z' fzf-file-widget
