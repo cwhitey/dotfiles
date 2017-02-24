@@ -22,6 +22,14 @@ zstyle -s ':prezto:module:git:log:brief' format '_git_log_brief_format' \
 zstyle -s ':prezto:module:git:status:ignore' submodules '_git_status_ignore_submodules' \
     || _git_status_ignore_submodules='none'
 
+
+#
+# Functions
+#
+git-branch-current() {
+    git rev-parse --abbrev-ref HEAD
+}
+
 #
 # Aliases
 #
@@ -54,7 +62,7 @@ alias gcP='git cherry-pick --no-commit'
 alias gcr='git revert'
 alias gcR='git reset "HEAD^"'
 alias gcs='git show'
-alias gcl='git-commit-lost'
+#alias gcl='git-commit-lost'
 
 # Conflict (C)
 alias gCl='git status | sed -n "s/^.*both [a-z]*ed: *//p"'
