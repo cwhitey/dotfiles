@@ -118,7 +118,7 @@ alias sd='fasd -sid'     # interactive directory selection
 alias sf='fasd -sif'     # interactive file selection
 #unalias j
 alias j='fasd_cd -d'     # mimic autojump behaviour
-alias o='a -e open'      # use fasd to select file/directory to open
+alias o='fasd -ea open'      # use fasd to select file/directory to open
 
 ############
 # OSX
