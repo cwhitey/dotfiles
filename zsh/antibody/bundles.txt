@@ -3,6 +3,7 @@ caarlos0/zsh-mkc
 zsh-users/zsh-completions
 caarlos0/zsh-open-github-pr
 tcnksm/docker-alias
+greymd/docker-zsh-completion
 hlissner/zsh-autopair
 Tarrasch/zsh-bd
 mafredri/zsh-async

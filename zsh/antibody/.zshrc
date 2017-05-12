@@ -35,6 +35,8 @@ export HISTCONTROL=ignoredups
 export HISTFILE=~/.zsh_history
 export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help"
 
+export HOMEBREW_HOME="/usr/local/Cellar"
+
 bindkey -e  # emacs mode
 
 typeset -A ZSH_HIGHLIGHT_STYLES
