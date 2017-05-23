@@ -38,7 +38,7 @@ export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help"
 export HOMEBREW_HOME="/usr/local/Cellar"
 
 bindkey -e  # emacs mode
-# set proper word style so kill-commands stop on directory delimiters etc.
+# set proper word style so kill and move commands stop on directory delimiters etc.
 autoload -U select-word-style
 select-word-style bash
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
