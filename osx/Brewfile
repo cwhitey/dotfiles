@@ -15,7 +15,7 @@ brew 'openssl'
 brew 'tree'
 brew 'fzf'
 brew 'fasd'
-brew 'highlight' # for `less` highlighting (see zsh config)
+brew 'highlight' # for `less` highlighting (see `.zshenv`)
 brew 'lesspipe'
 brew 'readline'
 brew 'unrar'
