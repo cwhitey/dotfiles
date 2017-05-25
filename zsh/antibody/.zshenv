@@ -40,9 +40,22 @@ fi
 # default Less options
 # -X disables mouse scrolling (disable screen clearing).
 # remove -X and -F (exit if the content fits on one screen) to enable it.
-export LESS='-F -g -i -M -R -S -w -X -z-4'
+# export LESS='-F -g -i -M -R -S -w -X -z-4'
 # source-highlight for syntax highlighting in less
-[ -f /usr/local/bin/src-hilite-lesspipe.sh ] && export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
+# [ -f /usr/local/bin/src-hilite-lesspipe.sh ] && export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
+
+# Pipe Highlight to less
+export LESSOPEN="| $(which highlight) %s --out-format xterm256 --line-numbers --quiet --force --style moria"
+export LESS=" -R"
+alias less='less -m -N -g -i -J --line-numbers --underline-special'
+alias more='less'
+
+# Use "highlight" in place of "cat"
+alias cat="highlight $1 --out-format xterm256 --quiet --force --style moria"
+
+# Setup JSON Syntax Highlighting
+# Copy js.lang to json.lang with the following command
+# cp "$(dirname $(brew list highlight | head -n 1))/share/highlight/langDefs/js.lang" "$(dirname $(brew list highlight | head -n 1))/share/highlight/langDefs/json.lang"
 
 ## temporary Files
 if [[ ! -d "$TMPDIR" ]]; then
