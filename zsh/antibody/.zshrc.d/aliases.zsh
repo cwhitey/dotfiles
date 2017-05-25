@@ -121,6 +121,12 @@ alias j='fasd_cd -d'     # mimic autojump behaviour
 alias o='fasd -ea open'      # use fasd to select file/directory to open
 
 ############
+# Ripgrep
+############
+# make ripgrep case insensitive
+alias rg="rg -i"
+
+############
 # OSX
 ############
 # Acknowledgements
