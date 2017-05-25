@@ -20,7 +20,7 @@
     ~/.zshrc:
       relink: true
       path: zsh/antibody/.zshrc
-    ~/.zshenc:
+    ~/.zshenv:
       relink: true
       path: zsh/antibody/.zshenv
     ~/.zshrc.d:
