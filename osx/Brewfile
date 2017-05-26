@@ -101,7 +101,7 @@ cask 'vlc'
 cask 'alfred' # spotlight replacement
 cask 'iterm2'
 cask 'karabiner' # keyboard mapping
-cask 'seil' # rebind capslock
+cask 'karabiner-elements' # rebind capslock
 cask 'spotify'
 cask 'spectacle' # window management
 cask 'contexts' # command-tab replacement
