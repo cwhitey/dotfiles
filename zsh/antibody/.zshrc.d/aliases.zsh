@@ -153,7 +153,8 @@ if [[ $(uname) == *Darwin* ]]; then
     # turn ethernet on/off
     alias ethoff="sudo networksetup setnetworkserviceenabled 'Ethernet 1' off"
     alias ethon="sudo networksetup setnetworkserviceenabled 'Ethernet 1' on"
-
+    alias ethre="ethoff && ethon"
+    
     alias mute="osascript -e 'set volume output muted true'"
 
     # MySQL
@@ -170,5 +171,4 @@ if [[ $(uname) == *Darwin* ]]; then
     # homebrew
     ############
     [ -f ~/.zshrc.d/aliases-homebrew.zsh ] && source ~/.zshrc.d/aliases-homebrew.zsh 
-    alias brewin='brew info'
 fi
