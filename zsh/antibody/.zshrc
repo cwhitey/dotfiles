@@ -48,6 +48,17 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 ZSH_HIGHLIGHT_STYLES[cursor-matchingbracket]=none
 ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=red,bold
 
+# Expands .... to ../.. (stolen from zprezto)
+function expand-dot-to-parent-directory-path {
+    if [[ $LBUFFER = *.. ]]; then
+        LBUFFER+='/..'
+    else
+        LBUFFER+='.'
+    fi
+}
+zle -N expand-dot-to-parent-directory-path
+bindkey '.' expand-dot-to-parent-directory-path
+
 ###
 # Load packages
 ###
