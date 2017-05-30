@@ -1,3 +1,4 @@
+#!/bin/zsh
 setopt glob_dots # glob for dotfiles as well (hidden)
 setopt no_beep # Disable sound
 unsetopt correct
