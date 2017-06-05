@@ -88,10 +88,9 @@ bindkey -M emacs '^N' history-substring-search-down
 ###
 # Load other config files and compinit (for completion)
 ###
+[ -f ~/.zshrc.d/git-functions.zsh ] && source ~/.zshrc.d/git-functions.zsh
 [ -f ~/.zshrc.d/aliases.zsh ] && source ~/.zshrc.d/aliases.zsh
-
 autoload -U compinit && compinit
-
 [ -f ~/.zshrc.d/completion.zsh ] && source ~/.zshrc.d/completion.zsh
 #[ -f ~/.zshrc.d/zaw-setup.zsh ] && source ~/.zshrc.d/zaw-setup.zsh 
 [ -f ~/.zshrc.d/local.zsh ] && source ~/.zshrc.d/local.zsh
