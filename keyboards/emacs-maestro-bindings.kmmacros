@@ -6,7 +6,7 @@
 		<key>Activate</key>
 		<string>Normal</string>
 		<key>CreationDate</key>
-		<real>517476092.42141497</real>
+		<real>517709419.38786101</real>
 		<key>Macros</key>
 		<array>
 			<dict>
@@ -14,7 +14,7 @@
 				<array>
 					<dict>
 						<key>KeyCode</key>
-						<integer>123</integer>
+						<integer>117</integer>
 						<key>MacroActionType</key>
 						<string>SimulateKeystroke</string>
 						<key>Modifiers</key>
@@ -24,18 +24,18 @@
 					</dict>
 				</array>
 				<key>CreationDate</key>
-				<real>517476132.46644503</real>
+				<real>519893361.53638399</real>
 				<key>ModificationDate</key>
-				<real>517476799.51356101</real>
+				<real>519893387.26699197</real>
 				<key>Name</key>
-				<string>ctrl-b</string>
+				<string>C-d</string>
 				<key>Triggers</key>
 				<array>
 					<dict>
 						<key>FireType</key>
-						<string>WhileDown</string>
+						<string>Pressed</string>
 						<key>KeyCode</key>
-						<integer>11</integer>
+						<integer>2</integer>
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
@@ -43,219 +43,39 @@
 					</dict>
 				</array>
 				<key>UID</key>
-				<string>52A77F72-A10C-47DC-A8E8-2D3AD629FCDE</string>
+				<string>AB2F5A8D-06AF-4F34-BB70-D6D4CA9ADA8B</string>
 			</dict>
 		</array>
 		<key>Name</key>
-		<string>Global Macro Group</string>
+		<string>emacs bindings</string>
+		<key>Targeting</key>
+		<dict>
+			<key>Targeting</key>
+			<string>Excluded</string>
+			<key>TargetingApps</key>
+			<array>
+				<dict>
+					<key>BundleIdentifier</key>
+					<string>com.googlecode.iterm2</string>
+					<key>Name</key>
+					<string>iTerm</string>
+					<key>NewFile</key>
+					<string>/Applications/iTerm.app</string>
+				</dict>
+				<dict>
+					<key>BundleIdentifier</key>
+					<string>org.gnu.Emacs</string>
+					<key>Name</key>
+					<string>Emacs</string>
+					<key>NewFile</key>
+					<string>/usr/local/Cellar/emacs/25.2/Emacs.app</string>
+				</dict>
+			</array>
+		</dict>
 		<key>ToggleMacroUID</key>
-		<string>8FE48C6A-69B6-4762-ADBC-90114464D8F8</string>
+		<string>128E6C33-042D-4CA0-873C-914FBC849A67</string>
 		<key>UID</key>
-		<string>FEF660FD-2B37-4E04-8367-CCAC0385725A</string>
-	</dict>
-	<dict>
-		<key>Activate</key>
-		<string>Normal</string>
-		<key>CreationDate</key>
-		<real>517476092.42141497</real>
-		<key>Macros</key>
-		<array>
-			<dict>
-				<key>Actions</key>
-				<array>
-					<dict>
-						<key>KeyCode</key>
-						<integer>124</integer>
-						<key>MacroActionType</key>
-						<string>SimulateKeystroke</string>
-						<key>Modifiers</key>
-						<integer>0</integer>
-						<key>ReleaseAll</key>
-						<false/>
-					</dict>
-				</array>
-				<key>CreationDate</key>
-				<real>517476132.46644503</real>
-				<key>ModificationDate</key>
-				<real>517476758.85636002</real>
-				<key>Name</key>
-				<string>ctrl-f</string>
-				<key>Triggers</key>
-				<array>
-					<dict>
-						<key>FireType</key>
-						<string>WhileDown</string>
-						<key>KeyCode</key>
-						<integer>3</integer>
-						<key>MacroTriggerType</key>
-						<string>HotKey</string>
-						<key>Modifiers</key>
-						<integer>4096</integer>
-					</dict>
-				</array>
-				<key>UID</key>
-				<string>758BA6A7-BF08-40D5-BB7A-D8DC7E369E1E</string>
-			</dict>
-		</array>
-		<key>Name</key>
-		<string>Global Macro Group</string>
-		<key>ToggleMacroUID</key>
-		<string>8FE48C6A-69B6-4762-ADBC-90114464D8F8</string>
-		<key>UID</key>
-		<string>FEF660FD-2B37-4E04-8367-CCAC0385725A</string>
-	</dict>
-	<dict>
-		<key>Activate</key>
-		<string>Normal</string>
-		<key>CreationDate</key>
-		<real>517476092.42141497</real>
-		<key>Macros</key>
-		<array>
-			<dict>
-				<key>Actions</key>
-				<array>
-					<dict>
-						<key>KeyCode</key>
-						<integer>53</integer>
-						<key>MacroActionType</key>
-						<string>SimulateKeystroke</string>
-						<key>Modifiers</key>
-						<integer>0</integer>
-						<key>ReleaseAll</key>
-						<false/>
-					</dict>
-				</array>
-				<key>CreationDate</key>
-				<real>517476132.46644503</real>
-				<key>ModificationDate</key>
-				<real>517477387.51547199</real>
-				<key>Name</key>
-				<string>ctrl-g</string>
-				<key>Triggers</key>
-				<array>
-					<dict>
-						<key>FireType</key>
-						<string>WhileDown</string>
-						<key>KeyCode</key>
-						<integer>5</integer>
-						<key>MacroTriggerType</key>
-						<string>HotKey</string>
-						<key>Modifiers</key>
-						<integer>4096</integer>
-					</dict>
-				</array>
-				<key>UID</key>
-				<string>1544F27F-E6F4-4060-8A9B-281FE1DA3D86</string>
-			</dict>
-		</array>
-		<key>Name</key>
-		<string>Global Macro Group</string>
-		<key>ToggleMacroUID</key>
-		<string>8FE48C6A-69B6-4762-ADBC-90114464D8F8</string>
-		<key>UID</key>
-		<string>FEF660FD-2B37-4E04-8367-CCAC0385725A</string>
-	</dict>
-	<dict>
-		<key>Activate</key>
-		<string>Normal</string>
-		<key>CreationDate</key>
-		<real>517476092.42141497</real>
-		<key>Macros</key>
-		<array>
-			<dict>
-				<key>Actions</key>
-				<array>
-					<dict>
-						<key>KeyCode</key>
-						<integer>125</integer>
-						<key>MacroActionType</key>
-						<string>SimulateKeystroke</string>
-						<key>Modifiers</key>
-						<integer>0</integer>
-						<key>ReleaseAll</key>
-						<false/>
-					</dict>
-				</array>
-				<key>CreationDate</key>
-				<real>517476132.46644503</real>
-				<key>ModificationDate</key>
-				<real>517476382.93681699</real>
-				<key>Name</key>
-				<string>ctrl-n</string>
-				<key>Triggers</key>
-				<array>
-					<dict>
-						<key>FireType</key>
-						<string>WhileDown</string>
-						<key>KeyCode</key>
-						<integer>45</integer>
-						<key>MacroTriggerType</key>
-						<string>HotKey</string>
-						<key>Modifiers</key>
-						<integer>4096</integer>
-					</dict>
-				</array>
-				<key>UID</key>
-				<string>CD10CD27-ABB2-487B-9CC3-83327E001CFB</string>
-			</dict>
-		</array>
-		<key>Name</key>
-		<string>Global Macro Group</string>
-		<key>ToggleMacroUID</key>
-		<string>8FE48C6A-69B6-4762-ADBC-90114464D8F8</string>
-		<key>UID</key>
-		<string>FEF660FD-2B37-4E04-8367-CCAC0385725A</string>
-	</dict>
-	<dict>
-		<key>Activate</key>
-		<string>Normal</string>
-		<key>CreationDate</key>
-		<real>517476092.42141497</real>
-		<key>Macros</key>
-		<array>
-			<dict>
-				<key>Actions</key>
-				<array>
-					<dict>
-						<key>KeyCode</key>
-						<integer>126</integer>
-						<key>MacroActionType</key>
-						<string>SimulateKeystroke</string>
-						<key>Modifiers</key>
-						<integer>0</integer>
-						<key>ReleaseAll</key>
-						<false/>
-					</dict>
-				</array>
-				<key>CreationDate</key>
-				<real>517476132.46644503</real>
-				<key>ModificationDate</key>
-				<real>517476782.69883502</real>
-				<key>Name</key>
-				<string>ctrl-p</string>
-				<key>Triggers</key>
-				<array>
-					<dict>
-						<key>FireType</key>
-						<string>WhileDown</string>
-						<key>KeyCode</key>
-						<integer>35</integer>
-						<key>MacroTriggerType</key>
-						<string>HotKey</string>
-						<key>Modifiers</key>
-						<integer>4096</integer>
-					</dict>
-				</array>
-				<key>UID</key>
-				<string>D90F3619-D0CA-49A2-BFDD-F70F380F1490</string>
-			</dict>
-		</array>
-		<key>Name</key>
-		<string>Global Macro Group</string>
-		<key>ToggleMacroUID</key>
-		<string>8FE48C6A-69B6-4762-ADBC-90114464D8F8</string>
-		<key>UID</key>
-		<string>FEF660FD-2B37-4E04-8367-CCAC0385725A</string>
+		<string>784C6A10-8E2E-47B4-ACE8-D910FB59810C</string>
 	</dict>
 </array>
 </plist>
