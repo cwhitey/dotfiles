@@ -76,6 +76,7 @@ emacs_server_is_running() {
 }
 # start emacs server
 alias es='emacs --daemon'
+e() { emacs $@ &; }
 # NOTE: if alternate-editor is an empty string, Emacs is first started in daemon mode and emacsclient will try to connect to it
 # NOTE: this doesn't work well when emacsclient is called this way by another program .e.g git
 # open emacs in a new gui frame (do this the first time you use emacs after firing up server)
