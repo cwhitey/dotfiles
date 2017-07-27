@@ -49,17 +49,6 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 ZSH_HIGHLIGHT_STYLES[cursor-matchingbracket]=none
 ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=red,bold
 
-# Expands .... to ../.. (stolen from zprezto)
-function expand-dot-to-parent-directory-path {
-    if [[ $LBUFFER = *.. ]]; then
-        LBUFFER+='/..'
-    else
-        LBUFFER+='.'
-    fi
-}
-zle -N expand-dot-to-parent-directory-path
-bindkey '.' expand-dot-to-parent-directory-path
-
 ###
 # Load packages
 ###
@@ -80,10 +69,7 @@ eval "$(fasd --init auto)"
 ###
 # Keybindings
 ###
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
-bindkey -M emacs '^P' history-substring-search-up
-bindkey -M emacs '^N' history-substring-search-down
+[ -f ~/.zshrc.d/keybindings.zsh ] && source ~/.zshrc.d/keybindings.zsh
 
 ###
 # Load other config files and compinit (for completion)
