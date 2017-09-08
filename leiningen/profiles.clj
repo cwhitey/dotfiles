@@ -1,6 +1,6 @@
 {:user {:plugins [
                   ;; Code quality:
-                  [lein-ancient "0.6.7"]
+                  [lein-ancient "0.6.10"]
                   ;; [lein-bikeshed "0.2.0"]
                   ;; [lein-kibit "0.1.2"]
                   ;; [jonase/eastwood "0.2.1"]
@@ -11,7 +11,7 @@
                   ;; [lein-droid "0.4.0-alpha4"] ;;Clojure android project builder
                   
                   ;; Other
-                  ;; [venantius/ultra "0.4.1"]
+                  [venantius/ultra "0.5.1"]
                   ;; [lein-marginalia "0.9.0"]
                   [lein-try "0.4.3"]]
 
@@ -35,8 +35,8 @@
                 :color-scheme :solarized_dark}}
  :repl {:plugins [
                   ;; Cider (Emacs):
-                  [refactor-nrepl "2.2.0"]
-                  [cider/cider-nrepl "0.13.0"]
+                  [refactor-nrepl "2.3.1"]
+                  [cider/cider-nrepl "0.15.0"]
                   ;; [joodie/clojure-refactoring "0.6.4" :exclusions [org.clojure/clojure]]
                   ]}
  ;; :cuttle {:plugins [[lein-pprint "1.1.1"]]}
