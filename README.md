@@ -2,6 +2,9 @@
 
 These dotfiles use dotbot for linkage.
 
+- First run `git submodule --update --init`
+- `./install`
+
 ## Dependencies
 
 ### Prezto
