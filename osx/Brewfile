@@ -20,7 +20,6 @@ brew 'fasd'
 brew 'highlight' # for `less` highlighting (see `.zshenv`)
 brew 'lesspipe'
 brew 'readline'
-brew 'unrar'
 brew 'wget'
 brew 'htop'
 brew 'ffmpeg' # for youtube-dl post-processing
