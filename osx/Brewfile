@@ -69,6 +69,7 @@ brew 'heroku'
 brew 'heroku-toolbelt'
 cask 'docker' # docker-for-mac
 brew 'docker-compose'
+cask 'ngrok'
 brew 'ctags'
 brew 'jq' # json processor
 brew 'tig' # git visualization
@@ -87,6 +88,7 @@ cask 'font-terminus'
 cask 'font-dejavu-sans'
 cask 'font-hack'
 cask 'font-roboto-mono'
+cask 'font-monoid'
 # `mensch` font is also great for programming, but it's not in caskroom/fonts :(
 #    http://robey.lag.net/2010/06/21/mensch-font.html
 # for icons (mostly used within emacs)
