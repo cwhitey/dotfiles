@@ -8,9 +8,9 @@ tap 'homebrew/bundle'
 
 brew 'coreutils'
 brew 'zsh'
+cask 'xquartz'
 brew 'grc' # colourize log commands (e.g. ``grc tail /var/log/syslog`)
 brew 'imagemagick'
-brew 'libcaca', args: ['with-imlib2']
 brew 'libgit2'
 brew 'openssl'
 brew 'tree'
@@ -110,8 +110,9 @@ cask 'transmission' # torrenting
 cask 'vlc'
 cask 'alfred' # spotlight replacement
 cask 'iterm2'
-cask 'karabiner' # keyboard mapping
-cask 'karabiner-elements' # rebind capslock
+# cask 'karabiner' # keyboard mapping
+# cask 'karabiner-elements' # rebind capslock
+cask 'keyboard-maestro' # keyboard mapping
 cask 'spotify'
 cask 'spectacle' # window management
 cask 'contexts' # command-tab replacement
