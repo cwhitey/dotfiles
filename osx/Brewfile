@@ -7,12 +7,14 @@ cask_args appdir: '/Applications'
 tap 'homebrew/bundle'
 
 brew 'coreutils'
+brew 'zsh'
 brew 'grc' # colourize log commands (e.g. ``grc tail /var/log/syslog`)
 brew 'imagemagick'
 brew 'libcaca', args: ['with-imlib2']
 brew 'libgit2'
 brew 'openssl'
 brew 'tree'
+# Note: May have to copy fzf.zsh to ~ 
 brew 'fzf'
 brew 'fasd'
 brew 'highlight' # for `less` highlighting (see `.zshenv`)
@@ -32,6 +34,7 @@ brew 'youtube-dl' # download Youtube (and other) videos
 # searching
 brew 'ripgrep' # rg
 brew 'the_silver_searcher' # ag
+# brew 'sift'
 
 # programming languages
 cask 'java'
@@ -51,23 +54,28 @@ brew 'ruby-install'
 # DBs
 brew 'postgresql'
 brew 'mysql'
+brew 'elasticsearch'
 
 # editors
-brew 'emacs'
+# brew 'emacs', args: ['with-cocoa']
+cask 'emacs'
+cask 'intellij-idea-ce'
 tap 'neovim/neovim'
 brew 'neovim'
 
 # tools
+brew 'awscli'
 brew 'heroku'
 brew 'heroku-toolbelt'
-brew 'docker'
 cask 'docker' # docker-for-mac
-brew 'docker-machine' # for docker-compose to install
 brew 'docker-compose'
 brew 'ctags'
 brew 'jq' # json processor
 brew 'tig' # git visualization
 brew 'httpie' # smart curl replacement?
+
+# keyboard stuff
+# brew 'dfu-programmer'
 
 # fonts
 tap 'caskroom/fonts'
@@ -105,7 +113,7 @@ cask 'karabiner-elements' # rebind capslock
 cask 'spotify'
 cask 'spectacle' # window management
 cask 'contexts' # command-tab replacement
-cask 'goofy' # facebook messenger
+# cask 'goofy' # facebook messenger
 cask 'flux' # blue light removal
 cask 'smcfancontrol'
 cask 'scroll-reverser'
