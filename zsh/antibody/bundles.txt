@@ -1,4 +1,3 @@
-djui/alias-tips
 caarlos0/zsh-mkc
 zsh-users/zsh-completions
 caarlos0/zsh-open-github-pr
