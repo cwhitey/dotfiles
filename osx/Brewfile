@@ -63,6 +63,8 @@ tap 'neovim/neovim'
 brew 'neovim'
 
 # tools
+tap 'getantibody/tap/antibody'
+brew 'antibody'
 brew 'awscli'
 brew 'heroku'
 brew 'heroku-toolbelt'
