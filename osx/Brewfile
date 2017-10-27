@@ -7,14 +7,14 @@ cask_args appdir: '/Applications'
 tap 'homebrew/bundle'
 
 brew 'coreutils'
-brew 'zsh'
+brew 'zsh' # see https://rick.cogley.info/post/use-homebrew-zsh-instead-of-the-osx-default/
 cask 'xquartz'
 brew 'grc' # colourize log commands (e.g. ``grc tail /var/log/syslog`)
 brew 'imagemagick'
 brew 'libgit2'
 brew 'openssl'
 brew 'tree'
-# Note: May have to copy fzf.zsh to ~ 
+# Note: May have to copy fzf.zsh to ~
 brew 'fzf'
 brew 'fasd'
 brew 'highlight' # for `less` highlighting (see `.zshenv`)
@@ -63,7 +63,7 @@ tap 'neovim/neovim'
 brew 'neovim'
 
 # tools
-tap 'getantibody/tap/antibody'
+tap 'getantibody/tap'
 brew 'antibody'
 brew 'awscli'
 brew 'heroku'
