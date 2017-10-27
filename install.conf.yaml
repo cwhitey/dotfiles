@@ -1,6 +1,9 @@
 - clean: ['~']
 
 - link:
+    ~/.gitconfig:
+      relink: true
+      path: git/gitconfig
     ~/.agignore:
       relink: true
       path: ag/agignore
@@ -26,9 +29,9 @@
     ~/.zshrc.d:
       relink: true
       path: zsh/antibody/.zshrc.d/
-    ~/plugins.txt:
-      relink: true
-      path: zsh/antibody/plugins.txt
+    # ~/plugins.txt:
+    #   relink: true
+    #   path: zsh/antibody/plugins.txt
 
     # Terminal Markdown Viewer
     /usr/local/bin/mdv: mdv/mdv.py
