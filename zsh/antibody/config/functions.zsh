@@ -4,8 +4,6 @@
 #   ls -la
 # }
 
-
-
 function debug_zsh_config() {
     ## -i Force shell to be interactive
     ## -x Set XTRACE option

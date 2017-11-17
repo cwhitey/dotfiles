@@ -168,5 +168,5 @@ if [[ $(uname) == *Darwin* ]]; then
     ############
     # homebrew
     ############
-    [ -f ~/.zshrc.d/aliases-homebrew.zsh ] && source ~/.zshrc.d/aliases-homebrew.zsh 
+    [ -f $ZCONFIG/aliases-homebrew.zsh ] && source $ZCONFIG/aliases-homebrew.zsh 
 fi
