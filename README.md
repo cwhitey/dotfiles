@@ -13,3 +13,6 @@ These dotfiles use dotbot for linkage.
 - fasd (`brew install fasd`) (see `zshrc`)
 - fzf (install using git from https://github.com/junegunn/fzf)
 - the_platinum_surfer (`brew install pt`) (see `zshrc`)
+
+## TODO
+- Use Stow
