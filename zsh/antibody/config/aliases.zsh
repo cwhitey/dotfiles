@@ -26,7 +26,7 @@ alias keybindings='bindkey'
 ############
 # git
 ############
-[ -f ~/.zshrc.d/aliases-git.zsh ] && source ~/.zshrc.d/aliases-git.zsh
+[ -f $ZCONFIG/aliases-git.zsh ] && source $ZCONFIG/aliases-git.zsh
 alias gcv='git commit --verbose'
 alias ga='git add'
 alias gap='git add --patch'

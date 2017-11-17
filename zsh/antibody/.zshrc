@@ -1,33 +1,47 @@
 #!/bin/zsh
-setopt glob_dots # glob for dotfiles as well (hidden)
-setopt no_beep # Disable sound
-unsetopt correct
 
-setopt appendhistory
-setopt sharehistory
-setopt incappendhistory
-setopt append_history
-setopt extended_history
+# resolve zsh dotfiles directory
+SOURCE=${(%):-%N}
+while [ -h "$SOURCE" ]; do
+  DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+  SOURCE="$(readlink "$SOURCE")"
+  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
+done
+ZSOURCEDIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+ZCONFIG="$ZSOURCEDIR/config"
+fpath=( $ZSOURCEDIR $fpath )
+
+###
+# Settings
+#     - opt names are case insensitive and ignore underscores
+###
+
+# general settings
+setopt no_beep # disable sound on error
+
+# changing directories
+setopt auto_cd # automatically cd to a directory if not cmd
+setopt auto_pushd # automatically pushd directories on dirstack
+setopt pushd_ignore_dups # don't push dups on stack
+setopt pushd_minus # don't push multiple copies of the same directory onto the directory stack
+
+# correction
+unsetopt correct # no command or argument spell correction (too intrusive)
+
+# glob/expansion settings
+setopt glob_dots # don't require a ('.') specifically
+setopt extended_glob # treat #, ~, and ^ as part of patterns for filename generation
+
+# history
+setopt share_history # imports new commands and appends typed commands to history
+setopt append_history # allow multiple terminal sessions to all append to one zsh command history
+setopt inc_append_history # add commands as they are typed, don't wait until shell exit
+setopt extended_history # save timestamp of command and duration
 setopt hist_expire_dups_first
 setopt hist_ignore_all_dups
-setopt hist_ignore_dups
-setopt hist_ignore_space
-setopt hist_verify
-setopt inc_append_history
-setopt share_history
-
-setopt extended_glob
-
-unsetopt menu_complete
-unsetopt flowcontrol
-
-setopt always_to_end
-setopt auto_menu
-setopt complete_in_word
-setopt auto_cd
-setopt auto_pushd
-setopt pushd_ignore_dups
-setopt pushdminus
+setopt hist_ignore_dups # ignore consecutive duplicates
+setopt hist_ignore_space # remove command line from history list when first character on the line is a space
+setopt hist_verify # don't execute, just expand history
 
 export HISTSIZE=100000
 export SAVEHIST=100000
@@ -36,9 +50,17 @@ export HISTCONTROL=ignoredups
 export HISTFILE=~/.zsh_history
 export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help"
 
-export HOMEBREW_HOME="/usr/local/Cellar"
+# completiona
+unsetopt flow_control
+unsetopt menu_complete # do not autoselect the first completion entry
+setopt auto_menu # show completion menu on successive tab press. needs unsetop menu_complete to work
+setopt auto_name_dirs
+setopt complete_in_word # allow completion from within a word/phrase
+setopt always_to_end # when completing from the middle of a word, move the cursor to the end of the word
 
-bindkey -e  # emacs mode
+# keybindings
+bindkey -e # use emacs mode keybindings
+
 # set proper word style so kill and move commands stop on directory delimiters etc.
 autoload -U select-word-style
 select-word-style bash
@@ -52,7 +74,19 @@ ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=red,bold
 ###
 # Load packages
 ###
-source ~/.antibody-bundled-bundles.txt
+source $ZSOURCEDIR/antibody-bundled-bundles.txt
+
+###
+# after-package-load overrides
+###
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=240"
+export HOMEBREW_HOME="/usr/local/Cellar"
+
+###
+# Theme
+###
+autoload -U promptinit; promptinit
+prompt pure
 
 ###
 # App settings
@@ -63,20 +97,24 @@ source /usr/local/share/chruby/chruby.sh
 
 eval "$(fasd --init auto)"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-[ -f ~/.zshrc.d/fzf-setup.zsh ] && source ~/.zshrc.d/fzf-setup.zsh 
+# may need to run /usr/local/Cellar/fzf/0.17.1/install if this doesn't exist
+#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+#[ -f $ZCONFIG/fzf-setup.zsh ] && source $ZCONFIG/fzf-setup.zsh
 
 ###
 # Keybindings
 ###
-[ -f ~/.zshrc.d/keybindings.zsh ] && source ~/.zshrc.d/keybindings.zsh
+[ -f $ZCONFIG/keybindings.zsh ] && source $ZCONFIG/keybindings.zsh
 
 ###
 # Load other config files and compinit (for completion)
 ###
-[ -f ~/.zshrc.d/git-functions.zsh ] && source ~/.zshrc.d/git-functions.zsh
-[ -f ~/.zshrc.d/aliases.zsh ] && source ~/.zshrc.d/aliases.zsh
+[ -f $ZCONFIG/git-functions.zsh ] && source $ZCONFIG/git-functions.zsh
+[ -f $ZCONFIG/aliases.zsh ] && source $ZCONFIG/aliases.zsh
+
+[ -f $ZCONFIG/completion.zsh ] && source $ZCONFIG/completion.zsh
+# initialise zsh completion system
 autoload -U compinit && compinit
-[ -f ~/.zshrc.d/completion.zsh ] && source ~/.zshrc.d/completion.zsh
-#[ -f ~/.zshrc.d/zaw-setup.zsh ] && source ~/.zshrc.d/zaw-setup.zsh 
-[ -f ~/.zshrc.d/local.zsh ] && source ~/.zshrc.d/local.zsh
+
+#[ -f $ZCONFIG/zaw-setup.zsh ] && source $ZCONFIG/zaw-setup.zsh 
+[ -f $ZCONFIG/local.zsh ] && source $ZCONFIG/local.zsh || true
