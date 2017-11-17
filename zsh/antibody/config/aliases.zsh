@@ -133,9 +133,7 @@ alias rg="rg -i"
 
 if [[ $(uname) == *Darwin* ]]; then
     # Lock the screen
-    if [[ $(uname) == *Darwin* ]]; then
-        alias lock='/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend'
-    fi
+    alias lock='/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend'
 
     # Trim new lines and copy to clipboard
     alias c="tr -d '\n' | pbcopy"
