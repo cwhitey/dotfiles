@@ -26,12 +26,6 @@
     ~/.zshenv:
       relink: true
       path: zsh/antibody/.zshenv
-    ~/.zshrc.d:
-      relink: true
-      path: zsh/antibody/.zshrc.d/
-    # ~/plugins.txt:
-    #   relink: true
-    #   path: zsh/antibody/plugins.txt
 
     # Terminal Markdown Viewer
     /usr/local/bin/mdv: mdv/mdv.py
