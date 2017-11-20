@@ -1,9 +1,6 @@
 [submodule "zsh/prezto"]
 	path = zsh/prezto
 	url = https://github.com/cwhitey/prezto.git
-[submodule "emacs/prelude"]
-	path = emacs/prelude
-	url = https://github.com/cwhitey/prelude.git
 [submodule "emacs/flat"]
 	path = emacs/flat
 	url = https://github.com/cwhitey/emacs.d.git
