@@ -6,7 +6,7 @@ alias ln="${aliases[ln]:-ln} -v"  # verbose ln
 # ls shortcuts
 alias ls='ls -G'         # ls with colours
 alias l='ls -1A'         # One column, hidden files
-alias ll='ls -lh'        # Human readable
+alias ll='ls -oh'        # Human readable
 alias lr='ll -R'         # Human readable, recursively
 alias la='ll -A'         # Human readablem hidden files
 alias lm='la | "$PAGER"' # Human readable, hidden files, in pager
@@ -130,7 +130,6 @@ alias rg="rg -i"
 # Acknowledgements
 # https://github.com/mwilliammyers/plugin-osx
 # https://github.com/unixorn/tumult.plugin.zsh
-
 if [[ $(uname) == *Darwin* ]]; then
     # Lock the screen
     alias lock='/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend'
