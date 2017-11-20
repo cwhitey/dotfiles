@@ -98,8 +98,8 @@ source /usr/local/share/chruby/chruby.sh
 eval "$(fasd --init auto)"
 
 # may need to run /usr/local/Cellar/fzf/0.17.1/install if this doesn't exist
-#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-#[ -f $ZCONFIG/fzf-setup.zsh ] && source $ZCONFIG/fzf-setup.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f $ZCONFIG/fzf-setup.zsh ] && source $ZCONFIG/fzf-setup.zsh
 
 ###
 # Keybindings
