@@ -80,7 +80,6 @@ source $ZSOURCEDIR/antibody-bundled-bundles.txt
 # after-package-load overrides
 ###
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=240"
-export HOMEBREW_HOME="/usr/local/Cellar"
 
 ###
 # Theme
@@ -99,22 +98,22 @@ eval "$(fasd --init auto)"
 
 # may need to run /usr/local/Cellar/fzf/0.17.1/install if this doesn't exist
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-[ -f $ZCONFIG/fzf-setup.zsh ] && source $ZCONFIG/fzf-setup.zsh
+source $ZCONFIG/fzf-setup.zsh
 
 ###
 # Keybindings
 ###
-[ -f $ZCONFIG/keybindings.zsh ] && source $ZCONFIG/keybindings.zsh
+source $ZCONFIG/keybindings.zsh
 
 ###
 # Load other config files and compinit (for completion)
 ###
-[ -f $ZCONFIG/git-functions.zsh ] && source $ZCONFIG/git-functions.zsh
-[ -f $ZCONFIG/aliases.zsh ] && source $ZCONFIG/aliases.zsh
+source $ZCONFIG/git-functions.zsh
+source $ZCONFIG/aliases.zsh
 
-[ -f $ZCONFIG/completion.zsh ] && source $ZCONFIG/completion.zsh
+source $ZCONFIG/completion.zsh
 # initialise zsh completion system
 autoload -U compinit && compinit
 
-#[ -f $ZCONFIG/zaw-setup.zsh ] && source $ZCONFIG/zaw-setup.zsh 
+# source $ZCONFIG/zaw-setup.zsh 
 [ -f $ZCONFIG/local.zsh ] && source $ZCONFIG/local.zsh || true
