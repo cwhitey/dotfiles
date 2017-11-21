@@ -15,12 +15,15 @@ export AWS_CLI=/usr/local/bin/aws
 ############
 # Settings
 ############
+## homebrew
+export HOMEBREW_HOME="/usr/local/Cellar"
+
 ## leiningen
 export LEIN_FAST_TRAMPOLINE=y
 
 ## ls
 export LSCOLORS='exfxcxdxbxGxDxabagacad'
-export LS_COLORS= 'di=34:ln=35:so=32:pi=33:ex=31:bd=36;01:cd=33;01:su=31;40;07:sg=36;40;07:tw=32;40;07:ow=33;40;07:'
+export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=36;01:cd=33;01:su=31;40;07:sg=36;40;07:tw=32;40;07:ow=33;40;07:'
 
 ## editors
 export VISUAL='nano'
@@ -45,18 +48,17 @@ fi
 # source-highlight for syntax highlighting in less
 # [ -f /usr/local/bin/src-hilite-lesspipe.sh ] && export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
 
-# Pipe Highlight to less
-export LESSOPEN="| $(which highlight) %s --out-format xterm256 --line-numbers --quiet --force --style moria"
+# use 'highlight' for syntax highlighting
+export LESSOPEN="| /usr/local/bin/highlight %s --out-format xterm256 --line-numbers --quietx`` --force --style moria"
 export LESS=" -R"
 alias less='less -m -N -g -i -J --line-numbers --underline-special'
-alias more='less'
 
 # Use "highlight" in place of "cat"
 alias cat="highlight $1 --out-format xterm256 --quiet --force --style moria"
 
 # Setup JSON Syntax Highlighting
 # Copy js.lang to json.lang with the following command
-# cp "$(dirname $(brew list highlight | head -n 1))/share/highlight/langDefs/js.lang" "$(dirname $(brew list highlight | head -n 1))/share/highlight/langDefs/json.lang"
+# cp /usr/local/Cellar/highlight/3.40/share/highlight/langDefs/js.lang /usr/local/Cellar/highlight/3.40/share/highlight/langDefs/json.lang
 
 ## temporary Files
 if [[ ! -d "$TMPDIR" ]]; then
