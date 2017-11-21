@@ -36,7 +36,7 @@ brew 'the_silver_searcher' # ag
 # brew 'sift'
 
 # programming languages
-cask 'java'
+cask 'java8'
 brew 'go'
 brew 'node'
 brew 'nvm' # node version manager
