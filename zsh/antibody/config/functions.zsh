@@ -10,3 +10,8 @@ function debug_zsh_config() {
     ## -c Take the first argument as a command to execute rather than reading from scripts or standard input
     zsh -i -x -c exit
 }
+
+# grep over all aliases
+function aliasg() {
+    alias | grep $1
+}
