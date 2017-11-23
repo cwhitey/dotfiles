@@ -49,7 +49,7 @@ fi
 # [ -f /usr/local/bin/src-hilite-lesspipe.sh ] && export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
 
 # use 'highlight' for syntax highlighting
-export LESSOPEN="| /usr/local/bin/highlight %s --out-format xterm256 --line-numbers --quietx`` --force --style moria"
+export LESSOPEN="| /usr/local/bin/highlight %s --out-format xterm256 --line-numbers --quiet`` --force --style moria"
 export LESS=" -R"
 alias less='less -m -N -g -i -J --line-numbers --underline-special'
 
