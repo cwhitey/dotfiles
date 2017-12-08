@@ -7,10 +7,13 @@
     ~/.agignore:
       relink: true
       path: ag/agignore
-    ~/.emacs.d:
+    # ~/.emacs.d:
+    #   relink: true
+    #   force: true
+    #   path: emacs/flat/
+    ~/.spacemacs:
       relink: true
-      force: true
-      path: emacs/flat/
+      path: emacs/spacemacs/.spacemacs
     ~/.ctags:
       path: tags/.ctags
     ~/.lein:
