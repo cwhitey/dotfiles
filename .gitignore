@@ -2,3 +2,4 @@
 *DS_Store
 /zsh/zplug/.zshrc.d/local.zsh
 /zsh/antibody/.zshrc.d/local.zsh
+/leiningen/self-installs/
