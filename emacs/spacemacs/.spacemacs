@@ -117,24 +117,17 @@ values."
    dotspacemacs-elpa-https t
    ;; Maximum allowed time in seconds to contact an ELPA repository.
    dotspacemacs-elpa-timeout 5
-   ;; If non nil then spacemacs will check for updates at startup
-   ;; when the current branch is not `develop'. Note that checking for
-   ;; new versions works via git commands, thus it calls GitHub services
-   ;; whenever you start Emacs. (default nil)
-   dotspacemacs-check-for-update nil
    ;; If non-nil, a form that evaluates to a package directory. For example, to
    ;; use different package directories for different Emacs versions, set this
    ;; to `emacs-version'.
    dotspacemacs-elpa-subdirectory nil
-   ;; One of `vim', `emacs' or n`hybrid'.
+   ;; One of `vim', `emacs' or `hybrid'.
    ;; `hybrid' is like `vim' except that `insert state' is replaced by the
    ;; `hybrid state' with `emacs' key bindings. The value can also be a list
    ;; with `:variables' keyword (similar to layers). Check the editing styles
    ;; section of the documentation for details on available variables.
    ;; (default 'vim)
    dotspacemacs-editing-style 'emacs
-   ;; If non nil output loading progress in `*Messages*' buffer. (default nil)
-   dotspacemacs-verbose-loading nil
    ;; Specify the startup banner. Default value is `official', it displays
    ;; the official spacemacs logo. An integer value is the index of text
    ;; banner, `random' chooses a random text banner in `core/banners'
@@ -150,10 +143,7 @@ values."
    ;; `spacemacs-buffer-startup-lists-length' takes effect.
    dotspacemacs-startup-lists '((recents . 5)
                                 (projects . 7))
-   ;; True if the home buffer should respond to resize events.
-   dotspacemacs-startup-buffer-responsive t
-   ;; Default major mode of the scratch buffer (default `text-mode')
-   dotspacemacs-scratch-mode 'text-mode
+   dotspacemacs-scratch-mode 'emacs-lisp-mode
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
@@ -168,8 +158,6 @@ values."
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
-   ;; The leader key
-   dotspacemacs-leader-key "SPC"
    ;; The key used for Emacs commands (M-x) (after pressing on the leader key).
    ;; (default "SPC")
    dotspacemacs-emacs-command-key "SPC"
@@ -332,6 +320,8 @@ before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
   (setq exec-path-from-shell-check-startup-files nil)
 
+  (setq scala-use-unicode-arrows nil)
+  (setq scala-enable-eldoc t)
   (setq ensime-startup-notification nil)
   (setq ensime-startup-snapshot-notification nil)
 
@@ -347,6 +337,9 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
+  (auto-save-mode)
+  (delete-selection-mode)
+  
   ;; tweak mouse scrolling
   (setq mouse-wheel-scroll-amount '(2 ((shift) . 3) ((control) . nil)) ;; two lines at a time
         ;; super smooth
@@ -376,7 +369,35 @@ you should place your code here."
   ;; easy-kill
   (with-eval-after-load 'easy-kill
     (global-set-key [remap kill-ring-save] 'easy-mark))
-  )
+
+  (add-hook 'scala-mode-hook 'delete-selection-mode)
+
+  (with-eval-after-load 'sbt-mode
+    (setq sbt:clear-buffer-before-command nil)
+
+    (defun scala-find-spec-name ()
+      "Find spec name of current buffer."
+      (concat "*." (file-name-sans-extension (file-name-nondirectory (buffer-name)))))
+
+    (defun sbt-test ()
+      "Run test with current file."
+      (interactive)
+      (sbt-command "test"))
+
+    (defun sbt-test-only ()
+      "Run test with current file."
+      (interactive)
+      (sbt-command (concat "testOnly " (scala-find-spec-name))))
+
+    (defun sbt-test-compile ()
+      "Compile project."
+      (interactive)
+      (sbt-command ";test:compile"))
+
+    (defun sbt-compile-all ()
+      "Compile project."
+      (interactive)
+      (sbt-command ";compile;test:compile"))))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
