@@ -14,6 +14,10 @@
     ~/.spacemacs:
       relink: true
       path: emacs/spacemacs/.spacemacs
+    ~/lisp/local/local.el:
+      relink: true
+      force: true
+      path: emacs/flat/lisp/local/local.el
     ~/.ctags:
       path: tags/.ctags
     ~/.lein:
