@@ -40,6 +40,7 @@ cask 'java8'
 brew 'go'
 brew 'node'
 brew 'nvm' # node version manager
+brew 'clojure'
 brew 'leiningen' # clojure
 brew 'boot-clj' # clojure
 brew 'haskell-stack'
@@ -64,7 +65,7 @@ brew 'neovim'
 
 # tools
 tap 'getantibody/tap'
-brew 'antibody'
+brew 'antibody' # for zsh config setup
 brew 'awscli'
 brew 'heroku'
 brew 'heroku-toolbelt'
@@ -112,14 +113,16 @@ cask 'transmission' # torrenting
 cask 'vlc'
 cask 'alfred' # spotlight replacement
 cask 'iterm2'
+## karabiner is being reworked for newer osx versions
+## and is not currently a useful tool for my usage
 # cask 'karabiner' # keyboard mapping
 # cask 'karabiner-elements' # rebind capslock
 cask 'keyboard-maestro' # keyboard mapping
 cask 'spotify'
 cask 'spectacle' # window management
-cask 'contexts' # command-tab replacement
-# cask 'goofy' # facebook messenger
+cask 'contexts' # command-tab replacement (needs license)
 cask 'flux' # blue light removal
 cask 'smcfancontrol'
 cask 'scroll-reverser'
 cask 'caffeine' # control over screen locking
+casl 'bettertouchtool'
