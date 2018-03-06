@@ -180,7 +180,8 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
   (setq-default key-chord-two-keys-delay 0.2
-                cursor-type 'bar)
+                cursor-type 'bar
+                default-cursor-type 'bar)
 
   (setq
    exec-path-from-shell-check-startup-files nil
