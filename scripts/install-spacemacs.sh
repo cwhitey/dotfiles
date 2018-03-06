@@ -1,5 +1,3 @@
 #!/usr/bin/env bash
 
-set -e
-
 git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
