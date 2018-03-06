@@ -77,8 +77,8 @@ brew 'jq' # json processor
 brew 'tig' # git visualization
 brew 'httpie' # smart curl replacement?
 
-# keyboard stuff
-# brew 'dfu-programmer'
+# keyboard programming
+brew 'dfu-programmer'
 
 # fonts
 tap 'caskroom/fonts'
@@ -86,7 +86,6 @@ tap 'caskroom/fonts'
 cask 'font-source-code-pro'
 cask 'font-fira-code'
 cask 'font-anonymous-pro'
-cask 'font-terminus'
 cask 'font-dejavu-sans'
 cask 'font-hack'
 cask 'font-roboto-mono'
@@ -94,7 +93,8 @@ cask 'font-monoid'
 cask 'font-mononoki'
 # `mensch` font is also great for programming, but it's not in caskroom/fonts :(
 #    http://robey.lag.net/2010/06/21/mensch-font.html
-# for icons (mostly used within emacs)
+
+# fonts for icons (mostly used within emacs)
 cask 'font-devicons'
 cask 'font-icomoon'
 cask 'font-fontawesome'
