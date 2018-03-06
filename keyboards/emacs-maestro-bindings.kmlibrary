@@ -86,7 +86,7 @@
 						<key>Name</key>
 						<string>Emacs</string>
 						<key>NewFile</key>
-						<string>/usr/local/Cellar/emacs/25.2/Emacs.app</string>
+						<string>/Applications/Emacs.app</string>
 					</dict>
 				</array>
 			</dict>
@@ -165,7 +165,7 @@
 						<key>Name</key>
 						<string>Emacs</string>
 						<key>NewFile</key>
-						<string>/usr/local/Cellar/emacs/25.2/Emacs.app</string>
+						<string>/Applications/Emacs.app</string>
 					</dict>
 				</array>
 			</dict>
@@ -244,7 +244,7 @@
 						<key>Name</key>
 						<string>Emacs</string>
 						<key>NewFile</key>
-						<string>/usr/local/Cellar/emacs/25.2/Emacs.app</string>
+						<string>/Applications/Emacs.app</string>
 					</dict>
 				</array>
 			</dict>
@@ -323,7 +323,7 @@
 						<key>Name</key>
 						<string>Emacs</string>
 						<key>NewFile</key>
-						<string>/usr/local/Cellar/emacs/25.2/Emacs.app</string>
+						<string>/Applications/Emacs.app</string>
 					</dict>
 				</array>
 			</dict>
@@ -402,7 +402,7 @@
 						<key>Name</key>
 						<string>Emacs</string>
 						<key>NewFile</key>
-						<string>/usr/local/Cellar/emacs/25.2/Emacs.app</string>
+						<string>/Applications/Emacs.app</string>
 					</dict>
 				</array>
 			</dict>
@@ -481,7 +481,7 @@
 						<key>Name</key>
 						<string>Emacs</string>
 						<key>NewFile</key>
-						<string>/usr/local/Cellar/emacs/25.2/Emacs.app</string>
+						<string>/Applications/Emacs.app</string>
 					</dict>
 				</array>
 			</dict>
@@ -560,7 +560,7 @@
 						<key>Name</key>
 						<string>Emacs</string>
 						<key>NewFile</key>
-						<string>/usr/local/Cellar/emacs/25.2/Emacs.app</string>
+						<string>/Applications/Emacs.app</string>
 					</dict>
 				</array>
 			</dict>
@@ -639,7 +639,7 @@
 						<key>Name</key>
 						<string>Emacs</string>
 						<key>NewFile</key>
-						<string>/usr/local/Cellar/emacs/25.2/Emacs.app</string>
+						<string>/Applications/Emacs.app</string>
 					</dict>
 				</array>
 			</dict>
@@ -718,7 +718,7 @@
 						<key>Name</key>
 						<string>Emacs</string>
 						<key>NewFile</key>
-						<string>/usr/local/Cellar/emacs/25.2/Emacs.app</string>
+						<string>/Applications/Emacs.app</string>
 					</dict>
 				</array>
 			</dict>
@@ -797,7 +797,7 @@
 						<key>Name</key>
 						<string>Emacs</string>
 						<key>NewFile</key>
-						<string>/usr/local/Cellar/emacs/25.2/Emacs.app</string>
+						<string>/Applications/Emacs.app</string>
 					</dict>
 				</array>
 			</dict>
@@ -808,6 +808,6 @@
 		</dict>
 	</array>
 	<key>UID</key>
-	<string>53276998-2C7F-4701-A6A9-39EE0009125E</string>
+	<string>FAB7CF5D-C68C-42EB-9339-65F83C1387B0</string>
 </dict>
 </plist>
