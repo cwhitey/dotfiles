@@ -125,4 +125,4 @@ cask 'flux' # blue light removal
 cask 'smcfancontrol'
 cask 'scroll-reverser'
 cask 'caffeine' # control over screen locking
-casl 'bettertouchtool'
+cask 'bettertouchtool'
