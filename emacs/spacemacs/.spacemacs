@@ -64,6 +64,8 @@ values."
      python
      go
      shell-scripts
+     csv
+     sql
 
      (ruby :variables
            ruby-version-manager 'chruby
