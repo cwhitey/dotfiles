@@ -113,11 +113,8 @@ cask 'transmission' # torrenting
 cask 'vlc'
 cask 'alfred' # spotlight replacement
 cask 'iterm2'
-## karabiner is being reworked for newer osx versions
-## and is not currently a useful tool for my usage
-# cask 'karabiner' # keyboard mapping
-# cask 'karabiner-elements' # rebind capslock
-cask 'keyboard-maestro' # keyboard mapping
+cask 'keyboard-maestro' # keyboard mapping for recent OSX versions (very limited functionality)
+cask 'karabiner-elements' # rebind capslock
 cask 'spotify'
 cask 'spectacle' # window management
 cask 'contexts' # command-tab replacement (needs license)
