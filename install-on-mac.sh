@@ -9,5 +9,5 @@ echo -e "${PRIMARY}* Installing system dependencies and dotfiles ${NC}"
 
 ./scripts/install-homebrew.sh &&
     ./scripts/install-homebrew-packages.sh &&
-    ./scripts/install-spacemacs.sh &&
-    ./install-yaml-config.sh
+    ./scripts/install-spacemacs.sh
+./install-yaml-config.sh

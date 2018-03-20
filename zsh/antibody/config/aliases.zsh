@@ -22,6 +22,11 @@ alias mv='mv -i'
 alias keybindings='bindkey'
 
 ############
+# random tech
+############
+alias redis='redis-server'
+
+############
 # git
 ############
 [ -f $ZCONFIG/aliases-git.zsh ] && source $ZCONFIG/aliases-git.zsh
@@ -138,16 +143,16 @@ if [[ $(uname) == *Darwin* ]]; then
     # Show/hide hidden files in Finder
     alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
     alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
-    
+
     # Hide/show all desktop icons (useful when presenting)
     alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
     alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
-    
+
     # turn ethernet on/off
     alias ethoff="sudo networksetup setnetworkserviceenabled 'Ethernet 1' off"
     alias ethon="sudo networksetup setnetworkserviceenabled 'Ethernet 1' on"
     alias ethre="ethoff && ethon"
-    
+
     alias mute="osascript -e 'set volume output muted true'"
 
     # MySQL
@@ -159,9 +164,9 @@ if [[ $(uname) == *Darwin* ]]; then
     if [ -x /usr/local/bin/mysql/bin/mysqladmin ]; then
         alias mysqladmin="/usr/local/mysql/bin/mysqladmin"
     fi
-    
+
     ############
     # homebrew
     ############
-    [ -f $ZCONFIG/aliases-homebrew.zsh ] && source $ZCONFIG/aliases-homebrew.zsh 
+    [ -f $ZCONFIG/aliases-homebrew.zsh ] && source $ZCONFIG/aliases-homebrew.zsh
 fi
