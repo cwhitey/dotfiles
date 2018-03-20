@@ -183,11 +183,23 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
   (setq-default key-chord-two-keys-delay 0.2
-                cursor-type 'bar
-                default-cursor-type 'bar)
+                ;; cursor-type 'bar
+                ;; default-cursor-type 'bar
+                )
 
   (setq
+   ;; cursor-type 'bar
+   ;; default-cursor-type 'bar
    exec-path-from-shell-check-startup-files nil
+   echo-keystrokes 0.1
+   minibuffer-message-timeout 0.8
+   enable-recursive-minibuffers t
+   ;; tweak mouse scrolling
+   mouse-wheel-scroll-amount '(2 ((shift) . 3) ((control) . nil)) ;; two lines at a time
+   ;; super smooth
+   ;; mouse-wheel-scroll-amount '(0.01)
+   ;; don't accelerate scroll-ing
+   mouse-wheel-progressive-speed nil
    super-save-auto-save-when-idle t
    auto-save-default nil
    ivy-height 16
@@ -195,13 +207,11 @@ you should place your code here."
    ivy-initial-inputs-alist nil
    ivy-re-builders-alist '((t . (lambda (str) (ivy--regex str 1))))
    counsel-yank-pop-separator (propertize "\n------------------------------\n" 'face 'error)
+   company-minimum-prefix-length 2
    scala-use-unicode-arrows nil
    ensime-startup-notification nil
    ensime-startup-snapshot-notification nil
-   company-minimum-prefix-length 2
-   echo-keystrokes 0.1
-   minibuffer-message-timeout 0.8
-   enable-recursive-minibuffers t)
+   )
 
   ;; minibuffer
   (minibuffer-depth-indicate-mode 1)
@@ -216,8 +226,6 @@ you should place your code here."
   (spacemacs|diminish holy-mode)
   (spacemacs|diminish super-save-mode)
 
-
-
   ;; key chords
   (key-chord-define-global "xx" 'execute-extended-command)
   (key-chord-define-global "yy" 'yank-pop)
@@ -231,13 +239,6 @@ you should place your code here."
   (define-globalized-minor-mode global-delete-selection-mode delete-selection-mode delete-selection-mode)
   (global-delete-selection-mode 1)
 
-  ;; tweak mouse scrolling
-  (setq mouse-wheel-scroll-amount '(2 ((shift) . 3) ((control) . nil)) ;; two lines at a time
-        ;; super smooth
-        ;; mouse-wheel-scroll-amount '(0.01)
-        ;; don't accelerate scroll-ing
-        mouse-wheel-progressive-speed nil)
-
   ;; general keybindings
   (global-unset-key (kbd "C-x C-b")) ;; unset annoying primitive buffer list key
   (global-set-key (kbd "C-x C-b") 'ivy-switch-buffer)
@@ -246,6 +247,7 @@ you should place your code here."
   ;; (global-set-key (kbd "M-S-g") 'goto-line)
   (global-set-key (kbd "<C-S-backspace>") 'delete-indentation)
   (global-set-key (kbd "C-S-k") 'crux-kill-whole-line)
+  (global-set-key (kbd "C-s") 'isearch-forward)
 
   ;; projectile
   (with-eval-after-load 'projectile
