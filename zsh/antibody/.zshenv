@@ -11,6 +11,7 @@ path=(
 export NODE_PATH=/opt/lib/node_modules
 # AWS
 export AWS_CLI=/usr/local/bin/aws
+export AWS_DEFAULT_REGION="ap-southeast-2"
 
 ############
 # Settings
