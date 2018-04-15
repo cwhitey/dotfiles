@@ -44,7 +44,7 @@ values."
                       better-defaults-move-to-end-of-code-first t)
      emacs-lisp
      syntax-checking
-     ;;themes-megapack
+     themes-megapack
 
      ;; Tools
      shell
@@ -86,6 +86,7 @@ values."
      org
      markdown
      yaml
+     docker
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -118,11 +119,14 @@ values."
    dotspacemacs-elpa-timeout 5
    dotspacemacs-elpa-subdirectory nil
    dotspacemacs-editing-style 'emacs
-   dotspacemacs-startup-banner 'official
+   dotspacemacs-startup-banner nil
    dotspacemacs-startup-lists '((recents . 10)
                                 (projects . 7))
    dotspacemacs-scratch-mode 'emacs-lisp-mode
-   dotspacemacs-themes '(spacemacs-dark
+   dotspacemacs-themes '(monokai
+                         ample-flat
+                         sanityinc-solarized-dark
+                         spacemacs-dark
                          spacemacs-light)
    dotspacemacs-colorize-cursor-according-to-state t
    dotspacemacs-default-font '("mononoki"
@@ -161,7 +165,7 @@ values."
    dotspacemacs-default-package-repository nil
    dotspacemacs-whitespace-cleanup 'changed)
 
-  (add-to-list 'configuration-layer--elpa-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
+  ;;(add-to-list 'configuration-layer--elpa-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
   ;;(add-to-list 'package-pinned-packages '(cider . "melpa-stable") t)
   )
 
@@ -187,21 +191,28 @@ you should place your code here."
                 ;; default-cursor-type 'bar
                 )
 
+  (setq mac-option-modifier  'meta
+        mac-command-modifier 'super)
+  ;;(setq mouse-wheel-scroll-amount '(2 ((shift) . 1))) ;; two lines at a time
+  ;;(setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
+  ;;(setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
+
   (setq
    ;; cursor-type 'bar
    ;; default-cursor-type 'bar
+   frame-title-format '("%b")
    exec-path-from-shell-check-startup-files nil
    echo-keystrokes 0.1
-   minibuffer-message-timeout 0.8
+   minibuffer-message-timeout 0.5
    enable-recursive-minibuffers t
    ;; tweak mouse scrolling
-   mouse-wheel-scroll-amount '(2 ((shift) . 3) ((control) . nil)) ;; two lines at a time
-   ;; super smooth
-   ;; mouse-wheel-scroll-amount '(0.01)
-   ;; don't accelerate scroll-ing
-   mouse-wheel-progressive-speed nil
-   super-save-auto-save-when-idle t
+   mouse-wheel-scroll-amount '(2 ((shift) . 1))
+   ;; mouse-wheel-scroll-amount '(2 ((shift) . 3) ((control) . nil)) ;; two lines at a time
+   mouse-wheel-progressive-speed nil ;; don't accelerate scroll-ing
+   mouse-wheel-follow-mouse 't
+   ;;super-save-auto-save-when-idle t
    auto-save-default nil
+   undo-tree-enable-undo-in-region nil
    ivy-height 16
    ivy-extra-directories nil
    ivy-initial-inputs-alist nil
@@ -226,19 +237,6 @@ you should place your code here."
   (spacemacs|diminish holy-mode)
   (spacemacs|diminish super-save-mode)
 
-  ;; key chords
-  (key-chord-define-global "xx" 'execute-extended-command)
-  (key-chord-define-global "yy" 'yank-pop)
-  (key-chord-define-global "jj" 'dumb-jump-go)
-
-  ;; yasnippet
-  (define-key yas-minor-mode-map (kbd "M-m i s") 'yas-insert-snippet)
-
-  (sp-use-paredit-bindings)
-
-  (define-globalized-minor-mode global-delete-selection-mode delete-selection-mode delete-selection-mode)
-  (global-delete-selection-mode 1)
-
   ;; general keybindings
   (global-unset-key (kbd "C-x C-b")) ;; unset annoying primitive buffer list key
   (global-set-key (kbd "C-x C-b") 'ivy-switch-buffer)
@@ -248,6 +246,21 @@ you should place your code here."
   (global-set-key (kbd "<C-S-backspace>") 'delete-indentation)
   (global-set-key (kbd "C-S-k") 'crux-kill-whole-line)
   (global-set-key (kbd "C-s") 'isearch-forward)
+
+  ;; key chords
+  (key-chord-define-global "xx" 'execute-extended-command)
+  (key-chord-define-global "yy" 'yank-pop)
+  (key-chord-define-global "jj" 'dumb-jump-go)
+
+  ;; yasnippet
+  (define-key yas-minor-mode-map (kbd "M-m i s") 'yas-insert-snippet)
+
+  ;; smartparens
+  (sp-use-paredit-bindings)
+
+  ;; make typed text replace a region
+  (define-globalized-minor-mode global-delete-selection-mode delete-selection-mode delete-selection-mode)
+  (global-delete-selection-mode 1)
 
   ;; ivy
   (with-eval-after-load 'ivy
@@ -265,6 +278,11 @@ you should place your code here."
       (advice-add 'counsel-projectile-ag :after (lambda (&rest args) (recenter-top-bottom))))
     (advice-add 'counsel-grep-or-swiper :after (lambda (&rest args) (recenter-top-bottom))))
 
+  ;; company
+  (with-eval-after-load 'company
+    ;; unbind any emacs editing bindings
+    (define-key company-active-map (kbd "C-/") nil)
+    (define-key company-active-map (kbd "C-d") nil))
   ;; easy-kill
   (with-eval-after-load 'easy-kill
     (global-set-key [remap kill-ring-save] 'easy-mark))
@@ -342,7 +360,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (yasnippet-snippets symon string-inflection spaceline-all-the-icons all-the-icons memoize sayid ruby-refactor ruby-hash-syntax pippel pipenv password-generator overseer org-brain mvn meghanada maven-test-mode ivy-xref ivy-purpose window-purpose imenu-list importmagic epc ctable concurrent deferred impatient-mode groovy-mode groovy-imports gradle-mode godoctor go-tag go-rename git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter flycheck-bashate evil-org evil-lion evil-cleverparens editorconfig dante lcr company-emacs-eclim eclim clojure-cheatsheet centered-cursor-mode browse-at-remote midje-mode magit-gh-pulls github-search github-clone github-browse-file gist gh marshal logito pcache ht csv-mode sql-indent yapfify yaml-mode xterm-color ws-butler winum which-key wgrep web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package unfill toc-org tagedit super-save spaceline powerline smex smeargle slim-mode shell-pop scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe restart-emacs request rbenv rake rainbow-delimiters pyvenv pytest pyenv-mode py-isort pug-mode popwin pip-requirements persp-mode pcre2el paradox origami orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download org-bullets open-junk-file ob-elixir org-plus-contrib noflet neotree mwim multi-term move-text mmm-mode minitest markdown-toc markdown-mode magit-gitflow macrostep lorem-ipsum livid-mode skewer-mode simple-httpd live-py-mode linum-relative link-hint less-css-mode key-chord json-mode json-snatcher json-reformat js2-refactor js2-mode js-doc ivy-hydra intero insert-shebang indent-guide hy-mode hungry-delete htmlize hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-make helm helm-core haskell-snippets haml-mode google-translate golden-ratio go-guru go-eldoc gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy flycheck-pos-tip pos-tip flycheck-mix flycheck-haskell flycheck-credo flycheck flx-ido flx fish-mode fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit magit magit-popup git-commit ghub let-alist with-editor evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg eshell-z eshell-prompt-extras esh-help erlang ergoemacs-mode undo-tree ensime sbt-mode scala-mode enh-ruby-mode emmet-mode elisp-slime-nav easy-kill dumb-jump diminish define-word cython-mode crux counsel-projectile projectile counsel swiper ivy company-web web-completion-data company-tern dash-functional tern company-statistics company-shell company-go go-mode company-ghci company-ghc ghc haskell-mode company-cabal company-anaconda column-enforce-mode coffee-mode cmm-mode clojure-snippets clj-refactor hydra inflections edn multiple-cursors paredit peg clean-aindent-mode cider-eval-sexp-fu eval-sexp-fu highlight cider seq spinner queue clojure-mode chruby bundler inf-ruby bind-map bind-key auto-yasnippet yasnippet auto-highlight-symbol auto-compile packed async anaconda-mode pythonic f alchemist company elixir-mode pkg-info epl aggressive-indent ag s dash adaptive-wrap ace-window ace-link avy ac-ispell auto-complete popup)))
+    (docker tablist docker-tramp midje-mode magit-gh-pulls github-search github-clone github-browse-file gist gh marshal logito pcache ht csv-mode sql-indent yapfify yaml-mode xterm-color ws-butler winum which-key wgrep web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package unfill toc-org tagedit super-save spaceline powerline smex smeargle slim-mode shell-pop scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe restart-emacs request rbenv rake rainbow-delimiters pyvenv pytest pyenv-mode py-isort pug-mode popwin pip-requirements persp-mode pcre2el paradox origami orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download org-bullets open-junk-file ob-elixir org-plus-contrib noflet neotree mwim multi-term move-text mmm-mode minitest markdown-toc markdown-mode magit-gitflow macrostep lorem-ipsum livid-mode skewer-mode simple-httpd live-py-mode linum-relative link-hint less-css-mode key-chord json-mode json-snatcher json-reformat js2-refactor js2-mode js-doc ivy-hydra intero insert-shebang indent-guide hy-mode hungry-delete htmlize hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-make helm helm-core haskell-snippets haml-mode google-translate golden-ratio go-guru go-eldoc gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy flycheck-pos-tip pos-tip flycheck-mix flycheck-haskell flycheck-credo flycheck flx-ido flx fish-mode fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit magit magit-popup git-commit ghub let-alist with-editor evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg eshell-z eshell-prompt-extras esh-help erlang ergoemacs-mode undo-tree ensime sbt-mode scala-mode enh-ruby-mode emmet-mode elisp-slime-nav easy-kill dumb-jump diminish define-word cython-mode crux counsel-projectile projectile counsel swiper ivy company-web web-completion-data company-tern dash-functional tern company-statistics company-shell company-go go-mode company-ghci company-ghc ghc haskell-mode company-cabal company-anaconda column-enforce-mode coffee-mode cmm-mode clojure-snippets clj-refactor hydra inflections edn multiple-cursors paredit peg clean-aindent-mode cider-eval-sexp-fu eval-sexp-fu highlight cider seq spinner queue clojure-mode chruby bundler inf-ruby bind-map bind-key auto-yasnippet yasnippet auto-highlight-symbol auto-compile packed async anaconda-mode pythonic f alchemist company elixir-mode pkg-info epl aggressive-indent ag s dash adaptive-wrap ace-window ace-link avy ac-ispell auto-complete popup)))
  '(paradox-github-token t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
