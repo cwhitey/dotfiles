@@ -9,7 +9,7 @@ tap 'homebrew/bundle'
 brew 'coreutils'
 brew 'zsh' # see https://rick.cogley.info/post/use-homebrew-zsh-instead-of-the-osx-default/
 cask 'xquartz'
-brew 'grc' # colourize log commands (e.g. ``grc tail /var/log/syslog`)
+brew 'grc' # colourize log commands (e.g. `grc tail /var/log/syslog`)
 brew 'imagemagick'
 brew 'libgit2'
 brew 'openssl'
@@ -36,7 +36,8 @@ brew 'the_silver_searcher' # ag
 # brew 'sift'
 
 # programming languages
-cask 'java8'
+#tap 'caskroom/versions' # needed for java8
+#cask 'java8'
 brew 'go'
 brew 'node'
 brew 'nvm' # node version manager
@@ -47,7 +48,7 @@ brew 'haskell-stack'
 brew 'erlang'
 brew 'elixir'
 brew 'scala'
-brew 'sbt' # scala build tool
+#brew 'sbt' # scala build tool
 brew 'chruby' # lightweight ruby version manager
 brew 'ruby-install'
 
