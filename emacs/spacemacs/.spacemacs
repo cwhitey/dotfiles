@@ -126,6 +126,7 @@ values."
    dotspacemacs-themes '(material
                          monokai
                          ample-flat
+                         alect-black
                          sanityinc-solarized-dark
                          spacemacs-dark
                          spacemacs-light)
