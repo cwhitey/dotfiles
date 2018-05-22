@@ -2,5 +2,5 @@
 
 echo -e "${PRIMARY}** Installing homebrew and cask packages ${NC}"
 
-cd ../osx/
+cd $DOTFILES_DIR/osx
 brew bundle

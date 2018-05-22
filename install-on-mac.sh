@@ -2,6 +2,7 @@
 
 set -e
 
+export DOTFILES_DIR=/Users/callumwhite/projects/personal/dotfiles
 export PRIMARY='\033[0;32m'
 export NC='\033[0m'
 
