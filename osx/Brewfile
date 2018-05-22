@@ -86,6 +86,7 @@ tap 'caskroom/fonts'
 # for programming
 cask 'font-source-code-pro'
 cask 'font-fira-code'
+cask 'font-fira-mono'
 cask 'font-anonymous-pro'
 cask 'font-dejavu-sans'
 cask 'font-hack'
