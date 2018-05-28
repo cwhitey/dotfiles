@@ -21,7 +21,7 @@
         ;; :jvm-opts ["-XX:MaxPermSize=128M"]
         }
  :repl {:plugins [
-                  [cider/cider-nrepl "0.17.0-snapshot"]
+                  [cider/cider-nrepl "0.17.0"]
                   [refactor-nrepl "2.4.0-snapshot"]
                   ;; [joodie/clojure-refactoring "0.6.4" :exclusions [org.clojure/clojure]]
                   ]}}
