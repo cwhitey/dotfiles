@@ -4,12 +4,14 @@
                   [lein-kibit "0.1.2"]
                   [jonase/eastwood "0.2.1"]
                   [lein-cljfmt "0.1.10"]
+                  [lein-pprint "1.2.0"]
                   [venantius/yagni "0.1.4"]
                   ;; Other
                   ;;[venantius/ultra "0.5.2"]
                   [com.billpiel/sayid "0.0.16"]
                   [lein-try "0.4.3"]]
-        :dependencies [[org.clojure/tools.nrepl "0.2.13"]
+        :dependencies [[org.clojure/clojure "1.9.0"] ;default clojure version for repls
+                       [org.clojure/tools.nrepl "0.2.13"]
                        ;;[spyscope "0.1.6"]
                        ]
         ;;:injections [(require 'spyscope.core)]
