@@ -34,6 +34,7 @@ brew 'youtube-dl' # download Youtube (and other) videos
 brew 'ripgrep' # rg
 brew 'the_silver_searcher' # ag
 # brew 'sift'
+brew 'fd' # alternative to 'find'
 
 # programming languages
 #tap 'caskroom/versions' # needed for java8
@@ -78,7 +79,7 @@ brew 'jq' # json processor
 brew 'tig' # git visualization
 brew 'httpie' # smart curl replacement?
 cask 'postman'
-
+cask 'launchrocket' # manage launchd services
 # keyboard programming
 brew 'dfu-programmer'
 
