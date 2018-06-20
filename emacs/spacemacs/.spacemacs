@@ -71,7 +71,7 @@ values."
      (ruby :variables
            ruby-version-manager 'chruby
            ruby-test-runner 'rspec
-           ruby-enable-enh-ruby-mode nil
+           ruby-enable-enh-ruby-mode t
            enh-ruby-deep-indent-paren nil
            enh-ruby-hanging-paren-deep-indent-level 2
            enh-ruby-hanging-brace-deep-indent-level 2)
@@ -315,8 +315,8 @@ you should place your code here."
 
   ;; clojure
   (with-eval-after-load 'clojure-mode
-    ;; this doesn't work
-    (define-key clojure-mode-map [remap cider-find-var] 'spacemacs/clj-find-var))
+    (define-key clojure-mode-map [remap cider-find-var] 'spacemacs/clj-find-var)
+    (key-chord-define clojure-mode-map "jj" 'spacemacs/clj-find-var))
   ;; TODO: add bindings for `M-.' and `.' in cider-browse-ns fn mode to jump to def (currently bound to `s')
   (with-eval-after-load 'cider
     (add-hook 'cider-repl-mode-hook 'rainbow-delimiters-mode))
@@ -324,7 +324,10 @@ you should place your code here."
   ;; ruby
   (with-eval-after-load 'ruby-mode
     (with-eval-after-load 'robe-mode
-      (define-key ruby-mode-map [remap robe-jump] 'dumb-jump-go)))
+      (define-key ruby-mode-map [remap robe-jump] 'dumb-jump-go)
+      (define-key enh-ruby-mode-map [remap robe-jump] 'dumb-jump-go)
+      (key-chord-define ruby-mode-map "jj" 'dumb-jump-go)
+      (key-chord-define enh-ruby-mode-map "jj" 'dumb-jump-go)))
 
   ;; scala
   (with-eval-after-load 'sbt-mode
