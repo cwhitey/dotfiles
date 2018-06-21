@@ -3,7 +3,7 @@
 BUNDLE_FILE="./antibody-bundled-bundles.txt"
 touch $BUNDLE_FILE
 # antibody bundle < "bundles.txt" > $BUNDLE_FILE
-# antibody bundle chrissicool/zsh-256color >> $BUNDLE_FILE
+antibody bundle chrissicool/zsh-256color >> $BUNDLE_FILE
 antibody bundle zsh-users/zsh-completions >> $BUNDLE_FILE
 antibody bundle caarlos0/zsh-open-github-pr >> $BUNDLE_FILE
 antibody bundle peterhurford/git-it-on.zsh >> $BUNDLE_FILE
