@@ -108,7 +108,7 @@ values."
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '(highlight-parentheses)
+   dotspacemacs-excluded-packages '(highlight-parentheses evil-ediff)
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
    ;; `used-only' installs only explicitly used packages and uninstall any
@@ -128,7 +128,8 @@ values."
    dotspacemacs-startup-lists '((recents . 10)
                                 (projects . 7))
    dotspacemacs-scratch-mode 'emacs-lisp-mode
-   dotspacemacs-themes '(majapahit-dark
+   dotspacemacs-themes '(alect-dark
+                         majapahit-dark
                          material
                          monokai
                          ample-flat
@@ -170,14 +171,15 @@ values."
    dotspacemacs-smartparens-strict-mode nil
    dotspacemacs-smart-closing-parenthesis nil
    dotspacemacs-highlight-delimiters 'all
+   dotspacemacs-enable-server t
    dotspacemacs-persistent-server nil
    dotspacemacs-search-tools '("ag" "pt" "ack" "grep")
    dotspacemacs-default-package-repository nil
    dotspacemacs-whitespace-cleanup 'changed)
 
-  ;;(add-to-list 'configuration-layer--elpa-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
-  ;;(add-to-list 'package-pinned-packages '(cider . "melpa-stable") t)
-  )
+  ;; stable packages
+  (add-to-list 'configuration-layer-elpa-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
+  (add-to-list 'package-pinned-packages '(cider . "melpa-stable") t))
 
 (defun dotspacemacs/user-init ()
   "Initialization function for user code.
@@ -186,7 +188,14 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
-  )
+  (setq cider-special-mode-truncate-lines nil
+        cider-show-error-buffer 'except-in-repl))
+
+(defun maybe-backward-delete-char-untabify ()
+  (interactive)
+  (if (region-active-p)
+      (call-interactively 'backward-delete-char)
+    (call-interactively 'backward-delete-char-untabify)))
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
@@ -195,6 +204,9 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+
+  ;; spacemacs fixes and tweaks
+  (define-key spacemacs-buffer-mode-map [down-mouse-1] nil)
 
   (setq-default key-chord-two-keys-delay 0.1
                 ;; cursor-type 'bar
@@ -249,12 +261,12 @@ you should place your code here."
   (spacemacs|diminish super-save-mode)
 
   ;; general keybindings
-  (global-unset-key (kbd "C-x C-b")) ;; unset annoying primitive buffer list key
-  (global-set-key (kbd "C-x C-b") 'ivy-switch-buffer)
+  (global-unset-key (kbd "C-x C-b")) ;; unset annoying primitive buffer list
+  (global-set-key (kbd "C-x C-b") 'projectile-switch-to-buffer)
   (global-set-key (kbd "C-=") 'er/expand-region)
   (global-set-key (kbd "C--") 'er/contract-region)
   ;; (global-set-key (kbd "M-S-g") 'goto-line)
-  (global-set-key (kbd "<C-S-backspace>") 'delete-indentation)
+  (global-set-key (kbd "<C-backspace>") 'delete-indentation)
   (global-set-key (kbd "M-k") 'crux-kill-whole-line)
   (global-set-key (kbd "C-s") 'isearch-forward)
   (global-set-key (kbd "M-;") 'comment-line)
@@ -269,6 +281,7 @@ you should place your code here."
 
   ;; magit
   (global-set-key (kbd "C-x g") 'magit-status)
+  (global-set-key (kbd "C-x M-g") 'magit-dispatch-popup)
 
   ;; yasnippet
   (define-key yas-minor-mode-map (kbd "M-m i s") 'yas-insert-snippet)
@@ -296,6 +309,9 @@ you should place your code here."
       (define-key projectile-mode-map (kbd "s-s") #'counsel-projectile-ag)
       (advice-add 'counsel-projectile-ag :after (lambda (&rest args) (recenter-top-bottom))))
     (advice-add 'counsel-grep-or-swiper :after (lambda (&rest args) (recenter-top-bottom))))
+
+  ;; conf-mode
+  (add-to-list 'auto-mode-alist '("credentials" . conf-mode))
 
   ;; company
   (with-eval-after-load 'company
@@ -325,11 +341,16 @@ you should place your code here."
 
   ;; clojure
   (with-eval-after-load 'clojure-mode
+    (define-key clojure-mode-map (kbd "<backspace>") 'maybe-backward-delete-char-untabify)
     (define-key clojure-mode-map [remap cider-find-var] 'spacemacs/clj-find-var)
-    (key-chord-define clojure-mode-map "jj" 'spacemacs/clj-find-var))
+    (key-chord-define clojure-mode-map "jj" 'spacemacs/clj-find-var)
+
+    (add-to-list 'clojure-align-binding-forms "d/let-flow") ; TODO: this should work with 'let-flow'
+    )
   ;; TODO: add bindings for `M-.' and `.' in cider-browse-ns fn mode to jump to def (currently bound to `s')
   (with-eval-after-load 'cider
-    (add-hook 'cider-repl-mode-hook 'rainbow-delimiters-mode))
+    (add-hook 'cider-repl-mode-hook 'rainbow-delimiters-mode)
+    (defalias 'cider-find-usages 'cljr-find-usages))
 
   ;; ruby
   (with-eval-after-load 'ruby-mode
@@ -382,6 +403,11 @@ located at `lisp/local/local.el'"
         :config
         (message "Loading local config from lisp/local/local.el"))))
 
+(defun brutally-kill-emacs ()
+  "Use `call-process' to send ourselves a KILL signal."
+  (interactive)
+  (call-process "kill" nil nil nil "-9" (number-to-string (emacs-pid))))
+
 ;; some example snippets for local:
 ;; (eval-after-load "git-link"
 ;;   '(progn
@@ -389,7 +415,6 @@ located at `lisp/local/local.el'"
 ;;                   '("git.my-company.com.au" git-link-github))
 ;;      (add-to-list 'git-link-commit-remote-alist
 ;;                   '("git.my-company.com.au" git-link-commit-github))))
-
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
@@ -405,7 +430,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (emojify emoji-cheat-sheet-plus company-emoji midje-mode magit-gh-pulls github-search github-clone github-browse-file gist gh marshal logito pcache ht csv-mode sql-indent yapfify yaml-mode xterm-color ws-butler winum which-key wgrep web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package unfill toc-org tagedit super-save spaceline powerline smex smeargle slim-mode shell-pop scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe restart-emacs request rbenv rake rainbow-delimiters pyvenv pytest pyenv-mode py-isort pug-mode popwin pip-requirements persp-mode pcre2el paradox origami orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download org-bullets open-junk-file ob-elixir org-plus-contrib noflet neotree mwim multi-term move-text mmm-mode minitest markdown-toc markdown-mode magit-gitflow macrostep lorem-ipsum livid-mode skewer-mode simple-httpd live-py-mode linum-relative link-hint less-css-mode key-chord json-mode json-snatcher json-reformat js2-refactor js2-mode js-doc ivy-hydra intero insert-shebang indent-guide hy-mode hungry-delete htmlize hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-make helm helm-core haskell-snippets haml-mode google-translate golden-ratio go-guru go-eldoc gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy flycheck-pos-tip pos-tip flycheck-mix flycheck-haskell flycheck-credo flycheck flx-ido flx fish-mode fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit magit magit-popup git-commit ghub let-alist with-editor evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg eshell-z eshell-prompt-extras esh-help erlang ergoemacs-mode undo-tree ensime sbt-mode scala-mode enh-ruby-mode emmet-mode elisp-slime-nav easy-kill dumb-jump diminish define-word cython-mode crux counsel-projectile projectile counsel swiper ivy company-web web-completion-data company-tern dash-functional tern company-statistics company-shell company-go go-mode company-ghci company-ghc ghc haskell-mode company-cabal company-anaconda column-enforce-mode coffee-mode cmm-mode clojure-snippets clj-refactor hydra inflections edn multiple-cursors paredit peg clean-aindent-mode cider-eval-sexp-fu eval-sexp-fu highlight cider seq spinner queue clojure-mode chruby bundler inf-ruby bind-map bind-key auto-yasnippet yasnippet auto-highlight-symbol auto-compile packed async anaconda-mode pythonic f alchemist company elixir-mode pkg-info epl aggressive-indent ag s dash adaptive-wrap ace-window ace-link avy ac-ispell auto-complete popup)))
+    (seeing-is-believing midje-mode magit-gh-pulls github-search github-clone github-browse-file gist gh marshal logito pcache ht csv-mode sql-indent yapfify yaml-mode xterm-color ws-butler winum which-key wgrep web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package unfill toc-org tagedit super-save spaceline powerline smex smeargle slim-mode shell-pop scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe restart-emacs request rbenv rake rainbow-delimiters pyvenv pytest pyenv-mode py-isort pug-mode popwin pip-requirements persp-mode pcre2el paradox origami orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download org-bullets open-junk-file ob-elixir org-plus-contrib noflet neotree mwim multi-term move-text mmm-mode minitest markdown-toc markdown-mode magit-gitflow macrostep lorem-ipsum livid-mode skewer-mode simple-httpd live-py-mode linum-relative link-hint less-css-mode key-chord json-mode json-snatcher json-reformat js2-refactor js2-mode js-doc ivy-hydra intero insert-shebang indent-guide hy-mode hungry-delete htmlize hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-make helm helm-core haskell-snippets haml-mode google-translate golden-ratio go-guru go-eldoc gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy flycheck-pos-tip pos-tip flycheck-mix flycheck-haskell flycheck-credo flycheck flx-ido flx fish-mode fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit magit magit-popup git-commit ghub let-alist with-editor evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg eshell-z eshell-prompt-extras esh-help erlang ergoemacs-mode undo-tree ensime sbt-mode scala-mode enh-ruby-mode emmet-mode elisp-slime-nav easy-kill dumb-jump diminish define-word cython-mode crux counsel-projectile projectile counsel swiper ivy company-web web-completion-data company-tern dash-functional tern company-statistics company-shell company-go go-mode company-ghci company-ghc ghc haskell-mode company-cabal company-anaconda column-enforce-mode coffee-mode cmm-mode clojure-snippets clj-refactor hydra inflections edn multiple-cursors paredit peg clean-aindent-mode cider-eval-sexp-fu eval-sexp-fu highlight cider seq spinner queue clojure-mode chruby bundler inf-ruby bind-map bind-key auto-yasnippet yasnippet auto-highlight-symbol auto-compile packed async anaconda-mode pythonic f alchemist company elixir-mode pkg-info epl aggressive-indent ag s dash adaptive-wrap ace-window ace-link avy ac-ispell auto-complete popup)))
  '(paradox-github-token t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
