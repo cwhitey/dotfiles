@@ -27,7 +27,10 @@ values."
    dotspacemodemacs-configuration-layer-path '()
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(asciidoc
+   '(php
+     typescript
+     lua
+     asciidoc
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -38,8 +41,7 @@ values."
 
      ;; Basics
      ivy
-     (auto-completion :variables
-                      auto-completion-enable-snippets-in-popup t)
+     auto-completion
      (better-defaults :variables
                       better-defaults-move-to-end-of-code-first t)
      emacs-lisp
@@ -51,7 +53,7 @@ values."
      (version-control :variables
                       version-control-diff-side 'left)
      (git :variables
-          git-magit-status-fullscreen t
+          git-magit-status-fullscreen nil
           git-gutter-use-fringe t)
      github
 
@@ -80,6 +82,7 @@ values."
      (javascript :variables
                  js2-basic-offset 2
                  js-indent-level 2
+                 js2-strict-missing-semi-warning nil
                  js2-global-externs '("module" "require" "__dirname" "console" "process"
                                       "describe" "it" "before" "beforeEach" "after" "afterEach"))
      react
@@ -89,6 +92,7 @@ values."
      markdown
      yaml
      docker
+     terraform
 
      ;; Fun
      emoji
@@ -104,6 +108,9 @@ values."
                                       super-save
                                       key-chord
                                       crux
+
+                                      flycheck-clj-kondo
+                                      flycheck-joker
                                       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -128,8 +135,10 @@ values."
    dotspacemacs-startup-lists '((recents . 10)
                                 (projects . 7))
    dotspacemacs-scratch-mode 'emacs-lisp-mode
-   dotspacemacs-themes '(alect-dark
+   dotspacemacs-themes '(gruvbox-dark-soft
+                         zenburn
                          majapahit-dark
+                         alect-dark
                          material
                          monokai
                          ample-flat
@@ -171,7 +180,7 @@ values."
    dotspacemacs-smartparens-strict-mode nil
    dotspacemacs-smart-closing-parenthesis nil
    dotspacemacs-highlight-delimiters 'all
-   dotspacemacs-enable-server t
+   dotspacemacs-enable-server nil
    dotspacemacs-persistent-server nil
    dotspacemacs-search-tools '("ag" "pt" "ack" "grep")
    dotspacemacs-default-package-repository nil
@@ -236,10 +245,13 @@ you should place your code here."
    ;;super-save-auto-save-when-idle t
    auto-save-default nil
    undo-tree-enable-undo-in-region nil
+   magit-push-current-set-remote-if-missing nil
+   magit-prefer-remote-upstream 't
+   magithub-api-timeout 20
    ivy-height 16
    ivy-extra-directories nil
    ivy-initial-inputs-alist nil
-   ivy-re-builders-alist '((t . (lambda (str) (ivy--regex str 1))))
+   ivy-re-builders-alist '((t . (lambda (str) (ivy--regex str))))
    counsel-yank-pop-separator (propertize "\n------------------------------\n" 'face 'error)
    company-minimum-prefix-length 2
    scala-use-unicode-arrows nil
