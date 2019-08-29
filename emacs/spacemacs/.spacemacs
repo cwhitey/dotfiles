@@ -353,13 +353,41 @@ you should place your code here."
     )
 
   ;; clojure
+  (use-package clojure-mode
+    :ensure t
+    :config
+    (require 'flycheck-clj-kondo))
+
+  (dolist (m '(clojure-mode
+               clojurec-mode
+               clojurescript-mode
+               clojurex-mode
+               cider-repl-mode
+               cider-clojure-interaction-mode))
+    (spacemacs/set-leader-keys-for-major-mode m
+      "tp" 'cider-test-run-project-tests))
+
+  (defun callum/clj-find-var (sym-name &optional arg)
+    "Attempts to jump-to-definition of the symbol-at-point.
+Support jumping to keyword definitions.
+If CIDER fails, or not available, falls back to dumb-jump."
+    (interactive (list (cider-symbol-at-point)))
+    (if (equal ":" (substring sym-name 0 1))
+        (call-interactively 'cider-find-keyword)
+      (if (and (cider-connected-p) (cider-var-info sym-name))
+          (unless (eq 'symbol (type-of (cider-find-var nil sym-name)))
+            (dumb-jump-go))
+        (dumb-jump-go))))
+
   (with-eval-after-load 'clojure-mode
     (define-key clojure-mode-map (kbd "<backspace>") 'maybe-backward-delete-char-untabify)
-    (define-key clojure-mode-map [remap cider-find-var] 'spacemacs/clj-find-var)
+    (define-key clojure-mode-map [remap cider-find-var] 'callum/clj-find-var)
     (key-chord-define clojure-mode-map "jj" 'spacemacs/clj-find-var)
 
-    (add-to-list 'clojure-align-binding-forms "d/let-flow") ; TODO: this should work with 'let-flow'
-    )
+    ;; TODO: github issue: this should work with 'let-flow'
+    (add-to-list 'clojure-align-binding-forms "d/let-flow")
+    (add-to-list 'clojure-align-binding-forms "let-flow"))
+
   ;; TODO: add bindings for `M-.' and `.' in cider-browse-ns fn mode to jump to def (currently bound to `s')
   (with-eval-after-load 'cider
     (add-hook 'cider-repl-mode-hook 'rainbow-delimiters-mode)
