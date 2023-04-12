@@ -23,10 +23,17 @@ local color0D='#83a598'
 local color0E='#d3869b'
 local color0F='#d65d0e'
 
+# fzf_color_options="
+#   --color=bg+:$color01,bg:$color00,spinner:$color0C,hl:$color0D
+#   --color=fg:$color04,header:$color0D,info:$color0A,pointer:$color0C
+#   --color=marker:$color0C,fg+:$color06,prompt:$color0A,hl+:$color0D
+# "
+
+# One Dark theme
 fzf_color_options="
-  --color=bg+:$color01,bg:$color00,spinner:$color0C,hl:$color0D
-  --color=fg:$color04,header:$color0D,info:$color0A,pointer:$color0C
-  --color=marker:$color0C,fg+:$color06,prompt:$color0A,hl+:$color0D
+--color=dark
+--color=fg:-1,bg:-1,hl:#c678dd,fg+:#ffffff,bg+:#4b5263,hl+:#d858fe
+--color=info:#98c379,prompt:#61afef,pointer:#be5046,marker:#e5c07b,spinner:#61afef,header:#61afef
 "
 
 export FZF_DEFAULT_OPTS="--exact --cycle --reverse --height 12 --inline-info --bind=ctrl-j:accept,ctrl-k:kill-line $fzf_color_options"
