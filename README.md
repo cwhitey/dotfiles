@@ -7,12 +7,18 @@ These dotfiles use dotbot for linkage.
 
 ## Dependencies
 
-### Prezto
-- source-highlight (`brew install source-highlight`) (see `zshrc`)
-- chruby (see `zshrc`)
-- fasd (`brew install fasd`) (see `zshrc`)
-- fzf (install using git from https://github.com/junegunn/fzf)
-- the_platinum_surfer (`brew install pt`) (see `zshrc`)
+### general
+- dotbot config mananger (`brew install dotbot`)
+
+### zsh
+- antidote zsh plugin manager (`brew install antidote`)
+- pure prompt (`brew install pure`)
+- emacs (`brew install d12frosted/emacs-plus/emacs-plus@29`)
+- doom emacs (https://github.com/doomemacs/doomemacs/blob/master/docs/getting_started.org)
+- source-highlight (`brew install source-highlight`)
+- fasd (`brew install fasd`)
+- fzf (`brew install fzf`)
+- the_silver_surfer (`brew install ag`)
 
 ## TODO
 - Use Stow
