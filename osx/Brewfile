@@ -1,129 +1,38 @@
-###
-# Run `brew bundle` in this directory to install all of this stuff
-###
-
-cask_args appdir: '/Applications'
-
-tap 'homebrew/bundle'
-
-brew 'coreutils'
-brew 'zsh' # see https://rick.cogley.info/post/use-homebrew-zsh-instead-of-the-osx-default/
-cask 'xquartz'
-brew 'grc' # colourize log commands (e.g. `grc tail /var/log/syslog`)
-brew 'imagemagick'
-brew 'libgit2'
-brew 'openssl'
-brew 'tree'
-# Note: May have to copy fzf.zsh to ~
-brew 'fzf'
-brew 'fasd'
-brew 'highlight' # for `less` highlighting (see `.zshenv`)
-brew 'lesspipe'
-brew 'readline'
-brew 'wget'
-brew 'htop'
-brew 'ffmpeg' # for youtube-dl post-processing
-brew 'youtube-dl' # download Youtube (and other) videos
-
-
-###
-# Development
-###
-
-# searching
-brew 'ripgrep' # rg
-brew 'the_silver_searcher' # ag
-# brew 'sift'
-brew 'fd' # alternative to 'find'
-
-# programming languages
-#tap 'caskroom/versions' # needed for java8
-#cask 'java8'
-brew 'go'
-brew 'node'
-brew 'nvm' # node version manager
-brew 'clojure'
-brew 'leiningen' # clojure
-brew 'boot-clj' # clojure
-brew 'haskell-stack'
-brew 'erlang'
-brew 'elixir'
-brew 'scala'
-#brew 'sbt' # scala build tool
-brew 'chruby' # lightweight ruby version manager
-brew 'ruby-install'
-
-# DBs
-brew 'postgresql'
-brew 'mysql'
-brew 'elasticsearch'
-
-# editors
-# brew 'emacs', args: ['with-cocoa']
-cask 'emacs'
-cask 'intellij-idea-ce'
-tap 'neovim/neovim'
-brew 'neovim'
-
-# tools
-tap 'getantibody/tap'
-brew 'antibody' # for zsh config setup
-brew 'awscli'
-brew 'heroku'
-brew 'heroku-toolbelt'
-cask 'docker' # docker-for-mac
-brew 'docker-compose'
-cask 'ngrok'
-brew 'ctags'
-brew 'jq' # json processor
-brew 'tig' # git visualization
-brew 'httpie' # smart curl replacement?
-cask 'postman'
-cask 'launchrocket' # manage launchd services
-# keyboard programming
-brew 'dfu-programmer'
-
-# fonts
-tap 'caskroom/fonts'
-# for programming
-cask 'font-source-code-pro'
-cask 'font-fira-code'
-cask 'font-fira-mono'
-cask 'font-anonymous-pro'
-cask 'font-dejavu-sans'
-cask 'font-hack'
-cask 'font-roboto-mono'
-cask 'font-monoid'
-cask 'font-mononoki'
-# `mensch` font is also great for programming, but it's not in caskroom/fonts :(
-#    http://robey.lag.net/2010/06/21/mensch-font.html
-
-# fonts for icons (mostly used within emacs)
-cask 'font-devicons'
-cask 'font-icomoon'
-cask 'font-fontawesome'
-cask 'font-mfizz'
-cask 'font-octicons'
-
-
-###
-# OSX applications
-###
-cask 'lastpass'
-cask 'atom'
-cask 'google-chrome'
-cask 'slack'
-cask 'transmission' # torrenting
-cask 'vlc'
-cask 'alfred' # spotlight replacement
-cask 'iterm2'
-cask 'keyboard-maestro' # keyboard mapping for recent OSX versions (very limited functionality)
-cask 'karabiner-elements' # rebind capslock
-cask 'spotify'
-cask 'spectacle' # window management
-cask 'contexts' # command-tab replacement (needs license)
-cask 'flux' # blue light removal
-cask 'smcfancontrol'
-cask 'scroll-reverser'
-cask 'caffeine' # control over screen locking
-cask 'bettertouchtool'
+tap "buo/cask-upgrade"
+tap "d12frosted/emacs-plus"
+tap "railwaycat/emacsmacport"
+tap "homebrew/bundle"
+tap "homebrew/services"
+brew "antidote"
+brew "bat"
+brew "coreutils"
+brew "dotbot"
+brew "fd"
+brew "fzf"
+brew "git"
+brew "gitu"
+brew "gitui"
+brew "gitup"
+brew "glow"
+brew "highlight"
+brew "lazygit"
+brew "pure"
+brew "ripgrep"
+brew "source-highlight"
+brew "the_silver_searcher"
+brew "tig"
+brew "tree"
+brew "d12frosted/emacs-plus/emacs-plus@29"
+brew "railwaycat/emacsmacport/emacs-mac"
+cask "coteditor"
+cask "docker"
+cask "joplin"
+cask "kitty"
+cask "obsidian"
+cask "raycast"
+cask "rectangle"
+cask "shifty"
+cask "spotify"
+cask "todoist"
+cask "visual-studio-code"
+cask "wezterm"

@@ -6,6 +6,7 @@
 path=(
     /usr/local/{bin,sbin}
     ~/.docker/bin
+    /Users/callum/bin
     $path
 )
 # Node's install path
