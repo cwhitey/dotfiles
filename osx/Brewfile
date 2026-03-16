@@ -1,9 +1,6 @@
 tap "buo/cask-upgrade"
 tap "d12frosted/emacs-plus"
-tap "homebrew/bundle"
-tap "homebrew/services"
 tap "railwaycat/emacsmacport"
-tap "square/formula", "org-49461806@github.com:squareup/homebrew-formulas.git"
 tap "withgraphite/tap"
 # Plugin manager for zsh, inspired by antigen and antibody
 brew "antidote"
@@ -75,23 +72,6 @@ brew "d12frosted/emacs-plus/emacs-plus@30"
 brew "d12frosted/emacs-plus/emacs-plus@31"
 # YAMAMOTO Mitsuharu's Mac port of GNU Emacs
 brew "railwaycat/emacsmacport/emacs-mac@29", link: false
-brew "square/formula/aws-creds"
-brew "square/formula/beyond-curl"
-# An SSH Agent that provides keys signed by Block Certificate Authorities (sharkey, gh-ssh-certifier)
-brew "square/formula/block-ssh-agent"
-brew "square/formula/cash-kta"
-brew "square/formula/polyrepo"
-brew "square/formula/ski-cli"
-brew "square/formula/sq"
-brew "square/formula/sq-run"
-# Square Android Toolbox (SaToolbox)
-brew "square/formula/sq-satoolbox"
-brew "square/formula/sqm"
-# SSH config for accessing Square services
-brew "square/formula/square-ssh-config"
-brew "square/formula/yubidisaster"
-# Allows you to manage your stacked changes and submit them for review on GitHub
-brew "withgraphite/tap/graphite"
 # Scriptable scratchpad for developers
 cask "boop"
 # OpenAI's coding agent that runs in your terminal
@@ -107,8 +87,6 @@ cask "cursor"
 cask "font-blex-mono-nerd-font"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
-# Note taking and to-do application with synchronisation capabilities
-cask "joplin"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
 # Control your tools with a few keystrokes
@@ -139,4 +117,3 @@ vscode "mermaidchart.vscode-mermaid-chart"
 vscode "ms-azuretools.vscode-containers"
 vscode "ms-azuretools.vscode-docker"
 vscode "ms-vscode-remote.remote-containers"
-go "golang.org/x/tools/gopls"
