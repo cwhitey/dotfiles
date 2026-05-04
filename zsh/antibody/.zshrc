@@ -75,7 +75,7 @@ ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=red,bold
 ###
 # Load packages
 ###
-source $ZSOURCEDIR/antidote-bundled-packages.zsh
+source $ZSOURCEDIR/antidote-packages.zsh
 
 ###
 # after-package-load overrides

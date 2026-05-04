@@ -95,29 +95,29 @@ alias er='ek; es;'
 ############
 # fasd
 ############
-jj() {
-    local dir
-    dir="$(fasd -Rdl "$1" | fzf -1 -0 --no-sort +m)" && cd "${dir}" || return 1
-}
-# smart-open with emacsclient
-v() {
-    local file
-    file="$(fasd -Rfl "$1" | fzf -1 -0 --no-sort +m)" && ec "${file}" || return 1
-}
-# smart-open with terminal emacs
-vt() {
-    local file
-    file="$(fasd -Rfl "$1" | fzf -1 -0 --no-sort +m)" && et "${file}" || return 1
-}
-alias a='fasd -a'       # any
-alias s='fasd -si'      # show / search / select
-alias f='fasd -f'       # file
-alias d='fasd -d'       # directory
-alias sd='fasd -sid'    # interactive directory selection
-alias sf='fasd -sif'    # interactive file selection
-#unalias j
-alias j='fasd_cd -d'    # mimic autojump behaviour
-alias o='fasd -ea open' # use fasd to select file/directory to open
+# jj() {
+#     local dir
+#     dir="$(fasd -Rdl "$1" | fzf -1 -0 --no-sort +m)" && cd "${dir}" || return 1
+# }
+# # smart-open with emacsclient
+# v() {
+#     local file
+#     file="$(fasd -Rfl "$1" | fzf -1 -0 --no-sort +m)" && ec "${file}" || return 1
+# }
+# # smart-open with terminal emacs
+# vt() {
+#     local file
+#     file="$(fasd -Rfl "$1" | fzf -1 -0 --no-sort +m)" && et "${file}" || return 1
+# }
+# alias a='fasd -a'       # any
+# alias s='fasd -si'      # show / search / select
+# alias f='fasd -f'       # file
+# alias d='fasd -d'       # directory
+# alias sd='fasd -sid'    # interactive directory selection
+# alias sf='fasd -sif'    # interactive file selection
+# #unalias j
+# alias j='fasd_cd -d'    # mimic autojump behaviour
+# alias o='fasd -ea open' # use fasd to select file/directory to open
 
 ############
 # Ripgrep

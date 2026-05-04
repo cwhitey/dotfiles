@@ -61,8 +61,8 @@ export LESSOPEN="| /opt/homebrew/bin/highlight %s --out-format xterm256 --line-n
 export LESS=" -R"
 alias less='less -m -N -g -i -J --line-numbers --underline-special'
 
-# Use "highlight" in place of "cat"
-alias cat="highlight $1 --out-format xterm256 --quiet --force --style moria"
+# Use "source-highlight" with alias "ccat" (dangerous to alias "cat")
+alias ccat="highlight $1 --out-format xterm256 --quiet --force --style moria"
 
 # Setup JSON Syntax Highlighting
 # Copy js.lang to json.lang with the following command
