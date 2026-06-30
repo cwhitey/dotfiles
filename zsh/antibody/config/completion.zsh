@@ -1,4 +1,6 @@
 ##### Config when using fzf-tab
+# case-insensitive (uppercase from lowercase) and partial-word completion
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 # disable sort when completing `git checkout`
 zstyle ':completion:*:git-checkout:*' sort false
 # set descriptions format to enable group support

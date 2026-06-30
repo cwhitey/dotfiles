@@ -119,3 +119,9 @@ unsetopt auto_name_dirs
 [ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
 
 [[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+
+. "$HOME/.local/bin/env"
+
+# fnm (Fast Node Manager) — auto-switch Node on cd via .node-version / .nvmrc
+eval "$(fnm env --use-on-cd --shell zsh)"
