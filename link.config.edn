@@ -13,7 +13,5 @@
   {:target "~/.doom.d"                       :source "emacs/doom"}
   {:target "~/.zshrc"                        :source "zsh/antibody/.zshrc"}
   {:target "~/.zshenv"                       :source "zsh/antibody/.zshenv"}
-  {:target "~/.zimrc"                        :source "zsh/antibody/.zimrc"}
-  {:target "/usr/local/bin/mdv"              :source "mdv/mdv.py"}
-  {:target "/usr/local/bin/ansi_tables.json" :source "mdv/ansi_tables.json"}]
+  {:target "~/.zimrc"                        :source "zsh/antibody/.zimrc"}]
  :clean ["~"]}

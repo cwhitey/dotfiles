@@ -67,11 +67,6 @@ alias cljsbuild="lein trampoline cljsbuild $@"
 alias be='bundle exec'
 
 ############
-# terminal markdown viewer (https://github.com/axiros/terminal_markdown_viewer)
-############
-alias mdv='mdv -t "palette 99"'
-
-############
 # emacs
 ############
 #NOTE: Try to use emacs/scripts/e instead

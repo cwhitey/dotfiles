@@ -3,10 +3,18 @@
   {:doc "Link dotfiles and clean broken links (--dry-run to preview)"
    :task (apply shell "bb" ".link/link.clj" *command-line-args*)}
 
+  deps
+  {:doc "Install the full Homebrew package, app, and VS Code extension profile"
+   :task (shell "brew bundle --file=osx/Brewfile")}
+
   shell:install
   {:doc "Install missing Zsh plugins and rebuild the Zim loader"
    :task (shell "zsh -f scripts/shell-plugins.zsh install")}
 
   shell:update
   {:doc "Update Zsh plugins and rebuild the Zim loader"
-   :task (shell "zsh -f scripts/shell-plugins.zsh update")}}}
+   :task (shell "zsh -f scripts/shell-plugins.zsh update")}
+
+  setup
+  {:doc "Set up a new Mac after Homebrew and Babashka are installed"
+   :depends [deps link shell:install]}}}
