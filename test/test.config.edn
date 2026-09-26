@@ -1,0 +1,11 @@
+;; Config used only by test/e2e-tests.clj. Sources are the committed fixtures in
+;; test/fixtures/ so the test is self-contained and independent of the real
+;; dotfiles. Targets use distinctive ~/.dtf-* names the harness seeds + asserts.
+{:link
+ [{:target "~/.dtf-correct"          :source "test/fixtures/correct"}
+  {:target "~/.dtf-wrong"            :source "test/fixtures/wrong"}
+  {:target "~/.dtf-realfile"         :source "test/fixtures/realsrc"}
+  {:target "~/.dtf-newfile"          :source "test/fixtures/newsrc"}
+  {:target "~/.dtf-dir"              :source "test/fixtures/dirsrc"}
+  {:target "/usr/local/bin/dtf-test" :source "test/fixtures/newsrc"}]
+ :clean ["~"]}

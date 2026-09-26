@@ -3,3 +3,5 @@
 /zsh/zplug/.zshrc.d/local.zsh
 /zsh/antibody/.zshrc.d/local.zsh
 /leiningen/self-installs/
+.clj-kondo/.cache/
+.lsp/.cache/
