@@ -1,7 +1,7 @@
 #!/usr/bin/env bb
 ;; Focused exit-code and summary checks. Safe to run locally: all targets
 ;; and cleanup directories are created under a temporary directory.
-;; Usage: bb .link/tests/link-results-tests.clj
+;; Usage: bb link/tests/link-results-tests.clj
 (require '[babashka.fs :as fs]
          '[babashka.process :as p]
          '[clojure.string :as str]
@@ -25,7 +25,7 @@
   (let [config-file (target "config.edn")]
     (spit config-file (pr-str config))
     (apply p/shell {:dir repo :out :string :err :string :continue true}
-           "bb" ".link/link.clj" "--config" config-file args)))
+           "bb" "link/link.clj" "--config" config-file args)))
 
 (defn summary [out]
   (last (str/split out #"\nSummary: " 2)))
@@ -113,26 +113,26 @@
         neighbour (fs/path *tmp* "dotfiles-other")
         clean-dir (fs/path *tmp* "links")
         config-file (target "cleanup.edn")]
-    (doseq [dir [(fs/path fixture-repo ".link") neighbour
+    (doseq [dir [(fs/path fixture-repo "link") neighbour
                  (fs/path clean-dir "nested")]]
       (fs/create-dirs dir))
-    (fs/copy (fs/path repo ".link/link.clj") (fs/path fixture-repo ".link/link.clj"))
+    (fs/copy (fs/path repo "link/link.clj") (fs/path fixture-repo "link/link.clj"))
     (fs/create-sym-link (fs/path fixture-repo "outside") neighbour)
     (fs/create-sym-link (fs/path *tmp* "repo-alias") fixture-repo)
     (spit (str (fs/path clean-dir "regular")) "keep me")
     (let [removed {"inside" (fs/path fixture-repo "missing")
-                   "normalised-inside" (fs/path fixture-repo ".link/../missing")
+                   "normalised-inside" (fs/path fixture-repo "link/../missing")
                    "relative-inside" (fs/path "../dotfiles/missing")
                    "alias-inside" (fs/path *tmp* "repo-alias/missing")}
           preserved {"neighbour" (fs/path neighbour "missing")
                      "parent-escape" (fs/path fixture-repo "../dotfiles-other/missing")
                      "relative-neighbour" (fs/path "../dotfiles-other/missing")
                      "symlink-escape" (fs/path fixture-repo "outside/missing")
-                     "live" (fs/path fixture-repo ".link/link.clj")
+                     "live" (fs/path fixture-repo "link/link.clj")
                      "nested/dead" (fs/path fixture-repo "missing")}
           run-clean (fn [& args]
                       (apply p/shell {:dir (str fixture-repo) :out :string :err :string :continue true}
-                             "bb" ".link/link.clj" "--config" config-file args))]
+                             "bb" "link/link.clj" "--config" config-file args))]
       (doseq [[name destination] (merge removed preserved)]
         (fs/create-sym-link (fs/path clean-dir name) destination))
       (spit config-file (pr-str {:clean [(str clean-dir)]}))
@@ -202,7 +202,7 @@
       (spit config-file contents)
       (let [{:keys [exit out err]}
             (p/shell {:dir repo :out :string :err :string :continue true}
-                     "bb" ".link/link.clj" "--config" config-file)]
+                     "bb" "link/link.clj" "--config" config-file)]
         (is (= 2 exit) contents)
         (is (str/includes? err config-file))
         (is (str/includes? err "No changes made."))
@@ -210,13 +210,13 @@
 
 (deftest equivalent-link-paths-are-left-unchanged
   (fs/create-dirs (target "subdir"))
-  (let [destinations {"dot-segments" (fs/path repo ".link/.././README.md")
+  (let [destinations {"dot-segments" (fs/path repo "link/.././README.md")
                       "relative" (fs/relativize (fs/real-path *tmp*)
                                                 (fs/real-path (fs/path repo "README.md")))
                       "source-dot-segments" (fs/path repo "README.md")}
         cfg {:link [{:target (target "subdir/../dot-segments") :source "README.md"}
                     (entry "relative")
-                    {:target (target "source-dot-segments") :source ".link/.././README.md"}]}]
+                    {:target (target "source-dot-segments") :source "link/.././README.md"}]}]
     (doseq [[name destination] destinations]
       (fs/create-sym-link (target name) destination))
     (doseq [args [[] ["--dry-run"]]]

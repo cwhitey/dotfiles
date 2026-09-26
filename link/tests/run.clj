@@ -1,6 +1,6 @@
 #!/usr/bin/env bb
 ;; Build the throwaway image and run the link.clj test harness in a
-;; container. Usage: .link/tests/run.clj   (override engine with CONTAINER_ENGINE)
+;; container. Usage: link/tests/run.clj   (override engine with CONTAINER_ENGINE)
 
 (require '[babashka.fs :as fs]
          '[babashka.process :as p])
@@ -15,5 +15,5 @@
 
 (let [engine (container-engine)
       run (fn [& args] (apply p/shell {:dir repo} engine args))]
-  (run "build" "-f" ".link/tests/Dockerfile" "-t" "dotfiles-install-test" ".")
+  (run "build" "-f" "link/tests/Dockerfile" "-t" "dotfiles-install-test" ".")
   (run "run" "--rm" "dotfiles-install-test"))

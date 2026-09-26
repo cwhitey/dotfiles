@@ -1,10 +1,10 @@
 #!/usr/bin/env bb
 ;; Dotfiles linker.
 ;;
-;; Usage (see ./.link/link.clj --help):
-;;   ./.link/link.clj                       apply links + clean (link.config.edn)
-;;   ./.link/link.clj --config other.edn    use a different config (alias: -c)
-;;   ./.link/link.clj --dry-run             preview actions, change nothing (-n)
+;; Usage (see ./link/link.clj --help):
+;;   ./link/link.clj                       apply links + clean (link.config.edn)
+;;   ./link/link.clj --config other.edn    use a different config (alias: -c)
+;;   ./link/link.clj --dry-run             preview actions, change nothing (-n)
 ;;
 ;; Config is read from an EDN file (default link.config.edn) shaped like
 ;; {:link [{:target ".." :source ".."} ..] :clean [".." ..]}. Only :link and
@@ -19,7 +19,7 @@
          '[clojure.edn :as edn]
          '[clojure.string :as str])
 
-;; Repo root is the parent of this script's .link directory.
+;; Repo root is the parent of this script's link directory.
 ;; :source entries in the config resolve relative to this.
 (def basedir (-> *file* fs/absolutize fs/parent fs/parent fs/normalize str))
 
@@ -214,7 +214,7 @@
 (defn- print-help []
   (println "link.clj — symlink dotfiles into place")
   (println)
-  (println "Usage: ./.link/link.clj [options]")
+  (println "Usage: ./link/link.clj [options]")
   (println)
   (println "Options:")
   (println (cli/format-opts cli-spec)))

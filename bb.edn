@@ -1,7 +1,7 @@
 {:tasks
  {link
   {:doc "Link dotfiles and clean broken links (--dry-run to preview)"
-   :task (apply shell "bb" ".link/link.clj" *command-line-args*)}
+   :task (apply shell "bb" "link/link.clj" *command-line-args*)}
 
   deps
   {:doc "Install the full Homebrew package, app, and VS Code extension profile"
