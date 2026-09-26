@@ -85,6 +85,18 @@
     (is (not (fs/exists? (target "new") {:nofollow-links true})))
     (is (str/includes? out "Summary: 0 unchanged, 0 linked, 0 relinked, 0 cleaned, 1 planned, 0 errors."))))
 
+(deftest creates-missing-parent-directories
+  (let [nested-target (target "one/two/three/file")
+        cfg {:link [{:target nested-target :source "README.md"}]}]
+    (is (not (fs/exists? (target "one") {:nofollow-links true})))
+    (let [{:keys [exit out]} (link cfg)]
+      (is (= 0 exit) out)
+      (is (fs/directory? (target "one/two/three")))
+      (is (fs/sym-link? nested-target))
+      (is (= (fs/real-path nested-target)
+             (fs/real-path (fs/path repo "README.md"))))
+      (is (str/includes? out "Summary: 0 unchanged, 1 linked, 0 relinked, 0 cleaned, 0 planned, 0 errors.")))))
+
 (deftest cleanup-exceptions-do-not-stop-later-directories
   (fs/create-sym-link (target "dead") (fs/path repo "missing-results-test-source"))
   (let [{:keys [exit out]} (link {:clean [(str "invalid" (char 0)) (str *tmp*)]})]
@@ -195,6 +207,53 @@
         (is (str/includes? err config-file))
         (is (str/includes? err "No changes made."))
         (is (not (str/includes? out "Linking:")))))))
+
+(deftest equivalent-link-paths-are-left-unchanged
+  (fs/create-dirs (target "subdir"))
+  (let [destinations {"dot-segments" (fs/path repo ".link/.././README.md")
+                      "relative" (fs/relativize (fs/real-path *tmp*)
+                                                (fs/real-path (fs/path repo "README.md")))
+                      "source-dot-segments" (fs/path repo "README.md")}
+        cfg {:link [{:target (target "subdir/../dot-segments") :source "README.md"}
+                    (entry "relative")
+                    {:target (target "source-dot-segments") :source ".link/.././README.md"}]}]
+    (doseq [[name destination] destinations]
+      (fs/create-sym-link (target name) destination))
+    (doseq [args [[] ["--dry-run"]]]
+      (let [{:keys [exit out]} (apply link cfg args)]
+        (is (= 0 exit) out)
+        (is (str/includes? (summary out) "3 unchanged, 0 linked, 0 relinked, 0 cleaned, 0 planned, 0 errors."))
+        (doseq [[name destination] destinations]
+          (is (= destination (fs/read-link (target name))) name))))))
+
+(deftest unresolved-source-symlinks-do-not-change-targets
+  (fs/create-sym-link (target "dangling-source") (target "missing"))
+  (fs/create-sym-link (target "chain-source") (target "dangling-source"))
+  (fs/create-sym-link (target "loop-source") (target "loop-source"))
+  (fs/create-sym-link (target "existing") (fs/path repo "README.md"))
+  (let [source (fn [name] (str (fs/relativize (fs/path repo) (fs/path (target name)))))
+        cfg {:link [{:target (target "new") :source (source "dangling-source")}
+                    {:target (target "existing") :source (source "chain-source")}
+                    {:target (target "loop-target") :source (source "loop-source")}
+                    (entry "good")]}]
+    (doseq [args [["--dry-run"] []]]
+      (let [{:keys [exit out]} (apply link cfg args)]
+        (is (= 1 exit))
+        (is (str/includes? (summary out) "3 errors."))
+        (is (str/includes? (summary out) "source symlink does not resolve:"))
+        (is (not (fs/exists? (target "new") {:nofollow-links true})))
+        (is (not (fs/exists? (target "loop-target") {:nofollow-links true})))
+        (is (= (fs/path repo "README.md") (fs/read-link (target "existing"))))))
+    (is (fs/sym-link? (target "good")))))
+
+(deftest valid-source-symlinks-remain-supported
+  (fs/create-sym-link (target "source-alias") (fs/path repo "README.md"))
+  (let [source (str (fs/relativize (fs/path repo) (fs/path (target "source-alias"))))
+        cfg {:link [{:target (target "new") :source source}]}]
+    (let [{:keys [exit out]} (link cfg)]
+      (is (= 0 exit) out)
+      (is (= (fs/path repo source) (fs/read-link (target "new"))))
+      (is (= (fs/real-path (target "new")) (fs/real-path (fs/path repo "README.md")))))))
 
 (let [{:keys [fail error]} (run-tests)]
   (System/exit (if (zero? (+ fail error)) 0 1)))

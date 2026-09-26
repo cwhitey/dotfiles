@@ -68,11 +68,19 @@
     (let [tgt (abs-target target)
           src (abs-source source)]
       (cond
-        (not (fs/exists? src {:nofollow-links true}))
-        (log :error tgt (str "source missing: " src))
+        ;; Follow source symlinks: a dangling source must never replace a
+        ;; working target or create another broken link.
+        (not (fs/exists? src))
+        (log :error tgt (str (if (fs/sym-link? src)
+                              "source symlink does not resolve: "
+                              "source missing: ") src))
 
         (fs/sym-link? tgt)
-        (if (= (current-link-dest tgt) src)
+        ;; Compare resolved paths so relative links, . and .., and directory
+        ;; symlink aliases don't cause needless relinking. real-path follows
+        ;; filesystem semantics (including symlink/..), not just string rules.
+        (if (and (fs/exists? tgt)
+                 (= (fs/real-path tgt) (fs/real-path src)))
           (log :ok tgt)
           (do
             (when-not *dry-run*
