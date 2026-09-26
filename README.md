@@ -47,9 +47,8 @@ are no longer used. Your aliases, keybindings and Homebrew Pure prompt remain
 in use. Other tool integrations in `.zshrc`, such as fnm and SDKMAN, still need
 their respective tools installed.
 
-`mdv` is not linked or installed: its bundled implementation requires Python 2,
-which is unavailable on current macOS. Use the supported `glow` command instead;
-it is included in the Brewfile.
+Use the supported `glow` command for terminal Markdown viewing; it is included
+in the Brewfile.
 
 ## Dependencies
 
