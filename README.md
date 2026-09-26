@@ -21,15 +21,14 @@ environment. From this repository, run:
 bb setup
 ```
 
-`bb setup` installs the full [Brewfile](osx/Brewfile), links dotfiles, and
+`bb setup` installs the full [Brewfile](modules/osx/Brewfile), links dotfiles, and
 installs Zim plugins. It includes command-line tools, applications, and VS Code
 extensions. Use `bb deps` to install only the Brewfile profile.
 
-Plugins are declared in `zsh/antibody/.zimrc` (linked to `~/.zimrc`). The
-historical directory name is retained so existing shell symlinks keep working.
-Edit that list to add or remove plugins, then open a new terminal: Zim installs
-missing modules and regenerates its loader when the list changes. Downloads and
-generated files live in `~/.zim`, outside the repository.
+Plugins are declared in `modules/zsh/.zimrc` (linked to `~/.zimrc`). Edit that
+list to add or remove plugins, then open a new terminal: Zim installs missing
+modules and regenerates its loader when the list changes. Downloads and generated
+files live in `~/.zim`, outside the repository.
 
 Run these tasks from the repository:
 

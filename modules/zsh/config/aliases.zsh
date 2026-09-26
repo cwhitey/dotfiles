@@ -69,7 +69,7 @@ alias be='bundle exec'
 ############
 # emacs
 ############
-#NOTE: Try to use emacs/scripts/e instead
+#NOTE: Try to use modules/emacs/scripts/e instead
 # start emacs server
 alias es='emacs --daemon'
 # start emacs without coupling to current terminal and push output to ~/nohup.out

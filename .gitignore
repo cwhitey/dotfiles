@@ -1,7 +1,7 @@
 /.lein/repl-history
 *DS_Store
-/zsh/zplug/.zshrc.d/local.zsh
-/zsh/antibody/.zshrc.d/local.zsh
-/leiningen/self-installs/
+/modules/zsh/zplug/.zshrc.d/local.zsh
+/modules/zsh/.zshrc.d/local.zsh
+/modules/leiningen/self-installs/
 .clj-kondo/.cache/
 .lsp/.cache/

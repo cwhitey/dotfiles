@@ -5,15 +5,15 @@
 
   deps
   {:doc "Install the full Homebrew package, app, and VS Code extension profile"
-   :task (shell "brew bundle --file=osx/Brewfile")}
+   :task (shell "brew bundle --file=modules/osx/Brewfile")}
 
   shell:install
   {:doc "Install missing Zsh plugins and rebuild the Zim loader"
-   :task (shell "zsh -f scripts/shell-plugins.zsh install")}
+   :task (shell "zsh -f modules/zsh/scripts/plugins.zsh install")}
 
   shell:update
   {:doc "Update Zsh plugins and rebuild the Zim loader"
-   :task (shell "zsh -f scripts/shell-plugins.zsh update")}
+   :task (shell "zsh -f modules/zsh/scripts/plugins.zsh update")}
 
   setup
   {:doc "Set up a new Mac after Homebrew and Babashka are installed"

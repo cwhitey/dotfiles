@@ -5,13 +5,13 @@
 ;; Unknown keys and malformed entries are rejected before any changes.
 ;; Only :link and :clean are implemented today.
 ;; Future expansion (would need support added in .link/link.clj):
-;;   :brew  "osx/Brewfile"   -> run `brew bundle --file=...`
+;;   :brew  "modules/osx/Brewfile"   -> run `brew bundle --file=...`
 ;;   :shell [["cmd" "desc"]] -> run arbitrary setup commands
 {:link
- [{:target "~/.gitconfig"                   :source "git/gitconfig"}
-  {:target "~/.agignore"                     :source "ag/agignore"}
-  {:target "~/.doom.d"                       :source "emacs/doom"}
-  {:target "~/.zshrc"                        :source "zsh/antibody/.zshrc"}
-  {:target "~/.zshenv"                       :source "zsh/antibody/.zshenv"}
-  {:target "~/.zimrc"                        :source "zsh/antibody/.zimrc"}]
+ [{:target "~/.gitconfig"                   :source "modules/git/gitconfig"}
+  {:target "~/.agignore"                     :source "modules/ag/agignore"}
+  {:target "~/.doom.d"                       :source "modules/emacs/doom"}
+  {:target "~/.zshrc"                        :source "modules/zsh/.zshrc"}
+  {:target "~/.zshenv"                       :source "modules/zsh/.zshenv"}
+  {:target "~/.zimrc"                        :source "modules/zsh/.zimrc"}]
  :clean ["~"]}

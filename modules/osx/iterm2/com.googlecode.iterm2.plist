@@ -31296,7 +31296,7 @@
 	<key>LoadPrefsFromCustomFolder</key>
 	<true/>
 	<key>NSNavLastRootDirectory</key>
-	<string>~/projects/personal/dotfiles/osx/iterm2</string>
+	<string>~/projects/personal/dotfiles/modules/osx/iterm2</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
 	<string>{712, 448}</string>
 	<key>NSQuotedKeystrokeBinding</key>
@@ -32043,7 +32043,7 @@
 		</dict>
 	</dict>
 	<key>PrefsCustomFolder</key>
-	<string>/Users/callum.white/projects/personal/dotfiles/osx/iterm2</string>
+	<string>/Users/callum.white/projects/personal/dotfiles/modules/osx/iterm2</string>
 	<key>Print In Black And White</key>
 	<true/>
 	<key>PromptOnQuit</key>
