@@ -1,8 +1,8 @@
 #!/usr/bin/env bb
-;; End-to-end test for install.clj. MUST run inside a throwaway container
+;; End-to-end test for link.clj. MUST run inside a throwaway container
 ;; (see test/run.clj) — it writes to the real $HOME and /usr/local/bin.
 ;;
-;; Drives install.clj with test/test.config.edn (committed fixtures under
+;; Drives link.clj with test/test.config.edn (committed fixtures under
 ;; test/fixtures/), seeds $HOME with one fixture per branch of the linker, runs
 ;; the script, then asserts on both its printed output and the filesystem.
 
@@ -58,16 +58,16 @@
   (fs/create-sym-link (h ".dtf-deadlink")  (r "does-not-exist"))      ; dead, into repo -> clean
   (fs/create-sym-link (h ".dtf-otherdead") "/nope/missing"))           ; dead, elsewhere -> kept
 
-(defn run-install-script [& args]
+(defn run-link-script [& args]
   (let [{:keys [out err]} (apply p/shell {:dir repo :out :string :err :string
                                           :continue true}
-                                 "./install.clj" "--config" test-config args)]
+                                 "./link.clj" "--config" test-config args)]
     (str out err)))
 
 ;; --- run 1: dry-run must change nothing --------------------------------------
 (println "==> dry-run (must make no changes)")
 (seed)
-(let [out (run-install-script "--dry-run")]
+(let [out (run-link-script "--dry-run")]
   (println out)
   (check (out-has? out #"\[dry-run\]")                "dry-run announces itself")
   (check (not (exists? (h ".dtf-newfile")))           "dry-run did not create .dtf-newfile")
@@ -78,7 +78,7 @@
 ;; --- run 2: real apply -------------------------------------------------------
 (println "==> apply (real run)")
 (seed)
-(let [out (run-install-script)]
+(let [out (run-link-script)]
   (println out)
 
   (println "==> output assertions")

@@ -1,7 +1,7 @@
 #!/usr/bin/env bb
 ;; Focused exit-code and summary checks. Safe to run locally: all targets
 ;; and cleanup directories are created under a temporary directory.
-;; Usage: bb test/install-results-tests.clj
+;; Usage: bb test/link-results-tests.clj
 (require '[babashka.fs :as fs]
          '[babashka.process :as p]
          '[clojure.string :as str]
@@ -21,23 +21,23 @@
         (binding [*tmp* dir] (test-fn))
         (finally (fs/delete-tree dir))))))
 
-(defn install [config & args]
+(defn link [config & args]
   (let [config-file (target "config.edn")]
     (spit config-file (pr-str config))
     (apply p/shell {:dir repo :out :string :err :string :continue true}
-           "bb" "install.clj" "--config" config-file args)))
+           "bb" "link.clj" "--config" config-file args)))
 
 (defn summary [out]
   (last (str/split out #"\nSummary: " 2)))
 
 (deftest success-and-unchanged
   (let [config {:link [(entry "linked")]}]
-    (let [{:keys [exit out]} (install config)]
+    (let [{:keys [exit out]} (link config)]
       (is (= 0 exit))
       (is (fs/sym-link? (target "linked")))
       (is (not (str/includes? (summary out) "Errors in")))
       (is (str/includes? out "Summary: 0 unchanged, 1 linked, 0 relinked, 0 cleaned, 0 planned, 0 errors.")))
-    (let [{:keys [exit out]} (install config)]
+    (let [{:keys [exit out]} (link config)]
       (is (= 0 exit))
       (is (str/includes? out "Summary: 1 unchanged, 0 linked, 0 relinked, 0 cleaned, 0 planned, 0 errors.")))))
 
@@ -46,7 +46,7 @@
   (spit (target "parent-file") "not a directory")
   (fs/create-sym-link (target "dead") (fs/path repo "missing-results-test-source"))
   (let [{:keys [exit out]}
-        (install {:link [{:target (target "missing") :source "missing-results-test-source"}
+        (link {:link [{:target (target "missing") :source "missing-results-test-source"}
                          (entry "conflict")
                          (entry "parent-file/child")
                          (entry "good")]
@@ -70,7 +70,7 @@
   (spit (target "conflict") "keep me")
   (fs/create-sym-link (target "dead") (fs/path repo "missing-results-test-source"))
   (let [{:keys [exit out]}
-        (install {:link [(entry "conflict") (entry "new")]
+        (link {:link [(entry "conflict") (entry "new")]
                   :clean [(str *tmp*)]} "--dry-run")]
     (is (= 1 exit))
     (is (= "keep me" (slurp (target "conflict"))))
@@ -80,14 +80,14 @@
     (is (str/includes? out "Summary: 0 unchanged, 0 linked, 0 relinked, 0 cleaned, 2 planned, 1 errors."))))
 
 (deftest successful-dry-run
-  (let [{:keys [exit out]} (install {:link [(entry "new")]} "--dry-run")]
+  (let [{:keys [exit out]} (link {:link [(entry "new")]} "--dry-run")]
     (is (= 0 exit))
     (is (not (fs/exists? (target "new") {:nofollow-links true})))
     (is (str/includes? out "Summary: 0 unchanged, 0 linked, 0 relinked, 0 cleaned, 1 planned, 0 errors."))))
 
 (deftest cleanup-exceptions-do-not-stop-later-directories
   (fs/create-sym-link (target "dead") (fs/path repo "missing-results-test-source"))
-  (let [{:keys [exit out]} (install {:clean [(str "invalid" (char 0)) (str *tmp*)]})]
+  (let [{:keys [exit out]} (link {:clean [(str "invalid" (char 0)) (str *tmp*)]})]
     (is (= 1 exit))
     (is (not (fs/sym-link? (target "dead"))))
     (is (str/includes? (summary out) (str "[:clean 0] " (pr-str (str "invalid" (char 0))))))

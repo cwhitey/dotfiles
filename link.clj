@@ -1,12 +1,12 @@
 #!/usr/bin/env bb
-;; Dotfiles installer — babashka replacement for dotbot.
+;; Dotfiles linker — babashka replacement for dotbot.
 ;;
-;; Usage (see ./install.clj --help):
-;;   ./install.clj                       apply links + clean (install.config.edn)
-;;   ./install.clj --config other.edn    use a different config (alias: -c)
-;;   ./install.clj --dry-run             preview actions, change nothing (-n)
+;; Usage (see ./link.clj --help):
+;;   ./link.clj                       apply links + clean (link.config.edn)
+;;   ./link.clj --config other.edn    use a different config (alias: -c)
+;;   ./link.clj --dry-run             preview actions, change nothing (-n)
 ;;
-;; Config is read from an EDN file (default install.config.edn) shaped like
+;; Config is read from an EDN file (default link.config.edn) shaped like
 ;; {:link [{:target ".." :source ".."} ..] :clean [".." ..]}. Only :link and
 ;; :clean are implemented (the directives the old install.conf.yaml used).
 ;; Links always relink: an existing symlink pointing at the wrong place is
@@ -23,7 +23,7 @@
 ;; :source entries in the config resolve relative to this.
 (def basedir (str (fs/normalize (fs/parent (fs/absolutize *file*)))))
 
-(def default-config (str (fs/path basedir "install.config.edn")))
+(def default-config (str (fs/path basedir "link.config.edn")))
 
 (def ^:dynamic *dry-run* false)
 (def ^:dynamic *results* nil)
@@ -144,7 +144,7 @@
 (def cli-spec
   {:spec
    {:config  {:alias :c :ref "<file>" :default default-config
-              :default-desc "install.config.edn"
+              :default-desc "link.config.edn"
               :desc "EDN config file describing :link and :clean"}
     :dry-run {:alias :n :coerce :boolean
               :desc "Preview actions without touching the filesystem"}
@@ -154,9 +154,9 @@
    :error-fn (fn [{:keys [msg]}] (die msg))})
 
 (defn- print-help []
-  (println "install.clj — symlink dotfiles into place (dotbot replacement)")
+  (println "link.clj — symlink dotfiles into place (dotbot replacement)")
   (println)
-  (println "Usage: ./install.clj [options]")
+  (println "Usage: ./link.clj [options]")
   (println)
   (println "Options:")
   (println (cli/format-opts cli-spec)))

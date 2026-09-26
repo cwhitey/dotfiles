@@ -1,5 +1,5 @@
 #!/usr/bin/env bb
-;; Build the throwaway image and run the install.clj test harness in a
+;; Build the throwaway image and run the link.clj test harness in a
 ;; container. Usage: test/run.clj   (override engine with CONTAINER_ENGINE)
 
 (require '[babashka.fs :as fs]

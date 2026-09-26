@@ -1,11 +1,14 @@
 # Dotfiles
 
-These dotfiles can be linked with the Babashka installer:
+These dotfiles can be linked with the Babashka linker:
 
 ```sh
-bb install.clj --dry-run
-bb install.clj
+bb link --dry-run
+bb link
 ```
+
+Link definitions live in `link.config.edn`. Run `bb link --help` for options;
+`./link.clj` can also be invoked directly.
 
 The legacy `./install` entry point still uses Dotbot.
 
@@ -15,7 +18,7 @@ After installing Homebrew and Babashka and initialising `brew shellenv`:
 
 ```sh
 brew install zimfw fzf pure eza
-bb install.clj
+bb link
 bb shell:install
 ```
 
@@ -33,6 +36,7 @@ Run these tasks from the repository:
 
 ```sh
 bb tasks          # Show available tasks
+bb link           # Link dotfiles and clean broken links
 bb shell:install  # Install missing plugins and regenerate the loader
 bb shell:update   # Update plugins and regenerate the loader
 ```
