@@ -12,8 +12,6 @@ Run `bb link --help` for options; `./.link/link.clj` can also be invoked directl
 Run the local linker tests with `bb .link/tests/link-results-tests.clj`, or the
 container tests with `bb .link/tests/run.clj`.
 
-The legacy `./install` entry point still uses Dotbot.
-
 ## Zsh setup
 
 After installing Homebrew and Babashka and initialising `brew shellenv`:
@@ -49,9 +47,6 @@ in use. Other tool integrations in `.zshrc`, such as fnm and SDKMAN, still need
 their respective tools installed.
 
 ## Dependencies
-
-### general
-- dotbot config mananger (`brew install dotbot`)
 
 ### zsh
 - Zim zsh plugin manager

@@ -1,5 +1,4 @@
 .git
-dotbot
 .clj-kondo/.cache
 .lsp/.cache
 *DS_Store

@@ -1,5 +1,5 @@
 #!/usr/bin/env bb
-;; Dotfiles linker — babashka replacement for dotbot.
+;; Dotfiles linker.
 ;;
 ;; Usage (see ./.link/link.clj --help):
 ;;   ./.link/link.clj                       apply links + clean (link.config.edn)
@@ -8,7 +8,7 @@
 ;;
 ;; Config is read from an EDN file (default link.config.edn) shaped like
 ;; {:link [{:target ".." :source ".."} ..] :clean [".." ..]}. Only :link and
-;; :clean are implemented (the directives the old install.conf.yaml used).
+;; :clean are the only supported directives.
 ;; Links always relink: an existing symlink pointing at the wrong place is
 ;; replaced. A real (non-symlink) file/dir at the target is left untouched.
 ;; Exit codes: 0 success, 1 operation failures (including in dry-run),
@@ -212,7 +212,7 @@
    :error-fn (fn [{:keys [msg]}] (die msg))})
 
 (defn- print-help []
-  (println "link.clj — symlink dotfiles into place (dotbot replacement)")
+  (println "link.clj — symlink dotfiles into place")
   (println)
   (println "Usage: ./.link/link.clj [options]")
   (println)
