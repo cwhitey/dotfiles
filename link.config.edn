@@ -1,7 +1,10 @@
-;; Dotfiles config consumed by link.clj (override path with --config / -c).
+;; Dotfiles config consumed by .link/link.clj (override path with --config / -c).
 ;; :source entries are relative to the repo root; :target may use ~.
+;; Both sections are optional vectors. Links require :target and :source
+;; non-blank strings; cleanup entries are non-blank directory strings.
+;; Unknown keys and malformed entries are rejected before any changes.
 ;; Only :link and :clean are implemented today.
-;; Future expansion (would need support added in link.clj):
+;; Future expansion (would need support added in .link/link.clj):
 ;;   :brew  "osx/Brewfile"   -> run `brew bundle --file=...`
 ;;   :shell [["cmd" "desc"]] -> run arbitrary setup commands
 {:link

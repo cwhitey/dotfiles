@@ -7,8 +7,10 @@ bb link --dry-run
 bb link
 ```
 
-Link definitions live in `link.config.edn`. Run `bb link --help` for options;
-`./link.clj` can also be invoked directly.
+Link definitions live in `link.config.edn`; the implementation is in `.link/`.
+Run `bb link --help` for options; `./.link/link.clj` can also be invoked directly.
+Run the local linker tests with `bb .link/tests/link-results-tests.clj`, or the
+container tests with `bb .link/tests/run.clj`.
 
 The legacy `./install` entry point still uses Dotbot.
 

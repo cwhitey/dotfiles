@@ -1,18 +1,18 @@
 #!/usr/bin/env bb
 ;; End-to-end test for link.clj. MUST run inside a throwaway container
-;; (see test/run.clj) — it writes to the real $HOME and /usr/local/bin.
+;; (see .link/tests/run.clj) — it writes to the real $HOME and /usr/local/bin.
 ;;
-;; Drives link.clj with test/test.config.edn (committed fixtures under
-;; test/fixtures/), seeds $HOME with one fixture per branch of the linker, runs
+;; Drives link.clj with .link/tests/test.config.edn (committed fixtures under
+;; .link/tests/fixtures/), seeds $HOME with one fixture per branch of the linker, runs
 ;; the script, then asserts on both its printed output and the filesystem.
 
 (require '[babashka.fs :as fs]
          '[babashka.process :as p]
          '[clojure.string :as str])
 
-(def repo (-> *file* fs/absolutize fs/normalize fs/parent fs/parent str))
+(def repo (-> *file* fs/absolutize fs/normalize fs/parent fs/parent fs/parent str))
 (def home (str (fs/expand-home "~")))
-(def test-config "test/test.config.edn")
+(def test-config ".link/tests/test.config.edn")
 
 (defn h [& parts] (str (apply fs/path home parts)))
 (defn r [& parts] (str (apply fs/path repo parts)))
@@ -51,7 +51,7 @@
   (run! nuke [(h ".dtf-correct") (h ".dtf-wrong") (h ".dtf-realfile")
               (h ".dtf-newfile") (h ".dtf-dir") (h ".dtf-deadlink")
               (h ".dtf-otherdead") "/usr/local/bin/dtf-test"])
-  (fs/create-sym-link (h ".dtf-correct") (r "test/fixtures/correct")) ; correct -> ok
+  (fs/create-sym-link (h ".dtf-correct") (r ".link/tests/fixtures/correct")) ; correct -> ok
   (fs/create-sym-link (h ".dtf-wrong")   "/etc/hostname")             ; wrong   -> relink
   (spit (h ".dtf-realfile") "do not touch")                          ; real file -> error
   ;; .dtf-newfile / .dtf-dir / /usr/local/bin/dtf-test absent          ; absent  -> linked
@@ -61,7 +61,7 @@
 (defn run-link-script [& args]
   (let [{:keys [out err]} (apply p/shell {:dir repo :out :string :err :string
                                           :continue true}
-                                 "./link.clj" "--config" test-config args)]
+                                 "./.link/link.clj" "--config" test-config args)]
     (str out err)))
 
 ;; --- run 1: dry-run must change nothing --------------------------------------
@@ -89,12 +89,12 @@
   (check (out-has? out #"(?m)^clean\s+.*\.dtf-deadlink") "dead link into repo reported clean"))
 
 (println "==> filesystem assertions")
-(check (link-to? (h ".dtf-correct")  (r "test/fixtures/correct")) "correct symlink preserved")
-(check (link-to? (h ".dtf-wrong")    (r "test/fixtures/wrong"))   "wrong symlink relinked to repo")
+(check (link-to? (h ".dtf-correct")  (r ".link/tests/fixtures/correct")) "correct symlink preserved")
+(check (link-to? (h ".dtf-wrong")    (r ".link/tests/fixtures/wrong"))   "wrong symlink relinked to repo")
 (check (real-file? (h ".dtf-realfile") "do not touch")            "real file NOT clobbered")
-(check (link-to? (h ".dtf-newfile")  (r "test/fixtures/newsrc"))  "absent target linked")
-(check (link-to? (h ".dtf-dir")      (r "test/fixtures/dirsrc"))  "absent dir target linked")
-(check (link-to? "/usr/local/bin/dtf-test" (r "test/fixtures/newsrc")) "/usr/local/bin link created")
+(check (link-to? (h ".dtf-newfile")  (r ".link/tests/fixtures/newsrc"))  "absent target linked")
+(check (link-to? (h ".dtf-dir")      (r ".link/tests/fixtures/dirsrc"))  "absent dir target linked")
+(check (link-to? "/usr/local/bin/dtf-test" (r ".link/tests/fixtures/newsrc")) "/usr/local/bin link created")
 (check (not (exists? (h ".dtf-deadlink")))                        "dead link into repo cleaned")
 (check (fs/sym-link? (h ".dtf-otherdead"))                        "unrelated dead link left alone")
 

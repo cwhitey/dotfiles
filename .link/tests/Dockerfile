@@ -4,6 +4,6 @@ FROM babashka/babashka:latest
 
 WORKDIR /dotfiles
 COPY . /dotfiles
-RUN chmod +x link.clj test/e2e-tests.clj
+RUN chmod +x .link/link.clj .link/tests/e2e-tests.clj
 
-ENTRYPOINT ["bb", "/dotfiles/test/e2e-tests.clj"]
+ENTRYPOINT ["bb", "/dotfiles/.link/tests/e2e-tests.clj"]

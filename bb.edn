@@ -1,7 +1,7 @@
 {:tasks
  {link
   {:doc "Link dotfiles and clean broken links (--dry-run to preview)"
-   :task (apply shell "bb" "link.clj" *command-line-args*)}
+   :task (apply shell "bb" ".link/link.clj" *command-line-args*)}
 
   shell:install
   {:doc "Install missing Zsh plugins and rebuild the Zim loader"
