@@ -109,6 +109,10 @@ source $ZCONFIG/completion.zsh
 # initialise zsh completion system
 autoload -U compinit && compinit
 
+# zsh's built-in _zed completion is for an unrelated legacy editor and doesn't
+# know about the Zed code editor's flags (e.g. -n), so it breaks file completion
+compdef _files zed
+
 # make sure exact-match var setting doesn't replace path with that var
 unsetopt auto_name_dirs
 
@@ -125,3 +129,7 @@ export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 
 # fnm (Fast Node Manager) — auto-switch Node on cd via .node-version / .nvmrc
 eval "$(fnm env --use-on-cd --shell zsh)"
+
+# SDKMAN (must be at the end of the file)
+export SDKMAN_DIR=$(brew --prefix sdkman-cli)/libexec
+[[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
