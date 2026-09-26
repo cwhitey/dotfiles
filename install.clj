@@ -11,6 +11,8 @@
 ;; :clean are implemented (the directives the old install.conf.yaml used).
 ;; Links always relink: an existing symlink pointing at the wrong place is
 ;; replaced. A real (non-symlink) file/dir at the target is left untouched.
+;; Exit codes: 0 success, 1 operation failures (including in dry-run),
+;; 2 command-line/config-file lookup errors.
 
 (require '[babashka.cli :as cli]
          '[babashka.fs :as fs]
@@ -24,12 +26,27 @@
 (def default-config (str (fs/path basedir "install.config.edn")))
 
 (def ^:dynamic *dry-run* false)
+(def ^:dynamic *results* nil)
+(def ^:dynamic *config-item* nil)
 
 (defn- log [status path & [detail]]
+  (when *results*
+    (swap! *results*
+           (fn [results]
+             (cond-> (update results status (fnil inc 0))
+               (= status :error)
+               (update :errors (fnil conj [])
+                       {:config-item *config-item* :path (str path) :reason detail})))))
   (println (format "%-7s %s%s"
                    (name status)
                    (str path)
                    (if detail (str "  (" detail ")") ""))))
+
+(defn- exception-reason [e]
+  ;; Filesystem exceptions often contain only a path in their message.
+  ;; Include the type so, for example, AccessDeniedException is actionable.
+  (str (.getSimpleName (class e))
+       (when-let [message (ex-message e)] (str ": " message))))
 
 (defn- abs-target [target]
   (str (fs/absolutize (fs/expand-home target))))
@@ -47,9 +64,9 @@
                             (fs/path (fs/parent path) raw)))))))
 
 (defn link-one [{:keys [target source]}]
-  (let [tgt (abs-target target)
-        src (abs-source source)]
-    (try
+  (try
+    (let [tgt (abs-target target)
+          src (abs-source source)]
       (cond
         (not (fs/exists? src {:nofollow-links true}))
         (log :error tgt (str "source missing: " src))
@@ -76,21 +93,48 @@
             (let [parent (fs/parent tgt)]
               (when-not (fs/exists? parent) (fs/create-dirs parent)))
             (fs/create-sym-link tgt src))
-          (log (if *dry-run* :would :linked) tgt (str "-> " src))))
-      (catch Exception e
-        (log :error tgt (ex-message e))))))
+          (log (if *dry-run* :would :linked) tgt (str "-> " src)))))
+    (catch Exception e
+      (log :error target (exception-reason e)))))
 
 (defn clean-one
   "Remove broken symlinks in `dir` that point into the repo (non-recursive)."
   [dir]
-  (let [d (fs/expand-home dir)]
-    (when (fs/directory? d)
-      (doseq [child (fs/list-dir d)]
-        (when (and (fs/sym-link? child)
-                   (not (fs/exists? child)) ; follows links: false => dangling
-                   (str/starts-with? (str (current-link-dest child)) basedir))
-          (when-not *dry-run* (fs/delete child))
-          (log (if *dry-run* :would :clean) child "dead link into repo"))))))
+  (try
+    (let [d (fs/expand-home dir)]
+      (when (fs/directory? d)
+        (doseq [child (fs/list-dir d)]
+          (try
+            (when (and (fs/sym-link? child)
+                       (not (fs/exists? child)) ; follows links: false => dangling
+                       (str/starts-with? (str (current-link-dest child)) basedir))
+              (when-not *dry-run* (fs/delete child))
+              (log (if *dry-run* :would :clean) child "dead link into repo"))
+            (catch Exception e
+              (log :error child (exception-reason e)))))))
+    (catch Exception e
+      (log :error dir (exception-reason e)))))
+
+(defn- print-summary [results config-path]
+  (println
+   (format "\nSummary: %d unchanged, %d linked, %d relinked, %d cleaned, %d planned, %d errors."
+           (get results :ok 0)
+           (get results :linked 0)
+           (get results :relink 0)
+           (get results :clean 0)
+           (get results :would 0)
+           (get results :error 0)))
+  (when (seq (:errors results))
+    (println (str "\nErrors in " config-path " (entry indexes are zero-based):"))
+    (doseq [{:keys [config-item path reason]} (:errors results)]
+      (println (str "  " (pr-str (:location config-item)) " " (pr-str (:value config-item))))
+      (println (str "    Path: " (pr-str path)))
+      (println (str "    Reason: " reason)))))
+
+(defn- run-entries [directive entries operation]
+  (doseq [[index entry] (map-indexed vector entries)]
+    (binding [*config-item* {:location [directive index] :value entry}]
+      (operation entry))))
 
 (defn- die [& msg]
   (binding [*out* *err*] (apply println msg))
@@ -127,11 +171,15 @@
     (if (:help opts)
       (print-help)
       (let [cfg (load-config (:config opts))]
-        (binding [*dry-run* (boolean (:dry-run opts))]
+        (binding [*dry-run* (boolean (:dry-run opts))
+                  *results* (atom {})]
           (when *dry-run* (println "[dry-run] no filesystem changes will be made\n"))
           (println "Linking:")
-          (run! link-one (:link cfg))
+          (run-entries :link (:link cfg) link-one)
           (println "\nCleaning:")
-          (run! clean-one (:clean cfg)))))))
+          (run-entries :clean (:clean cfg) clean-one)
+          (print-summary @*results* (:config opts))
+          (when (pos? (get @*results* :error 0))
+            (System/exit 1)))))))
 
 (apply -main *command-line-args*)
