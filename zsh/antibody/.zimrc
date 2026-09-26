@@ -1,0 +1,15 @@
+# Zim loads these modules in order. Custom completion settings are applied
+# after Zim's defaults, before fzf-tab and the plugins that wrap ZLE widgets.
+zmodule zimfw/completion
+zmodule zimfw/completion --cmd 'source "${ZIM_CONFIG_FILE:A:h}/config/completion.zsh"'
+zmodule Aloxaf/fzf-tab
+
+# Git helpers.
+zmodule caarlos0/zsh-open-github-pr --source git-open-pr.plugin.zsh
+zmodule peterhurford/git-it-on.zsh --source git-it-on.plugin.zsh
+
+# Editing, suggestions, highlighting and history search.
+zmodule hlissner/zsh-autopair
+zmodule zsh-users/zsh-autosuggestions
+zmodule zdharma-continuum/fast-syntax-highlighting
+zmodule zsh-users/zsh-history-substring-search

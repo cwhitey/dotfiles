@@ -1,13 +1,7 @@
 #!/bin/zsh
 
-# resolve zsh dotfiles directory
-# SOURCE=$(realpath ${(%):-%N})
-# while [ -h "$SOURCE" ]; do
-#   DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
-#   SOURCE="$(readlink "$SOURCE")"
-#   [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
-# done
-ZSOURCEDIR="/Users/callum/development/dotfiles/zsh/antibody"
+# Resolve this file through ~/.zshrc's symlink, wherever the repo was cloned.
+ZSOURCEDIR=${${(%):-%N}:A:h}
 ZCONFIG="$ZSOURCEDIR/config"
 fpath=( $ZSOURCEDIR $fpath )
 fpath+=("$(brew --prefix)/share/zsh/site-functions")
@@ -73,9 +67,17 @@ ZSH_HIGHLIGHT_STYLES[cursor-matchingbracket]=none
 ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=red,bold
 
 ###
-# Load packages
+# Load packages (completion must precede fzf-tab and widget plugins).
 ###
-source $ZSOURCEDIR/antidote-packages.zsh
+source "$ZCONFIG/zim.zsh"
+if [[ ! "$ZIM_HOME/init.zsh" -nt "$ZIM_CONFIG_FILE" ]]; then
+    if [[ -r "$ZIM_SCRIPT" ]]; then
+        source "$ZIM_SCRIPT" init
+    else
+        print -u2 'Zim is missing: run brew install zimfw, then bb shell:install in your dotfiles repo.'
+    fi
+fi
+[[ -r "$ZIM_HOME/init.zsh" ]] && source "$ZIM_HOME/init.zsh"
 
 ###
 # after-package-load overrides
@@ -91,7 +93,6 @@ prompt pure
 ###
 # fzf
 ###
-source <(fzf --zsh)
 source $ZCONFIG/fzf-setup.zsh
 
 ###
@@ -100,14 +101,10 @@ source $ZCONFIG/fzf-setup.zsh
 source $ZCONFIG/keybindings.zsh
 
 ###
-# Load other config files and compinit (for completion)
+# Load other config files
 ###
 source $ZCONFIG/git-functions.zsh
 source $ZCONFIG/aliases.zsh
-
-source $ZCONFIG/completion.zsh
-# initialise zsh completion system
-autoload -U compinit && compinit
 
 # zsh's built-in _zed completion is for an unrelated legacy editor and doesn't
 # know about the Zed code editor's flags (e.g. -n), so it breaks file completion

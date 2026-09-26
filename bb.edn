@@ -1,0 +1,8 @@
+{:tasks
+ {shell:install
+  {:doc "Install missing Zsh plugins and rebuild the Zim loader"
+   :task (shell "zsh -f scripts/shell-plugins.zsh install")}
+
+  shell:update
+  {:doc "Update Zsh plugins and rebuild the Zim loader"
+   :task (shell "zsh -f scripts/shell-plugins.zsh update")}}}

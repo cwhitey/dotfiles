@@ -1,9 +1,46 @@
 # Dotfiles
 
-These dotfiles use dotbot for linkage.
+These dotfiles can be linked with the Babashka installer:
 
-- First run `git submodule --update --init`
-- `./install`
+```sh
+bb install.clj --dry-run
+bb install.clj
+```
+
+The legacy `./install` entry point still uses Dotbot.
+
+## Zsh setup
+
+After installing Homebrew and Babashka and initialising `brew shellenv`:
+
+```sh
+brew install zimfw fzf pure eza
+bb install.clj
+bb shell:install
+```
+
+Open a new terminal after setup. The full machine dependency list is in
+`osx/Brewfile`; the command above installs only the shell's plugin manager,
+fuzzy finder, prompt and directory preview tool.
+
+Plugins are declared in `zsh/antibody/.zimrc` (linked to `~/.zimrc`). The
+historical directory name is retained so existing shell symlinks keep working.
+Edit that list to add or remove plugins, then open a new terminal: Zim installs
+missing modules and regenerates its loader when the list changes. Downloads and
+generated files live in `~/.zim`, outside the repository.
+
+Run these tasks from the repository:
+
+```sh
+bb tasks          # Show available tasks
+bb shell:install  # Install missing plugins and regenerate the loader
+bb shell:update   # Update plugins and regenerate the loader
+```
+
+Homebrew manages Zim itself (`brew upgrade zimfw`). Existing Antidote caches
+are no longer used. Your aliases, keybindings and Homebrew Pure prompt remain
+in use. Other tool integrations in `.zshrc`, such as fnm and SDKMAN, still need
+their respective tools installed.
 
 ## Dependencies
 
@@ -11,9 +48,8 @@ These dotfiles use dotbot for linkage.
 - dotbot config mananger (`brew install dotbot`)
 
 ### zsh
-- antidote zsh plugin manager 
-    - `brew install antidote`
-    - `antidote load zsh/antidote/antidote-packages.txt`
+- Zim zsh plugin manager
+    - See Zsh setup above.
 - pure prompt 
     - `brew install pure`
 - emacs

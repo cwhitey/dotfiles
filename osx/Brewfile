@@ -2,8 +2,10 @@ tap "buo/cask-upgrade"
 tap "d12frosted/emacs-plus"
 tap "railwaycat/emacsmacport"
 tap "withgraphite/tap"
-# Plugin manager for zsh, inspired by antigen and antibody
-brew "antidote"
+# Zsh framework and plugin manager
+brew "zimfw"
+# Directory previews in fzf-tab
+brew "eza"
 # Official Amazon AWS command-line interface
 brew "awscli"
 # Clone of cat(1) with syntax highlighting and Git integration

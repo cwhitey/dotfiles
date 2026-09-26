@@ -24,8 +24,10 @@
     ~/.zshenv:
       relink: true
       path: zsh/antibody/.zshenv
+    ~/.zimrc:
+      relink: true
+      path: zsh/antibody/.zimrc
 
     # Terminal Markdown Viewer
     /usr/local/bin/mdv: mdv/mdv.py
     /usr/local/bin/ansi_tables.json: mdv/ansi_tables.json
-
