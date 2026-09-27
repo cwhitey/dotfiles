@@ -7,8 +7,9 @@ BG_GREEN=`tput setaf 2`
 BOLD=`tput bold`
 RESET=`tput sgr0`
 
-EMACS='/usr/local/opt/emacs-plus/bin/emacs'
-EMACS_CLIENT='/usr/local/opt/emacs-plus/bin/emacsclient'
+EMACS_PREFIX="$(brew --prefix emacs-plus@31)"
+EMACS="$EMACS_PREFIX/bin/emacs"
+EMACS_CLIENT="$EMACS_PREFIX/bin/emacsclient"
 
 NO_WAIT='-n'
 
