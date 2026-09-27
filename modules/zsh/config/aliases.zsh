@@ -20,6 +20,8 @@ alias cp='cp -i'
 alias mv='mv -i'
 
 alias keybindings='bindkey'
+alias less='less -m -N -g -i -J --line-numbers --underline-special'
+alias ccat='highlight --out-format xterm256 --quiet --force --style moria'
 
 ############
 # git

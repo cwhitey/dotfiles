@@ -29,27 +29,20 @@ setopt extended_glob # treat #, ~, and ^ as part of patterns for filename genera
 
 # history
 setopt share_history # imports new commands and appends typed commands to history
-setopt append_history # allow multiple terminal sessions to all append to one zsh command history
-setopt inc_append_history # add commands as they are typed, don't wait until shell exit
 setopt extended_history # save timestamp of command and duration
 setopt hist_expire_dups_first
 setopt hist_ignore_all_dups
-setopt hist_ignore_dups # ignore consecutive duplicates
 setopt hist_ignore_space # remove command line from history list when first character on the line is a space
 setopt hist_verify # don't execute, just expand history
 
 export HISTSIZE=100000
 export SAVEHIST=100000
-export HISTFILESIZE=$HISTSIZE
-export HISTCONTROL=ignoredups
 export HISTFILE=~/.zsh_history
-export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help"
 
 # completiona
 unsetopt flow_control
 unsetopt menu_complete # do not autoselect the first completion entry
 setopt auto_menu # show completion menu on successive tab press. needs unsetop menu_complete to work
-setopt auto_name_dirs
 setopt complete_in_word # allow completion from within a word/phrase
 setopt always_to_end # when completing from the middle of a word, move the cursor to the end of the word
 
@@ -61,10 +54,15 @@ autoload -U select-word-style
 select-word-style bash
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
-typeset -A ZSH_HIGHLIGHT_STYLES
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
-ZSH_HIGHLIGHT_STYLES[cursor-matchingbracket]=none
-ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=red,bold
+# Interactive terminal environment
+export LSCOLORS='exfxcxdxbxGxDxabagacad'
+export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=36;01:cd=33;01:su=31;40;07:sg=36;40;07:tw=32;40;07:ow=33;40;07:'
+export PAGER='less'
+export LESSOPEN="| /opt/homebrew/bin/highlight %s --out-format xterm256 --line-numbers --quiet --force --style moria"
+export LESS=' -R'
+if [[ "$OSTYPE" == darwin* ]]; then
+    export BROWSER='open'
+fi
 
 ###
 # Load packages (completion must precede fzf-tab and widget plugins).
@@ -103,26 +101,23 @@ source $ZCONFIG/keybindings.zsh
 ###
 # Load other config files
 ###
-source $ZCONFIG/git-functions.zsh
 source $ZCONFIG/aliases.zsh
 
 # zsh's built-in _zed completion is for an unrelated legacy editor and doesn't
 # know about the Zed code editor's flags (e.g. -n), so it breaks file completion
 compdef _files zed
 
-# make sure exact-match var setting doesn't replace path with that var
-unsetopt auto_name_dirs
-
-# source $ZCONFIG/zaw-setup.zsh
 [ -f $ZCONFIG/local.zsh ] && source $ZCONFIG/local.zsh || true
 
 # autojump
 [ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
 
-[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
+if [[ "$TERM_PROGRAM" == "kiro" ]] && (( $+commands[kiro] )); then
+    source "$(kiro --locate-shell-integration-path zsh)"
+fi
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 
-. "$HOME/.local/bin/env"
+[[ -r "$HOME/.local/bin/env" ]] && source "$HOME/.local/bin/env"
 
 # fnm (Fast Node Manager) — auto-switch Node on cd via .node-version / .nvmrc
 eval "$(fnm env --use-on-cd --shell zsh)"
