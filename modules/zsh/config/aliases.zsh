@@ -31,14 +31,6 @@ alias tf='terraform'
 # git
 ############
 [ -f $ZCONFIG/aliases-git.zsh ] && source $ZCONFIG/aliases-git.zsh
-alias gcv='git commit --verbose'
-alias ga='git add'
-alias gap='git add --patch'
-alias gst='git status'
-alias gstash='git stash'
-alias gpop='git pop'
-alias gcb='git checkout -b'
-alias gphm='git push heroku master'
 
 ############
 # docker
