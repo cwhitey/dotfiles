@@ -22,41 +22,9 @@ alias mv='mv -i'
 alias keybindings='bindkey'
 
 ############
-# random tech
-############
-alias redis='redis-server'
-alias tf='terraform'
-
-############
 # git
 ############
 [ -f $ZCONFIG/aliases-git.zsh ] && source $ZCONFIG/aliases-git.zsh
-
-############
-# docker
-############
-alias doc=docker
-alias dc=docker-compose
-# Kill exited (non-running)
-alias doc_rm_exited='docker rm $(docker ps -aq --filter status=exited)'
-# Kill running
-alias doc_rm_running='docker rm -f $(docker ps -aq --filter status=running)'
-# Kill all
-alias doc_rm_all='docker rm -f $(docker ps -aq)'
-# Delete all images
-alias doc_del_all_images='docker rmi $(docker images -aq)'
-# Delete dangling images
-alias doc_del_dangling_images='docker rmi $(docker images -aq --filter dangling=true)'
-
-############
-# clojure
-############
-alias cljsbuild="lein trampoline cljsbuild $@"
-
-############
-# ruby
-############
-alias be='bundle exec'
 
 ############
 # emacs
@@ -113,18 +81,4 @@ if [[ $(uname) == *Darwin* ]]; then
 
     alias mute="osascript -e 'set volume output muted true'"
 
-    # MySQL
-    # Use homebrew versions if present
-    if [ -x /usr/local/bin/mysql/bin/mysql ]; then
-        alias mysql="/usr/local/mysql/bin/mysql"
-    fi
-
-    if [ -x /usr/local/bin/mysql/bin/mysqladmin ]; then
-        alias mysqladmin="/usr/local/mysql/bin/mysqladmin"
-    fi
-
-    ############
-    # homebrew
-    ############
-    [ -f $ZCONFIG/aliases-homebrew.zsh ] && source $ZCONFIG/aliases-homebrew.zsh
 fi
